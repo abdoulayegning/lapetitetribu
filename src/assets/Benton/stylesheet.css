@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'Benton Italic Black';
+    src: url('BentonModDisp-BlackItalic.woff2') format('woff2'),
+        url('BentonModDisp-BlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Benton Italic Regular';
+    src: url('BentonModDisp-RegularItalic.woff2') format('woff2'),
+        url('BentonModDisp-RegularItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Benton Italic Semibold';
+    src: url('BentonModDisp-SemiboldItalic.woff2') format('woff2'),
+        url('BentonModDisp-SemiboldItalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Benton Italic Light';
+    src: url('BentonModDisp-LightItalic.woff2') format('woff2'),
+        url('BentonModDisp-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Benton Italic Bold';
+    src: url('BentonModDisp-BoldItalic.woff2') format('woff2'),
+        url('BentonModDisp-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Benton Italic UltraLight';
+    src: url('BentonModDisp-UltraItalic.woff2') format('woff2'),
+        url('BentonModDisp-UltraItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+

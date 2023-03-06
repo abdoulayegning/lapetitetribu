@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'FK Grotesk Mono';
+    src: url('FKGrotesk-Monospaced.eot');
+    src: url('FKGrotesk-Monospaced.eot?#iefix') format('embedded-opentype'),
+        url('FKGrotesk-Monospaced.woff2') format('woff2'),
+        url('FKGrotesk-Monospaced.woff') format('woff'),
+        url('FKGrotesk-Monospaced.svg#FKGrotesk-Monospaced') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
