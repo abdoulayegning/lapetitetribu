@@ -1,10 +1,9 @@
 <script setup>
 import { ref } from 'vue';
-import Intro from '../components/Intro.vue';
 </script>
 
 <template>
-  <div> 
-    <Intro/>
-  </div>
+    <div>
+        <div>Evidemment, on est en contruction !</div>
+    </div>
 </template>

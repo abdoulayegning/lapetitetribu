@@ -2,8 +2,7 @@
 import Header from './components/Header.vue';
 </script>
 
-<template> 
-  <Header></Header>
+<template>  
   <router-view></router-view>
 </template>
 
