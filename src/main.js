@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import VueMeta from 'vue-meta';
 import { TroisJSVuePlugin } from 'troisjs';
 
 
@@ -13,4 +14,4 @@ import './assets/FKGrotesk/stylesheet.css'
 import "splitting/dist/splitting.css";
 import "splitting/dist/splitting-cells.css";
 
-createApp(App).use(router, TroisJSVuePlugin).mount('#app')
+createApp(App).use(router, TroisJSVuePlugin, VueMeta).mount('#app')
