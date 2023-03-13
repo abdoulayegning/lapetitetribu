@@ -6,10 +6,11 @@ import { TroisJSVuePlugin } from 'troisjs';
 
 
 /* Styles */
-import './style.css'
+import './styles/global.css'
+import './styles/layouts.css'
+
 import './assets/NeueMachina/stylesheet.css'
-import './assets/Benton/stylesheet.css'
-import './assets/FKGrotesk/stylesheet.css'
+import './assets/Benton/stylesheet.css' 
 
 import "splitting/dist/splitting.css";
 import "splitting/dist/splitting-cells.css";
