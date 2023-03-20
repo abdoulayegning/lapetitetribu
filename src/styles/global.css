@@ -1,6 +1,7 @@
 :root {
   font-family: PP Neue Machina Plain;
-  --container-width: 80vw
+  --container-width: 80vw;
+  --video-width: 60vw;
 }
 
 body {

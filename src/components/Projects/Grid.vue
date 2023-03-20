@@ -1,5 +1,4 @@
-<script setup>
-
+<script setup> 
 import { ref, defineProps, onBeforeMount } from 'vue';
 import { createClient } from 'contentful'
 
@@ -8,6 +7,8 @@ const props = defineProps({
 })
 
 const projects = ref(null)
+
+console.log(import.meta.env.VITE_CONTENTFUL_SPACE_ID)
 
 const client = createClient({
     space: import.meta.env.VITE_CONTENTFUL_SPACE_ID,
@@ -31,7 +32,7 @@ onBeforeMount(()=>{
 <template>
     <div v-if="projects"> 
         <div v-for="project in projects">
-            {{ project.fields.slug }}
+            {{ project.fields.title }}
         </div>
     </div>
 </template>

@@ -2,8 +2,7 @@
 import { onBeforeMount, ref } from 'vue';
 import Header from '../components/Header.vue';
 import ComingSoon from '../components/ComingSoon.vue'
-import TagLine from '../components/TagLine.vue';
-import Projects from '../components/Projects.vue';
+import TagLine from '../components/TagLine.vue'; 
 </script>
 
 <template>  

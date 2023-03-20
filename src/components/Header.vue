@@ -26,8 +26,8 @@ import { ref } from 'vue';
 <style scoped>
 
     svg {
-        width: 5vw;
-        height: 5vw; 
+        width: 3vw;
+        height: 3vw; 
     }
     .header {  
         padding-top: 1rem;
