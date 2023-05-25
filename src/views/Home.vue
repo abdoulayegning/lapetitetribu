@@ -1,8 +1,8 @@
 <script setup>
 import { onBeforeMount, ref } from 'vue';
 import Header from '../components/Header.vue';
-import ComingSoon from '../components/ComingSoon.vue'
-import TagLine from '../components/TagLine.vue'; 
+import ComingSoon from '../components/ComingSoon.vue' 
+import Footer from '../components/Footer.vue';
 </script>
 
 <template>  
@@ -13,5 +13,5 @@ import TagLine from '../components/TagLine.vue';
     <div class="container">
         <Projects length=10></Projects>
     </div>
-    -->
+    --> 
 </template>

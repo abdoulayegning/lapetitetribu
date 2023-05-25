@@ -23,10 +23,10 @@
             </div>
         </div>
         <div class="container">
-            <Similar 
+            <!--Similar 
             :length=similar_count 
             :category=category>
-        </Similar>
+            </Similar--->
         </div>
     </div>
 </template>
@@ -67,8 +67,7 @@
         align-items: center;
         flex-direction: column;
         width: 100%; 
-        position: relative;
-        border: 1px solid red;
+        position: relative; 
         margin-top: 3rem;
     } 
     .video-item { 
@@ -96,7 +95,7 @@ const contentfulClient = createClient({
 let video_item = ref(null)
 let text_wrapper = ref(null)
 let response = ref(false)
-const similar_count = 3
+const similar_count = 2
 
 let title = ref(null)
 let client = ref(null)

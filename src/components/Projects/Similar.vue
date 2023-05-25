@@ -34,13 +34,22 @@ onBeforeMount(()=>{
 </script>
 
 <template>
-    <div v-if="projects"> 
-        <div @click="router.push('/' + project.fields.slug)" v-for="project in projects">
+    <div class="projects" v-if="projects"> 
+        <div class="project" @click="router.push('/' + project.fields.slug)" v-for="project in projects">
             <div>{{ project.fields.title }}</div> 
         </div>
     </div>
 </template>
 
 <style scoped>
-
+.projects {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.project {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
 </style>
