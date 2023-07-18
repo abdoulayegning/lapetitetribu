@@ -19,8 +19,7 @@ onBeforeMount(()=>{
             content_type: 'client',
         })
         .then((entries)=>{
-            clients.value = entries.items 
-            console.log(clients.value)
+            clients.value = entries.items  
         }) 
 })
 </script>

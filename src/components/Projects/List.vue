@@ -28,10 +28,8 @@ onBeforeMount(()=>{
         limit: props.length 
     })
     .then((entries)=>{
-        projects.value = entries.items
-        console.log(projects.value)
-        entries.items.forEach(element => {
-            console.log(element.fields.thumbnail.fields.file.url)
+        projects.value = entries.items 
+        entries.items.forEach(element => { 
             ids.push(element.sys.id)
         });
     })
