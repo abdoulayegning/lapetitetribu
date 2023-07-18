@@ -6,6 +6,7 @@ import { TroisJSVuePlugin } from 'troisjs';
 
 
 /* Styles */
+import './styles/style.css'
 import './styles/global.css'
 import './styles/layouts.css'
 

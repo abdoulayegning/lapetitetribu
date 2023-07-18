@@ -1,20 +1,18 @@
 <script setup>
-import { onBeforeMount, ref } from 'vue';
-import Header from '../components/Header.vue';
-import ComingSoon from '../components/ComingSoon.vue' 
-import Grid from '../components/Projects/Grid.vue';
+import { onBeforeMount, onMounted, ref } from 'vue';
+import List from '../components/Projects/List.vue';
+import Clients from '../components/Clients.vue';
+import Header from '../components/Header.vue'
+import About from '../components/About.vue';
+import Services from '../components/Services.vue';
 </script>
 
-<template> 
-
-    <div style="position: fixed; width: 100%;">
+<template>  
+    <div>  
         <Header></Header>
-    </div>
-
-    <TagLine></TagLine>
-
-    <div class="container">
-        <Grid></Grid>
-    </div> 
-
+        <About></About>
+        <Services></Services>
+        <Clients></Clients>
+        <List :length="3"></List>
+    </div>  
 </template>
