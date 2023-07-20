@@ -2,7 +2,14 @@
 import { onMounted, ref } from 'vue';
 import Splitting from "splitting";
 import { gsap } from 'gsap';
+
+const stones = ref(null)
 const text = ref(null)
+
+defineExpose({
+    stones
+})
+
 onMounted(()=>{
     console.clear()
     let textSplitted = Splitting({target: text.value, by: 'lines'})
@@ -31,18 +38,25 @@ onMounted(()=>{
 </script>
 
 <template>
-    <div class="w-full pt-36 pb-36 relative">
-        <img class="absolute top-0 w-72" src="../assets/sigui.png" alt="">
-         <div class="flex">
-            <div class="w-1/2">
-            </div>
-            <div class="w-1/2 font-['DM_Sans'] text-6xl font-light">
-                <h5 class="w-3/4" ref="text">
-                    Située dans la métropole chaotique de Dakar, notre studio digital est un carrefour entre ce que la technologie offre, 
-                    ce que notre creativité peut en faire et comment on peut connecter les marques et leurs audiences.
-                </h5>
-            </div>
-         </div>
+    <div class="container mx-auto">
+        <div class="w-full lg:pt-36 pt-8 lg:pb-36 pb-8 relative"> 
+             <div class="flex flex-col">
+                <div ref="stones" class="w-full h-[65vh]">
+                    <img class="rounded-3xl w-full h-full object-cover" src="../assets/carrefour.png" alt="">  
+                </div>
+                <div class="w-full font-['DM_Sans'] text-base font-light mt-16">
+                    <div class="w-2/4">
+                        <!-- <h5 class="text-left w-full" ref="text">
+                        Située dans la métropole chaotique de Dakar, notre studio digital est un carrefour entre ce que la technologie offre, 
+                        ce que notre creativité peut en faire et comment on peut connecter les marques et leurs audiences.
+                        </h5> -->
+                        <h5 class="text-left w-full lg:text-7xl" ref="text">
+                            Une expertise multidisciplinaire pour créer des expériences digitales interactives & engageantes.
+                        </h5>
+                    </div>
+                </div>
+             </div>
+        </div>
     </div>
 </template>
 
