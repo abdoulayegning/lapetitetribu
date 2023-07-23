@@ -1,11 +1,12 @@
 <script setup>
-import { ref, defineProps, onBeforeMount } from 'vue';
+import { ref, defineProps, onBeforeMount, onMounted, onUpdated } from 'vue';
 import { createClient } from 'contentful'
 
 const props = defineProps({
   length: Number, 
 })
 
+const logos = ref(null)
 const clients = ref([])  
 
 const client = createClient({
@@ -22,21 +23,71 @@ onBeforeMount(()=>{
             clients.value = entries.items  
         }) 
 })
+
+onUpdated(()=>{
+    let index = 0  
+    
+    for (let i = 0; i < logos.value.children.length; i++) {
+        const element = logos.value.children[i];
+        element.style.opacity = 0
+    } 
+    logos.value.children[index].style.opacity = 1
+
+    setInterval(()=>{
+        if (index >= 0 && index < logos.value.children.length - 1) {
+            index++
+        } else if(index == logos.value.children.length - 1){
+            index = 0
+        }
+        // console.log(logos.value.children[index])
+        // for (let i = 0; i < logos.value.children.length; i++) {
+        //     const element = logos.value.children[i];
+        //     element.style.opacity = 0
+        // } 
+
+        for (let i = 0; i < logos.value.children.length; i++) {
+            const element = logos.value.children[i];
+            element.style.opacity = 0
+        } 
+        logos.value.children[index].style.opacity = 1
+
+    }, 500)
+
+}) 
 </script>
 
 <template>
-    <div class="wrapper">
-        <div class="container"> 
+    <div class="container mx-auto font-['DM_Sans'] pt-40 pb-40">
+        <div class="flex">
+            <div class="w-1/2">
+                <div class="text-4xl font-regular">
+                    Ensemble, nous tissons l'expertise, la passion et l'innovation pour créer des expériences captivantes qui laissent une empreinte durable. 
+                    Découvrez la véritable essence du partenariat et embarquez avec nous dans une excitante aventure créative.
+                </div>
+            </div>
+            <div class="w-1/2 relative" ref="logos">
+                <img style="filter: invert(1);" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-60 mix-blend-difference" v-for="client in clients" :src="client.fields.logo.fields.file.url" alt=""> 
+            </div> 
+        </div>
+        <!-- <div class="container"> 
             <div>
                 <div class="title">Good Friends</div> 
             </div>
             <div class="grid">
                 <div class="grid-item" v-for="client in clients"> 
-                    <img :src="client.fields.logo.fields.file.url" alt=""> 
                 </div>  
             </div>
-        </div>
+        </div> -->
     </div>
+<!-- 
+    Bienvenue dans le monde de [Le nom de votre studio], 
+    où des visions extraordinaires prennent vie grâce à la puissance du partenariat. 
+    Nous croyons que la collaboration est la clé pour libérer une créativité sans limites et atteindre des résultats remarquables. 
+    Nos clients ne sont pas seulement des clients - ce sont nos précieux partenaires dans une aventure inspirante. 
+    À chaque projet que nous entreprenons, nous embarquons dans une exploration commune d'idées, de rêves et de possibilités. 
+    Ensemble, nous tissons l'expertise, la passion et l'innovation pour créer des expériences captivantes qui laissent une empreinte durable. 
+    Découvrez la véritable essence du partenariat chez [Le nom de votre studio] et embarquez avec nous dans une excitante aventure créative. 
+-->
 </template>
 
 <style scoped> 

@@ -11,12 +11,38 @@ import About from '../components/About.vue';
 import Services from '../components/Services.vue';
 const about = ref(null)
 
-onMounted(()=>{
-    console.log(about.value.stones)
-    gsap.fromTo(about.value.stones, {width: '20%'}, {width: '100%', ease: 'Expo.easeOut', scrollTrigger: {
-        trigger: about.value.stones,
+const scrollTriggerAnimations = ()=>{
+    const stones_video = about.value.stones_video  
+    const stones_images = about.value.stones_images  
+
+    let transforms = [
+        {angle: 50, y: '-=100'},
+        {angle: -20, y: '-=55'},
+        {angle: 15, y: '+=40'},
+    ]
+
+    for (let i = 0; i < stones_images.children.length; i++) {
+        const e = stones_images.children[i];
+        gsap.to(e, {
+            rotate: transforms[i].angle, 
+            y: transforms[i].y,
+        scrollTrigger: {
+            trigger: stones_images,
+            scrub: true,
+        }, 
+        transformOrigin:'center center'}) 
+    }
+
+    gsap.fromTo(stones_video, {width: '20%'}, {width: '100%', ease: 'Expo.easeOut', scrollTrigger: {
+        trigger: stones_video,
         scrub: true
     }})
+}
+
+onMounted(()=>{ 
+
+    scrollTriggerAnimations()
+
 })
 </script>
 
@@ -25,7 +51,6 @@ onMounted(()=>{
         <Header></Header>
         <About ref="about"></About>
         <Services></Services>
-        <Clients></Clients>
-        <List :length="3"></List>
+        <Clients></Clients> 
     </div>  
 </template>
