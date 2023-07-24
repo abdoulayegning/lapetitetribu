@@ -4,11 +4,12 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 gsap.registerPlugin(ScrollTrigger)
 
-import List from '../components/Projects/List.vue';
+import Menu from '../components/Menu.vue';
 import Clients from '../components/Clients.vue';
 import Header from '../components/Header.vue'
 import About from '../components/About.vue';
 import Services from '../components/Services.vue';
+import Footer from '../components/Footer.vue'
 const about = ref(null)
 
 const scrollTriggerAnimations = ()=>{
@@ -48,9 +49,11 @@ onMounted(()=>{
 
 <template>  
     <div>  
+        <Menu></Menu>
         <Header></Header>
         <About ref="about"></About>
         <Services></Services>
         <Clients></Clients> 
+        <Footer></Footer>
     </div>  
 </template>
