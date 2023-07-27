@@ -15,5 +15,15 @@ import './assets/Benton/stylesheet.css'
 
 import "splitting/dist/splitting.css";
 import "splitting/dist/splitting-cells.css";
+ 
+import { library } from '@fortawesome/fontawesome-svg-core' 
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome' 
+import { faAsterisk } from '@fortawesome/free-solid-svg-icons' 
+import { faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
-createApp(App).use(router, TroisJSVuePlugin, VueMeta).mount('#app')
+library.add(faAsterisk, faInstagram, faLinkedinIn)
+
+createApp(App)
+.use(router, TroisJSVuePlugin, VueMeta)
+.component('font-awesome-icon', FontAwesomeIcon)
+.mount('#app')

@@ -57,15 +57,15 @@ onUpdated(()=>{
 </script>
 
 <template>
-    <div class="container mx-auto font-['DM_Sans'] pt-40 pb-40">
-        <div class="flex">
-            <div class="w-1/2">
-                <div class="text-4xl font-regular">
+    <div class="container mx-auto font-['DM_Sans'] pt-40 lg:pb-40 pb-10">
+        <div class="flex lg:flex-row flex-col">
+            <div class="lg:w-1/2 w-full">
+                <div class="lg:text-4xl text-xl font-regular lg:text-left text-center">
                     Ensemble, nous tissons l'expertise, la passion et l'innovation pour créer des expériences captivantes qui laissent une empreinte durable. 
                     Découvrez la véritable essence du partenariat et embarquez avec nous dans une excitante aventure créative.
                 </div>
             </div>
-            <div class="w-1/2 relative" ref="logos">
+            <div class="lg:w-1/2 h-72 lg:h-auto relative" ref="logos">
                 <img style="filter: invert(1);" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-60 mix-blend-difference" v-for="client in clients" :src="client.fields.logo.fields.file.url" alt=""> 
             </div> 
         </div>

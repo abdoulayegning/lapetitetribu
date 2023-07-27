@@ -123,13 +123,20 @@ onMounted(()=>{
         material.uniforms.time.value = time
     })
 
+    window.addEventListener('resize', ()=>{
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize( window.innerWidth, window.innerHeight )
+    })
+
     let footer_tl = gsap.timeline({
         scrollTrigger: {
             trigger: sketch.value,
             scrub: true
         }
     })
-    footer_tl.fromTo(mesh.scale, {x: 2}, {x: 1, duration: 6, ease:'Expo.easeOut'}, 'a')
+    footer_tl.fromTo(mesh.scale, {x: 2, y: 2}, {x: 0.75, y: 0.75, duration: 6, ease:'Expo.easeOut'}, 'a')
     footer_tl.to(material.uniforms.bending, {value: 0, duration: 6, ease:'Expo.easeOut'}, 'a')
 })
 </script>
@@ -138,24 +145,30 @@ onMounted(()=>{
     <div class="h-screen relative"> 
 
         <div class="absolute z-40 w-full h-screen">
+
             <div class="container mx-auto">
                 <div class="flex justify-center items-center w-full h-screen">
-                    <div class="w-1/2 text-7xl mix-blend-difference text-white font-['DM_Sans']">
+                    <div class="lg:w-1/2 w-full lg:text-7xl text-4xl mix-blend-difference text-white font-['DM_Sans']">
                         Créeons ensemble des expériences mémorables...
                         <br>
-                        <span class="font-medium mt-7 border border-white text-sm pr-8 pl-8 pt-2 pb-2 rounded-full">Je voudrais collaborer avec votre studio</span>  
+                        <div class="font-medium mt-7 text-sm leading-tight rounded-full">
+                            Je voudrais collaborer avec votre studio.
+                        </div>  
                     </div> 
-                    <div class="w-1/2"></div>
+                    <div class="lg:w-1/2 lg:block w-0 hidden"></div>
                 </div>
             </div> 
+
         </div>
 
         <div style="background-color: rgb(0, 0, 0);" 
         class="absolute w-full h-full top-0 left-0" ref="sketch"> 
         </div>
-        <div class="absolute -translate-x-1/2 bottom-10 left-1/2 text-white font-['DM_Sans'] text-sm flex gap-8">
-            <div>Instagram</div>
-            <div>LinkedIn</div>
+
+        <div class="absolute -translate-x-1/2 bottom-10 left-1/2 
+        text-white font-['DM_Sans'] text-sm flex flex-row  text-center lg:gap-8 gap-3">
+            <div><font-awesome-icon icon="fa-brands fa-instagram" /></div>
+            <div><font-awesome-icon icon="fa-brands fa-linkedin-in" /></div>
             <div class="underline font-medium">abdoulaye@lapetitetribu.co</div>
         </div>
         
@@ -169,5 +182,4 @@ onMounted(()=>{
 </template>
 
 <style scoped>
- 
 </style>
