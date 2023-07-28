@@ -15,13 +15,24 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
+import { gsap, ScrollTrigger } from 'gsap/all' 
+gsap.registerPlugin(ScrollTrigger)
+
 const container = ref(null)
 onMounted(()=>{
-    // for (let i = 0; i < container.value.children.length; i++) {
-    //     const element = container.value.children[i];
-    //     if (i%2 === 0) {
-    //          element.style.justifyContent = 'flex-end'
-    //     }
-    // }
+    for (let i = 0; i < container.value.children.length; i++) {
+        const e = container.value.children[i]; 
+        gsap.set(e, {scaleY: 1.25, y: 100})
+        gsap.to(e, {
+            scaleY: 1, 
+            y: 0,
+            // delay: 0.45,
+            duration: 0.85,
+            ease: 'Expo.easeOut',
+            scrollTrigger: {
+                trigger: e, 
+            }
+        })
+    }
 })
 </script>
