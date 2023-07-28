@@ -10,6 +10,7 @@ import Header from '../components/Header.vue'
 import About from '../components/About.vue';
 import Services from '../components/Services.vue';
 import Footer from '../components/Footer.vue'
+import Work from '../components/Work.vue';
 const about = ref(null)
 
 const scrollTriggerAnimations = ()=>{
@@ -52,6 +53,7 @@ onMounted(()=>{
         <Menu></Menu>
         <Header></Header>
         <About ref="about"></About>
+        <Work></Work>
         <Services></Services>
         <Clients></Clients> 
         <Footer></Footer>

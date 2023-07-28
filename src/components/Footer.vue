@@ -7,7 +7,10 @@ import { ScrollTrigger, ScrollToPlugin } from 'gsap/all';
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 import logo_image from '../assets/logo.png'
+
 const sketch = ref(null)
+const arrow = ref(null)
+
 const scrollToTop = ()=>{
     gsap.to(window, {duration: 6, scrollTo: 0})
 }
@@ -138,6 +141,24 @@ onMounted(()=>{
     })
     footer_tl.fromTo(mesh.scale, {x: 2, y: 2}, {x: 0.75, y: 0.75, duration: 6, ease:'Expo.easeOut'}, 'a')
     footer_tl.to(material.uniforms.bending, {value: 0, duration: 6, ease:'Expo.easeOut'}, 'a')
+
+    let arrow_tl = gsap.timeline({defaults: {duration: 0.35}, repeat: -1})
+    const arrowIcon = arrow.value.children[0]
+    arrow_tl.fromTo(arrowIcon, {y: '0rem'}, {y: '-2rem'})
+    arrow_tl.fromTo(arrowIcon, {y: '2rem'}, {y: '0'})
+    arrow_tl.pause()
+    gsap.set(arrowIcon, {y: 0})
+    
+    arrow.value.addEventListener('pointerenter', ()=>{
+        arrow_tl.play()
+        // console.log('enter') 
+    })
+    
+    arrow.value.addEventListener('pointerleave', ()=>{
+        arrow_tl.pause()
+        gsap.set(arrowIcon, {y: 0})
+        // console.log('leave')
+    })
 })
 </script>
 
@@ -173,8 +194,8 @@ onMounted(()=>{
         </div>
         
 
-        <div class="z-[1000] absolute left-1/2 -translate-x-1/2 top-10 text-white font-['DM_Sans'] text-sm flex gap-8 cursor-pointer">
-            <div @pointerdown="scrollToTop" class="underline font-medium">Scroller en haut</div> 
+        <div @pointerdown="scrollToTop" style="clip-path: inset(0 0);" ref="arrow" class="w-8 h-8 p-2 z-[1000] absolute left-1/2 -translate-x-1/2 top-10 text-white font-['DM_Sans'] text-sm flex gap-8 cursor-pointer">
+            <div class="underline font-medium absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><font-awesome-icon icon="fa-solid fa-arrow-up" size="lg"/></div> 
         </div>
 
         

@@ -1,6 +1,7 @@
 <template>
 
-    <div class=" pt-40 pb-10"> 
+    <div class=" pt-40 pb-10 relative"> 
+        
         <div class="container mx-auto font-['DM_Sans']">
             <div class="pb-10" style="border-bottom: 1px solid black;"> 
                 <h1 class="">expériences</h1>
@@ -36,7 +37,8 @@
         </div>
     </div>
 
-    <div class="bg-black text-white pt-40 pb-10"> 
+    <div class="bg-black text-white pt-40 pb-10 relative"> 
+        <img class="absolute bg-blend-lighten opacity-[.075] h-[100%] w-[100%] top-0 left-0" src="../assets/noise.png" alt="">
         <div class="container mx-auto font-['DM_Sans']">
             <div class="pb-10" style="border-bottom: 1px solid rgb(250, 250, 250);"> 
                 <h1 class="font-['Benton_Italic_Regular']">motion design</h1>
@@ -69,7 +71,9 @@
         </div>
     </div>
 
-    <div class=" pt-40 pb-10 bg-[#E2DADA]"> 
+    <div class=" pt-40 pb-10 bg-[#E2DADA] relative"> 
+        <img class="absolute bg-blend-lighten opacity-[.05] h-[100%] w-[100%] top-0 left-0" src="../assets/noise.png" alt="">
+
         <div class="container mx-auto font-['DM_Sans']">
             <div class="pb-10" style="border-bottom: 1px solid black;"> 
                 <h1 class="">expériences</h1>
