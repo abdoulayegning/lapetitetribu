@@ -8,7 +8,7 @@
                         <div class="text-white text-center mt-10 mb-10">
                             <!-- <h1 class="text-2xl">Orange Sénégal</h1> -->
                             <h1 class="text-2xl">Demain nous appartient</h1>
-                            <h2 class="text-sm uppercase font-bold mt-2 text-white mix-blend-difference font-['PP_Neue_Machina_Plain']">Réalité Augmentée</h2> 
+                            <h2 class="text-xl font-medium mt-2 text-gray-500 mix-blend-difference font-['DM_Sans']">Réalité Augmentée</h2> 
                         </div> 
                     </div> 
                 </div>  
