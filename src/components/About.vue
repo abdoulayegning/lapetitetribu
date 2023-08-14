@@ -40,16 +40,15 @@ onMounted(()=>{
 </script>
 
 <template>
+
+    <div ref="stones_video" class="w-full h-[100vh] relative"> 
+        <img class="w-full h-full object-cover absolute top-0 left-0 -z-10" src="../assets/carrefour.png" alt="">  
+    </div>
+
     <div class="container mx-auto">
         <div class="w-full lg:pt-36 pt-8 lg:pb-36 pb-8 relative"> 
-            <div class="flex flex-col">
-                
-                <div ref="stones_video" class="w-full h-[65vh] flex">
-                    <img class="rounded-3xl w-full h-full object-cover" src="../assets/carrefour.png" alt="">  
-                </div>
-                
-                <div class="w-full font-['DM_Sans'] relative text-base font-light mt-16 bg-[#E2DADA] p-12 rounded-3xl">  
-                    
+            <div class="flex flex-col"> 
+                <div class="w-full font-['DM_Sans'] relative text-base font-light mt-16  p-12 rounded-3xl">   
                     <div class="flex lg:flex-row flex-col gap-4">
 
                         <div class="text-left lg:text-6xl text-2xl lg:w-1/2 w-full flex items-center" ref="text">
@@ -66,7 +65,7 @@ onMounted(()=>{
                         
                     </div>
 
-                        
+                        <!-- bg-[#E2DADA] -->
                 </div>
 
              </div>

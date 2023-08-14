@@ -35,7 +35,7 @@ const scrollTriggerAnimations = ()=>{
         transformOrigin:'center center'}) 
     }
 
-    gsap.fromTo(stones_video, {width: '20%'}, {width: '100%', ease: 'Expo.easeOut', scrollTrigger: {
+    gsap.fromTo(stones_video, {opacity: 0.5}, {opacity: 1, ease: 'Expo.easeOut', scrollTrigger: {
         trigger: stones_video,
         scrub: true
     }})

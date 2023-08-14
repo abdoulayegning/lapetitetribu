@@ -38,12 +38,7 @@ onUpdated(()=>{
             index++
         } else if(index == logos.value.children.length - 1){
             index = 0
-        }
-        // console.log(logos.value.children[index])
-        // for (let i = 0; i < logos.value.children.length; i++) {
-        //     const element = logos.value.children[i];
-        //     element.style.opacity = 0
-        // } 
+        } 
 
         for (let i = 0; i < logos.value.children.length; i++) {
             const element = logos.value.children[i];
@@ -66,7 +61,7 @@ onUpdated(()=>{
                 </div>
             </div>
             <div class="lg:w-1/2 h-72 lg:h-auto relative" ref="logos">
-                <img style="filter: invert(1);" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-60 mix-blend-difference" v-for="client in clients" :src="client.fields.logo.fields.file.url" alt=""> 
+                <img style="filter: invert(0);" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-60 mix-blend-difference" v-for="client in clients" :src="client.fields.logo.fields.file.url" alt=""> 
             </div> 
         </div>
         <!-- <div class="container"> 
