@@ -8,7 +8,7 @@
                     <img v-if="i.fields.imageThumbnail" class="opacity-70 w-full h-[65vh] object-cover rounded-[40px]" :src="i.fields.imageThumbnail.fields.file.url" alt=""> 
                     <img v-else class="opacity-50 w-full h-[65vh] object-cover rounded-[40px]" src="https://picsum.photos/2000/2000" alt=""> 
                 </div> 
-                <div class="text-white uppercase mt-4 text-base absolute z-40 bottom-10 left-10">
+                <div class="text-white uppercase mt-4 text-xl absolute z-40 bottom-10 left-10">
                     <h1>{{i.fields.title}}</h1>
                     <h2 class="text-gray-400 font-['PP_Neue_Machina_Plain']">{{i.fields.category}}</h2>  
                 </div>

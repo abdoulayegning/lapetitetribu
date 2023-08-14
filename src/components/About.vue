@@ -42,7 +42,8 @@ onMounted(()=>{
 <template>
 
     <div ref="stones_video" class="w-full h-[100vh] relative"> 
-        <img class="w-full h-full object-cover absolute top-0 left-0 -z-10" src="../assets/carrefour.png" alt="">  
+        <video loop muted autoplay class="w-full h-full object-cover absolute top-0 left-0 -z-10" src="../assets/video-test-1.mp4"></video>
+        <!-- <img class="w-full h-full object-cover absolute top-0 left-0 -z-10" src="../assets/carrefour.png" alt="">   -->
     </div>
 
     <div class="container mx-auto">
