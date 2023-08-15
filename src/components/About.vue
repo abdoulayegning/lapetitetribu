@@ -42,7 +42,7 @@ onMounted(()=>{
 <template>
 
     <div ref="stones_video" class="w-full h-[100vh] relative"> 
-        <video loop muted autoplay class="w-full h-full object-cover absolute top-0 left-0 -z-10" src="../assets/video-test-1.mp4"></video>
+        <video loop muted autoplay class="w-full h-full object-cover absolute top-0 left-0 -z-10 rounded-[40px]" src="../assets/video-test-1.mp4"></video>
         <!-- <img class="w-full h-full object-cover absolute top-0 left-0 -z-10" src="../assets/carrefour.png" alt="">   -->
     </div>
 
@@ -58,7 +58,7 @@ onMounted(()=>{
                             </div>
                         </div>
 
-                        <div ref="stones_images" class="hidden lg:block lg:w-1/2 w-full flex relative"> 
+                        <div ref="stones_images" class="lg:block lg:w-1/2 w-full flex relative"> 
                             <img class="absolute bottom-0 left-0 lg:w-1/2 w-1" src="../assets/orange.png" alt="">
                             <img class="absolute top-0 right-0 lg:w-1/2  translate-y-0" src="../assets/pink.png" alt="">
                             <img class="absolute top-0 left-1/2 lg:w-1/2 -translate-x-1/2 translate-y-1/4" src="../assets/purple.png" alt="">

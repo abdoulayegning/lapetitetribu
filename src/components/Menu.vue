@@ -5,9 +5,9 @@ import { ref } from 'vue';
 <template>
     <div class="fixed w-full pt-6 z-[100]">
         <div class="container mx-auto">
-            <div class="w-20 mix-blend-difference">
+            <div class="w-20">
                 <svg class="w-full h-full" width="900" height="760" viewBox="0 0 900 760" xmlns="http://www.w3.org/2000/svg">
-                <path d="M24.5001 134C13.2901 134 6.83008 128.11 6.83008 116.71V0.0500488H41.4101V103.6H105.82V134H24.5001Z" fill="white"/>
+                <path class="mix-blend-mode" d="M24.5001 134C13.2901 134 6.83008 128.11 6.83008 116.71V0.0500488H41.4101V103.6H105.82V134H24.5001Z" fill="white"/>
                 <path d="M145.955 134L188.895 0.0500488H252.165L294.915 134H258.245L245.705 93.5301H194.785L182.245 134H145.955ZM204.285 63.3201H236.205L220.245 12.2101L204.285 63.3201Z" fill="white"/>
                 <path d="M6.83008 435V301.05H59.6501C101.64 301.05 120.26 315.11 120.26 349.88C120.26 384.27 101.64 398.33 59.6501 398.33H41.4101V435H6.83008ZM41.4101 368.12H61.7401C78.4601 368.12 85.8701 363.56 85.8701 349.88C85.8701 335.82 78.4601 331.26 61.7401 331.26H41.4101V368.12Z" fill="white"/>
                 <path d="M167.157 435V301.05H273.747V331.26H201.927V353.68H264.247V382.18H201.927V404.79H273.747V435H167.157Z" fill="white"/>
@@ -27,7 +27,7 @@ import { ref } from 'vue';
 </template>
 
 <style scoped>  
-svg path {
-    mix-blend-mode: difference;
+svg path { 
+    mix-blend-mode:color-burn;
 }
 </style>

@@ -14,7 +14,7 @@
     text-transform: uppercase;
     width: 100%;
     height: 100vh;
-    background-color: rgb(26, 26, 26);
+    /* background-color: rgb(26, 26, 26); */
     position: relative;
 }
 .text {
