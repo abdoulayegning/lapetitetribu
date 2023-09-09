@@ -42,7 +42,7 @@
     transform: translateX(-50%) translateY(-50%);
     z-index: 0;
     width: 40vw;
-    clip-path: inset(0% 0% 0% 0% round 39px);
+    /* clip-path: inset(0% 0% 0% 0% round 39px); */
 }
 .arrow-section {
     display: flex;

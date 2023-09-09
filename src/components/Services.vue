@@ -4,14 +4,14 @@
         
         <div class="container mx-auto font-['DM_Sans']">
             <div class="pb-10" style="border-bottom: 1px solid black;"> 
-                <h1 class="">expériences</h1>
+                <h1 class="font-['Benton_Italic_Regular']">expériences</h1>
 
                 <div class="flex gap-7">
                     <div class="flex justify-center items-center">
                         <video class="rounded-3xl" 
                         autoplay loop muted src="../assets/interactive.mp4"></video>
                     </div>
-                    <h1 class="font-['PP_Neue_Machina_Plain']">immersives</h1> 
+                    <h1 class="">immersives</h1> 
                 </div> 
 
             </div>
@@ -76,7 +76,7 @@
 
         <div class="container mx-auto font-['DM_Sans']">
             <div class="pb-10" style="border-bottom: 1px solid black;"> 
-                <h1 class="">expériences</h1>
+                <h1 class="font-['Benton_Italic_Regular']">expériences</h1>
                 <div class="flex gap-7">
                     <div class="flex justify-center items-center">
                         <video class="rounded-3xl" 

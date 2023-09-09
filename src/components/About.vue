@@ -6,45 +6,37 @@ import { gsap } from 'gsap';
 const stones_video = ref(null)
 const stones_images = ref(null)
 const text = ref(null)
+const roller = ref(null)
 
 defineExpose({
     stones_video,
-    stones_images
+    stones_images,
+    roller
 })
 
 onMounted(()=>{
-    // console.clear()
-    // let textSplitted = Splitting({target: text.value, by: 'lines'}) 
-    
-    // let tl = gsap.timeline({delay: 0.45})
+    for (let i = 0; i < roller.value.children.length; i++) {
+        const element = roller.value.children[i]; 
+        gsap.set(element, {x: i * element.getBoundingClientRect().width})
+    } 
 
-    // // const e = textSplitted[0].lines[0];
-
-    // for (let i = 0; i < textSplitted[0].lines[i].length; i++) {
-    //     const element = textSplitted[0].lines[i];
-    //     for (let j = 0; j < element[j].length; j++) {
-    //         const line = element[j];
-    //         tl.fromTo(line, {y: 100}, {y: 0, ease: 'Expo.easeOut'}, 'base')
-    //     }
-    // }
-
-    // for (let i = 0; i < textSplitted[0].lines.length; i++) {
-        
-         
-    //     for (let j = 0; j < e[j].length; j++) {
-    //         const element = e[j]; 
-    //         gsap.to(element, {y: 100})
-    //     }
-    // }
+    gsap.ticker.add(()=>{ 
+    })
 })
 </script>
 
 <template>
 
-    <div ref="stones_video" class="w-full h-[100vh] relative"> 
-        <video loop muted autoplay class="w-full h-full object-cover absolute top-0 left-0 -z-10 rounded-[40px]" src="../assets/video-test-1.mp4"></video>
-        <!-- <img class="w-full h-full object-cover absolute top-0 left-0 -z-10" src="../assets/carrefour.png" alt="">   -->
-    </div>
+    <div class="w-full h-[100vh] relative">  
+        <div ref="roller">
+            <div v-for="i in [0,1,2,3,4,6,7,8,9,10]" class="absolute whitespace-nowrap font-['DM_Sans'] text-white 
+            uppercase text-8xl mix-blend-difference top-1/2 -translate-y-1/2 pr-6 pl-6">
+                hors de <u>l'ordinaire</u>
+            </div>
+        </div> 
+        <video ref="stones_video" loop muted autoplay class="w-full h-full object-cover absolute top-0 left-0 -z-10 " 
+        src="../assets/value.mp4"></video>
+     </div>
 
     <div class="container mx-auto">
         <div class="w-full lg:pt-36 pt-8 lg:pb-36 pb-8 relative"> 
@@ -54,7 +46,7 @@ onMounted(()=>{
 
                         <div class="text-left lg:text-6xl text-2xl lg:w-1/2 w-full flex items-center" ref="text">
                             <div>
-                                Une expertise multidisciplinaire pour créer des expériences <span class="font-['Benton_Italic_Regular']">uniques</span>, <span class="font-['FK_Grotesk_Mono']">interactives</span> & <span class="font-['PP_Neue_Machina_Plain']">engageantes</span>.
+                                Une expertise multidisciplinaire pour créer des expériences <span class="">uniques</span>, <span class="">interactives</span> & <span class="">engageantes</span>.
                             </div>
                         </div>
 
@@ -65,13 +57,13 @@ onMounted(()=>{
                         </div>
                         
                     </div>
-
-                        <!-- bg-[#E2DADA] -->
+ 
                 </div>
 
              </div>
         </div>
     </div>
+    
 </template>
 
 <style scoped>
