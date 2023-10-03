@@ -3,15 +3,15 @@
 
         <div class="grid grid-cols-2 gap-16" id="items">
 
-            <div @click="router.push('/' + i.fields.slug)" class="font-['DM_Sans'] cursor-pointer relative h-[65vh] bg-black rounded-2xl" v-for="i,j in response"> 
+            <div @click="router.push('/' + i.fields.slug)" class="font-['DM_Sans'] cursor-pointer relative h-[65vh] bg-black" v-for="i,j in response"> 
                 <div class="w-full h-full absolute opacity-60 z-20">
-                    <video class="w-full h-full object-cover  rounded-2xl" v-if="i.fields.videoThumbnail" muted loop autoplay playsinline :src="i.fields.videoThumbnail.fields.file.url"></video>
+                    <video class="w-full h-full object-cover " v-if="i.fields.videoThumbnail" muted loop autoplay playsinline :src="i.fields.videoThumbnail.fields.file.url"></video>
                 </div>
                 <div class="h-full w-full opacity-100 absolute z-20"> 
-                    <img v-if="i.fields.imageThumbnail" class="w-full h-full object-cover rounded-2xl" :src="i.fields.imageThumbnail.fields.file.url" alt=""> 
-                    <img v-else class="w-full h-full object-cover rounded-2xl" src="https://picsum.photos/2000/2000" alt=""> 
+                    <img v-if="i.fields.imageThumbnail" class="w-full h-full object-cover" :src="i.fields.imageThumbnail.fields.file.url" alt=""> 
+                    <img v-else class="w-full h-full object-cover" src="https://picsum.photos/2000/2000" alt=""> 
                 </div> 
-                <div class="text-white lg:w-1/2 text-xl uppercase mt-4 absolute z-40 bottom-6 left-6 leading-tight text-left rounded-2xl">
+                <div class="text-white lg:w-1/2 text-xl uppercase mt-4 absolute z-40 bottom-6 left-6 leading-tight text-left">
                     <span class="border-b-2">{{i.fields.title}}</span>
                     <h2 class="text-white font-['DM_Sans'] mt-3">{{i.fields.category}}</h2>  
                 </div>

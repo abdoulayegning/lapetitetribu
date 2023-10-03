@@ -2,41 +2,28 @@
     <div v-if="items"> 
         <div class="mx-auto container">
 
-            <div class="text-black font-['DM_Sans'] lg:w-1/3 text-4xl uppercase mt-16 mb-16 text-left">
-                <span class="border-b-4 border-black">{{items.title}}</span>
-                <h2 class="text-gray-700 font-['DM_Sans'] mt-3">{{items.category}}</h2>  
-            </div>
+            <div class="flex mt-16">
+                <div class="w-1/2">
+                    <div class="text-black font-['DM_Sans'] w-full text-4xl uppercase mt-0 mb-16 text-left">
+                        <span class="border-b-4 border-black">{{items.title}}</span>
+                        <h2 class="text-gray-700 font-['DM_Sans'] mt-3">{{items.category}}</h2>  
+                    </div>
 
-            <div class="text-black font-['DM_Sans'] lg:w-1/3 text-4xl uppercase mt-16 mb-16 text-left">
-                <span class="border-b-4 border-black">client</span>
-                <h2 class="text-gray-700 font-['DM_Sans'] mt-3">{{items.client.fields.name}}</h2>  
-            </div>
-
-            <!-- <div class="text-gray-400 text-xs font-['DM_Sans'] uppercase font-semibold mt-10">projet</div>
-            <div class="uppercase font-['DM_Sans'] text-4xl font-semibold">
-                {{ items.title }}
-            </div>  -->
-
-            <!-- <div class="grid grid-cols-3 mt-6 mb-6">
-
-                <div class="uppercase font-['DM_Sans'] font-semibold">
-                    <div class="text-gray-400 text-xs">client</div>
-                    <div class="text-2xl">{{ items.client.fields.name }}</div> 
-                </div>
-    
-    
-                <div class="uppercase font-['DM_Sans'] font-semibold">
-                    <div class="text-gray-400 text-xs">rôles</div>
-                    <div class="text-2xl">{{ items.category }}</div> 
+                    <div class="text-black font-['DM_Sans'] w-full text-4xl uppercase mt-16 mb-16 text-left">
+                        <span class="border-b-4 border-black">client</span>
+                        <h2 class="text-gray-700 font-['DM_Sans'] mt-3">{{items.client.fields.name}}</h2>  
+                    </div>
                 </div>
 
-            </div> -->
-
-
+                <div class="text-2xl w-1/2 font-['DM_Sans']"> 
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit ipsam atque minus quia vel placeat consequatur eaque sunt excepturi nostrum aut, dolorum accusamus nobis nam quas dolore, totam corporis. Vitae? 
+                </div>
+            </div>  
 
             <div v-for="block in items.blocks"> 
                 <ContentBlock :block="block"/>
             </div> 
+            
         </div>
     </div>
 </template>

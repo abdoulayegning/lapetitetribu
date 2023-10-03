@@ -1,52 +1,20 @@
 <template>
-    <div class="wrapper">  
-        <video ref="video" class="video" muted autoplay loop src="../assets/interactive.mp4"></video>
-        <div class="content"> 
-            <div ref="firstLine" v-html="Splitting.html({content: 'créateurs', by: 'chars'})" class="text"></div>  
-            <div ref="secondtLine" v-html="Splitting.html({content: 'd’expériences', by: 'chars'})" class="text"></div> 
-            <div ref="thirdLine" v-html="Splitting.html({content: 'digitales', by: 'chars'})" class="text"></div> 
-        </div> 
+    <div class="container mx-auto">   
+        <div class="uppercase lg:text-8xl mt-20"> 
+            <div style="clip-path: inset(-10vh 0);" ref="firstLine" v-html="Splitting.html({content: 'créateurs', by: 'chars'})" class="text"></div>  
+            <div style="clip-path: inset(-10vh 0);" ref="secondtLine" v-html="Splitting.html({content: 'd’expériences', by: 'chars'})" class="text"></div> 
+            <div style="clip-path: inset(-10vh 0);" ref="thirdLine" v-html="Splitting.html({content: 'digitales', by: 'chars'})" class="text"></div> 
+        </div>    
     </div>
+
+    <!--div ref="caroussel">
+        <div v-for="i in [0,1,2,3,4,5,6,7,8,9,10]" 
+        class="w-1/4 h-[60vh] bg-black absolute mt-16"></div>
+    </div-->
+
 </template>
 
-<style scoped> 
-.wrapper {
-    text-transform: uppercase;
-    width: 100%;
-    height: 100vh;
-    /* background-color: rgb(26, 26, 26); */
-    position: relative;
-}
-.text {
-    color: white;
-    mix-blend-mode: difference;
-}
-.content div {
-    border: 0px solid red;
-    clip-path: inset(-2vw 0);
-}
-.content {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 8vw;
-    line-height: 8vw;
-}
-.video {
-    position: absolute;
-    top: 50%;
-    left: 50%; 
-    transform: translateX(-50%) translateY(-50%);
-    z-index: 0;
-    width: 40vw;
-    /* clip-path: inset(0% 0% 0% 0% round 39px); */
-}
-.arrow-section {
-    display: flex;
-} 
+<style scoped>  
 </style>
 
 <script setup>
@@ -56,15 +24,17 @@ import { gsap } from 'gsap';
 const video_section = ref(null)
 const bounding_box = ref(null)
 const video = ref(null)
+const caroussel = ref(null)
 onMounted(()=>{
     //video_section.value.style.display = 'flex' 
     //looping_video.value.setAttribute('height', bounding_box.value.getBoundingClientRect().height)
-    const tl = gsap.timeline({delay: 1.5})
+    const tl = gsap.timeline({delay: 0})
     const chars = document.querySelectorAll('.char')
-    tl.fromTo(video.value, {scale: 1.25}, {scale: 1, ease: 'Expo.easeOut', duration: 0.85})
+    //tl.fromTo(video.value, {scale: 1, ease: 'Expo.easeOut', duration: 0.85})
     for (let i = 0; i < chars.length; i++) {
         const c = chars[i];
-        tl.fromTo(c, {y: 0.15 * window.innerWidth}, {y: 0, ease: 'Expo.easeOut', duration: 2}, i/10)
+        tl.fromTo(c, {y: 0.15 * window.innerWidth}, {y: 0, ease: 'Expo.easeOut', duration: 0.95}, i/20)
     }
+ 
 })
 </script>

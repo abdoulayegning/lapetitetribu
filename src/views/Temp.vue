@@ -38,11 +38,11 @@ const scrollTriggerAnimations = ()=>{
     //     transformOrigin:'center center'}) 
     // }
 
-    gsap.fromTo(stones_video, {scale: 0.45}, {scale: 0.85, ease: 'Expo.easeOut', scrollTrigger: {
+    gsap.fromTo(stones_video, {y: 0, scale: 1}, {scale: 1.35, ease: 'Expo.easeOut', scrollTrigger: {
         trigger: stones_video,
         scrub: true
     }})
-
+/*
     for (let i = 0; i < roller.children.length; i++) {
         const element = roller.children[i];  
         gsap.to(element, {x: '-=800', ease: 'linear', scrollTrigger: {
@@ -50,7 +50,7 @@ const scrollTriggerAnimations = ()=>{
             scrub: true
         }})
     } 
-    
+ */   
 }
 
 const workTitleScrollTrigger = ()=>{
