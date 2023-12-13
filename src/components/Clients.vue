@@ -25,7 +25,7 @@ onBeforeMount(()=>{
 })
 
 onUpdated(()=>{
-    let index = 0  
+    /*let index = 0  
     
     for (let i = 0; i < logos.value.children.length; i++) {
         const element = logos.value.children[i];
@@ -46,22 +46,23 @@ onUpdated(()=>{
         } 
         logos.value.children[index].style.opacity = 1
 
-    }, 500)
+    }, 500)*/
 
 }) 
 </script>
 
 <template>
     <div class="container mx-auto font-['DM_Sans'] pt-40 lg:pb-40 pb-10">
-        <div class="flex lg:flex-row flex-col">
-            <div class="lg:w-1/2 w-full">
-                <div class="lg:text-4xl text-xl font-regular lg:text-left text-center">
-                    Ensemble, nous tissons l'expertise, la passion et l'innovation pour créer des expériences captivantes qui laissent une empreinte durable. 
-                    Découvrez la véritable essence du partenariat et embarquez avec nous dans une excitante aventure créative.
-                </div>
+        <div class="">
+            <div class="w-full text-left text-6xl mb-20 uppercase">
+                <div>tissons l'expertise</div>
+                <div>la passion et l'innovation pour</div>
+                <div>créer des expériences captivantes</div>
             </div>
-            <div class="lg:w-1/2 h-72 lg:h-auto relative" ref="logos">
-                <img style="filter: invert(0);" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-60 mix-blend-difference" v-for="client in clients" :src="client.fields.logo.fields.file.url" alt=""> 
+            <div class="lg:w-full h-72 lg:h-auto relative grid grid-cols-4 gap-6">
+                <img style="filter: invert(0);" 
+                class="mix-blend-difference lg:w-36 mx-auto " 
+                v-for="client in clients" :src="client.fields.logo.fields.file.url" alt=""> 
             </div> 
         </div>
         <!-- <div class="container"> 
@@ -100,19 +101,5 @@ onUpdated(()=>{
     text-transform: uppercase;
     text-align: center; 
     display: none;
-}
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-.grid-item {
-    border: 0px solid red; 
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}  
-.grid img {
-    width: 50%; 
-}
+} 
 </style>
