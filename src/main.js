@@ -12,6 +12,7 @@ import './styles/layouts.css'
 
 import './assets/NeueMachina/stylesheet.css'
 import './assets/Benton/stylesheet.css' 
+import './assets/Montreal/stylesheet.css' 
 
 import "splitting/dist/splitting.css";
 import "splitting/dist/splitting-cells.css";
