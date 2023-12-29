@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto pt-20 pb-20">
+    <div class="container mx-auto pt-32 pb-32">
         <div class="uppercase grid grid-cols-1 lg:grid-cols-3 text-2xl gap-3">
             <div @click="openURL('https://instagram/lapetitetribu.co')" class="border text-center p-3 flex justify-center gap-2 cursor-pointer social-link">
                 <div>instagram</div>
@@ -35,7 +35,7 @@
                 </div>
             </div>   
         </div>
-        <div class="text-center text-2xl lg:text-[8vw] mt-20 uppercase">
+        <div class="text-center text-2xl lg:text-[8vw] mt-32 uppercase">
             let's 🙂‍ connect
         </div>
     </div>
