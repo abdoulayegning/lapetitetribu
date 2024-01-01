@@ -1,25 +1,17 @@
 <template>
     <div v-if="items"> 
-        <div class="mx-auto container">
-
-            <div class="flex mt-16">
-                <div class="w-1/2">
-                    <div class="text-black font-['DM_Sans'] w-full text-4xl uppercase mt-0 mb-16 text-left">
-                        <span class="border-b-4 border-black">{{items.title}}</span>
-                        <h2 class="text-gray-700 font-['DM_Sans'] mt-3">{{items.category}}</h2>  
-                    </div>
-
-                    <div class="text-black font-['DM_Sans'] w-full text-4xl uppercase mt-16 mb-16 text-left">
-                        <span class="border-b-4 border-black">client</span>
-                        <h2 class="text-gray-700 font-['DM_Sans'] mt-3">{{items.client.fields.name}}</h2>  
-                    </div>
+        <div class="mx-auto container"> 
+            <div class="font-medium mt-16 text-6xl">{{ items.title }}</div>
+            <div class="mt-12 mb-12 grid grid-cols-2">
+                <div>
+                    <div class=" font-light text-xl font-['DM_Sans'] opacity-40">Client</div>
+                    <div class=" font-medium text-2xl font-['DM_Sans']">{{ items.client.fields.name }}</div>
                 </div>
-
-                <div class="text-2xl w-1/2 font-['DM_Sans']"> 
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit ipsam atque minus quia vel placeat consequatur eaque sunt excepturi nostrum aut, dolorum accusamus nobis nam quas dolore, totam corporis. Vitae? 
+                <div>
+                    <div class=" font-light text-xl font-['DM_Sans'] opacity-40">Type de projet</div>
+                    <div class=" font-medium text-2xl font-['DM_Sans']">{{ items.category }}</div>
                 </div>
-            </div>  
-
+            </div>
             <div v-for="block in items.blocks"> 
                 <ContentBlock :block="block"/>
             </div> 
