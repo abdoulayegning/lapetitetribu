@@ -1,7 +1,7 @@
 <template> 
 
     <div class="embed-block" v-if="block.fields.contentType[0] == 'Embed'">  
-         embed
+         <div v-html="block.fields.embed.content[0].content[0].value"></div>
     </div>
 
     <div class="media-block" v-else-if="block.fields.contentType[0] == 'Media'">
