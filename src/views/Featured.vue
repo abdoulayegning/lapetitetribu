@@ -8,9 +8,6 @@ import About from '../components/About.vue';
 
 <template>
   <div>  
-    <Header></Header>
-    <About></About>
-    <List :length="3"></List>
-    <Clients></Clients>
+    
   </div>
 </template>
