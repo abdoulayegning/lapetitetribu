@@ -1,10 +1,10 @@
-<script setup> 
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
+<script setup>  
 import Lenis from '@studio-freight/lenis'
 import {onMounted} from 'vue'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import Header from './components/Header.vue';
+
 gsap.registerPlugin(ScrollTrigger)
 
 onMounted(()=>{
@@ -21,7 +21,8 @@ onMounted(()=>{
 
 </script>
 
-<template>  
+<template> 
+  <Header></Header>  
   <router-view></router-view> 
 </template>
 

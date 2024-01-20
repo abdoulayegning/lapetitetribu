@@ -6,10 +6,6 @@ import gsap from 'gsap'
 
 const route = useRoute();
 const router = useRouter();
-
-const props = defineProps({
-  length: Number
-})
  
 
 const projects = ref(null)
@@ -19,55 +15,37 @@ const client = createClient({
     accessToken: import.meta.env.VITE_CONTENTFUL_API_KEY //Only published !!!
     //Preview : yaKRL3ryC8Pr9YLZiDE_tD3L5zGB6CBYxXZzgQkbaLY
 })
-
-const ids = []
+ 
 
 onBeforeMount(()=>{
     client.getEntries({
-        content_type: 'project',
-        limit: props.length 
+        content_type: 'studioWork',
+        // limit: props.length 
     })
     .then((entries)=>{
         projects.value = entries.items 
-        entries.items.forEach(element => { 
-            ids.push(element.sys.id)
-        });
+        console.log(projects.value)
     })
 })
 
-onUpdated(()=>{
-    ids.forEach(id => {
-
-        let thumb = document.getElementById(id).children[1]
-        let noise = document.getElementById(id).children[0]
-        const duration = 0.25
-        const noise_opacity = 0.25
-        //mouse hover
-        document.getElementById(id).addEventListener('mouseenter', ()=>{ 
-            gsap.to(noise, {opacity: noise_opacity, duration: duration})
-            gsap.to(thumb, {opacity: 1, duration: duration})
-        })
-        //mouse out
-        document.getElementById(id).addEventListener('mouseleave', ()=>{ 
-            gsap.to(noise, {opacity: 0})
-            gsap.to(thumb, {opacity: 0})
-        })
-    })
-})
+const go_to = (path)=>{
+    const content_homepage = document.getElementById('content_homepage')
+    if(content_homepage){
+        gsap.to(content_homepage, {opacity: 0, onComplete: ()=>{
+            router.push('/' + path)
+        }})
+    }
+}
 
 </script>
 
 <template> 
-    <div class="links" v-if="projects"> 
-        <div @click="router.push('/' + project.fields.slug)" :id="project.sys.id" class="link" v-for="project in projects"> 
-            <div class="link-noise">
-                <img src="../../assets/noise.png" alt="">
-            </div>
-            <div class="link-thumbnail">
-                <img :src="project.fields.thumbnail.fields.file.url" alt="">
-            </div>
-            <div class="container link-content">
-                <div>{{ project.fields.title }}</div>  
+    <div class="mt-40 mb-20"> 
+        <div @click="go_to(p.fields.slug)" class="container mx-auto border-t border-black pl-6 pt-6 pb-6 hover:text-white hover:bg-black" v-for="p in projects">
+            <div class="flex gap-5"> 
+                <div>+</div>
+                <div class="uppercase font-medium">{{ p.fields.title }}</div> 
+                <div class="uppercase font-medium text-gray-400">{{ p.fields.category }}</div> 
             </div>
         </div>
     </div>

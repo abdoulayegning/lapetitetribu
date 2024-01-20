@@ -1,7 +1,7 @@
 <template>
-    <div v-if="items"> 
+    <div class="mt-60 mb-60" v-if="items"> 
         <div class="mx-auto container"> 
-            <div class="font-medium mt-16 text-6xl">{{ items.title }}</div>
+            <div class="font-medium text-6xl">{{ items.title }}</div>
             <div class="mt-12 mb-12 grid grid-cols-2">
                 <div>
                     <div class=" font-light text-xl font-['DM_Sans'] opacity-40">Client</div>

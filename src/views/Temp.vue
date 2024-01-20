@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import { onBeforeMount, onMounted, ref } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 import Menu from '../components/Menu.vue';
 import Clients from '../components/Clients.vue';
-import Header from '../components/Header.vue'
+import Hero from '../components/Hero.vue'
 import About from '../components/About.vue';
 import Services from '../components/Services.vue';
 import Footer from '../components/Footer.vue'
@@ -75,7 +75,7 @@ onMounted(()=>{
 <template>  
     <div>  
         <Menu></Menu>
-        <Header></Header>
+        <Hero></Hero>
         <About ref="about"></About>
         <div class="container mx-auto pb-10 pt-10" ref="workTitleSection">
             <div class="font-['DM_Sans'] uppercase text-9xl">
@@ -104,4 +104,4 @@ onMounted(()=>{
         <Clients></Clients> 
         <Footer></Footer>
     </div>  
-</template>
+</template> -->
