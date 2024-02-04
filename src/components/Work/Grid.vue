@@ -1,12 +1,14 @@
-<script setup> 
-import { ref, defineProps, onBeforeMount } from 'vue';
+<script setup>
+import { useRoute, useRouter } from 'vue-router';
+import { ref, defineProps, onBeforeMount, onUpdated } from 'vue';
 import { createClient } from 'contentful'
+import gsap from 'gsap'
 
-const props = defineProps({
-  length: Number, 
-})
+const route = useRoute();
+const router = useRouter();
+ 
 
-const projects = ref([]) 
+const projects = ref(null)
 
 const client = createClient({
     space: import.meta.env.VITE_CONTENTFUL_SPACE_ID,
@@ -14,49 +16,103 @@ const client = createClient({
     //Preview : yaKRL3ryC8Pr9YLZiDE_tD3L5zGB6CBYxXZzgQkbaLY
 })
  
-onBeforeMount(()=>{ 
-        client.getEntries({
-            content_type: 'project',
-            limit: props.length, 
-        })
-        .then((entries)=>{
-            projects.value = entries.items 
-        }) 
+
+onBeforeMount(()=>{
+    client.getEntries({
+        content_type: 'studioWork',
+        // limit: props.length 
+    })
+    .then((entries)=>{
+        projects.value = entries.items 
+        console.log(projects.value)
+    })
 })
+
+const go_to = (path)=>{
+    const content_homepage = document.getElementById('content_homepage')
+    if(content_homepage){
+        gsap.to(content_homepage, {opacity: 0, onComplete: ()=>{
+            router.push('/' + path)
+        }})
+    }
+}
+
 </script>
 
-<template>
-    <div class="projects" v-if="projects"> 
-        <div class="project" v-for="project in projects">
-            <div v-if="project.fields.thumbnail == null"><img src="https://e1.pxfuel.com/desktop-wallpaper/717/436/desktop-wallpaper-blank-blueprint-background-blueprint.jpg" alt=""></div>
-            <div class="project-text-wrapper">
+<template> 
+<div class="mt-40 mb-20">
+    <div class="container mx-auto"> 
+        <div class="grid grid-cols-2 gap-6">
+            <div @click="go_to(p.fields.slug)" class="pl-6 pt-6 pb-6 cursor-pointer " v-for="p in projects">
                 <div>
-                    <div>{{ project.fields.title }}</div>
-                    <div>{{ project.fields.category[0] }}</div> 
+                    <img :src="p.fields.imageThumbnail.fields.file.url" alt="">
                 </div>
-                <div class="project-client">{{ project.fields.client.fields.name}}</div>
+                <div class="flex flex-col gap-1 border-t border-gray-300 pt-6 mt-6">  
+                    <div class="uppercase font-medium">{{ p.fields.title }}</div> 
+                    <div class="uppercase font-medium text-gray-400">{{ p.fields.category }}</div> 
+                </div>
             </div>
         </div>
-    </div>
+    </div> 
+</div>
 </template>
 
 <style scoped>
-.projects {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+.links {
+width: 100%;
 }
 
-.project {
-    padding: 2rem;
+.link {
+    width: 100%; 
+    border-top: 1px solid rgb(0, 0, 0); 
+    text-transform: uppercase;
+    font-size: 4vw;
+    padding: 1.5rem 0 1rem 0 ; 
+    transition: 0.25s;
+    cursor: pointer;
+    position: relative;
+}
+.link:hover {
+    /*background-color: black;*/
+    color: white; 
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+ }
+
+.link-content {
+    z-index: 100;
 }
 
-.project img{
+.link-thumbnail {
+    position: absolute;
+    top: 0;
     width: 100%;
+    height: 100%;
+    z-index: -100; 
+    opacity: 0;
 }
-.project-client {
-    align-self: flex-start;
+
+.link-thumbnail img {
+    filter: contrast(100%) saturate(0) brightness(50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
 }
-.project-text-wrapper {
-    display: flex;
+
+.link-noise {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -50; 
+    mix-blend-mode: soft-light;
+    opacity: 0;
 }
+
+.link-noise img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+ 
 </style>
