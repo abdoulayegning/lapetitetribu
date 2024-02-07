@@ -1,7 +1,8 @@
 <template>  
     <div class=" border-red-500 relative" ref="lines"> 
-        <video ref="headerVideoA" class="absolute z-50 lg:w-[20em] w-40 right-0 lg:bottom-16 lg:right-16 rotate-6" muted loop autoplay src="../assets/couro-teaser.mp4"></video>
-        <video ref="headerVideoB" class="absolute z-50 lg:w-[30em] w-52 lg:bottom-40 bottom-0 lg:left-16 -rotate-3" muted loop autoplay src="../assets/DC.mp4"></video>
+        <div ref="sketch" class="absolute border border-red-600 w-full h-full lg:block hidden z-50"></div>
+        <!-- <video ref="headerVideoA" class="absolute z-50 lg:w-[20em] w-40 right-0 lg:bottom-16 lg:right-16 rotate-6" muted loop autoplay src="../assets/couro-teaser.mp4"></video> -->
+        <!-- <video ref="headerVideoB" class="absolute z-50 lg:w-[30em] w-52 lg:bottom-40 bottom-0 lg:left-16 -rotate-3" muted loop autoplay src="../assets/DC.mp4"></video> -->
         <div data-graphics="text-line" :style="'left: -' + (j*30) + 'px' + '; opacity: ' + (j*0.01)" class="flex relative" ref="line" v-for="i,j in [0,1,2,3,4,5,6,8,9,10]">
             <div class="h-[10vh]" v-for="i in [0,1,2,3,4,5,6]">
                 <svg class="h-full" x="0px" y="0px"
@@ -59,8 +60,7 @@
                     c1.1-1.1,2-2.6,2.6-4.3c0.7-1.8,1-4,1-6.5c0-2.4-0.2-4.5-0.7-6.4c-0.5-1.9-1.2-3.5-2.3-4.9c-1-1.4-2.4-2.4-4.1-3.1
                     c-1.7-0.7-3.8-1.1-6.4-1.1h-7.3v29.4H926.4z M965.7,7.8v46.7h-10.3V7.8H965.7z"/>
                 <g>
-                    <polygon points="49.7,22.8 52.2,29.9 41.4,33.5 48.2,42.5 42.1,47 35.3,37.5 28.9,47 22.7,42.5 29.5,33.5 18.8,29.9 21.3,22.8 
-                        31.7,26.8 31.7,15.3 39.1,15.3 39.1,26.8 	"/>
+                    <polygon points="49.7,22.8 52.2,29.9 41.4,33.5 48.2,42.5 42.1,47 35.3,37.5 28.9,47 22.7,42.5 29.5,33.5 18.8,29.9 21.3,22.8 31.7,26.8 31.7,15.3 39.1,15.3 39.1,26.8"/>
                 </g>
                 </svg> 
             </div>
@@ -74,12 +74,59 @@
 
 <script setup> 
 import { ref, onMounted, onUpdated } from 'vue';
+import { Scene, OrthographicCamera, WebGLRenderer, PlaneGeometry, ShaderMaterial, Mesh } from 'three'
 import gsap from 'gsap';
 const lines = ref(null)
+const sketch = ref(null)
 const logoBlackSolid = ref(null)
 const logoLChar = ref(null)
 const headerVideoA = ref(null)
 const headerVideoB = ref(null)
+
+class Sketch{
+    constructor(){
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        this.scene = new Scene()
+        this.camera = new OrthographicCamera( width / - 2, width / 2, height / 2, height / - 2, 1, 1000 );
+        this.renderer = new WebGLRenderer({alpha:true})
+        this.renderer.setSize( window.innerWidth, window.innerHeight );
+        sketch.value.appendChild(this.renderer.domElement)
+
+        const margin = 0.10
+        const geometry = new PlaneGeometry(width - (width * margin), height - (height * margin), 10, 10 );
+        this.material = new ShaderMaterial({ 
+            wireframe: true,
+            uniforms: {
+                uTime: {value: 0}, 
+            },
+            vertexShader:`
+            attribute vec2 attrPos;
+            varying vec2 vUv;
+            void main(){
+                vUv = uv;
+                vec3 newPosition = position;
+                newPosition.xz += attrPos;
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.);
+            }
+            `,
+            fragmentShader:`
+            varying vec2 vUv;
+            void main(){
+                gl_FragColor = vec4(vec3(vUv.y), 1.);
+            } 
+            `,
+        })
+        const cube = new Mesh(geometry, this.material)
+        this.scene.add(cube)
+
+        this.camera.position.z = 5;
+
+        gsap.ticker.add(()=>{
+            this.renderer.render(this.scene, this.camera)
+        })
+    }
+}
 
 onMounted(()=>{
 
@@ -105,18 +152,9 @@ onMounted(()=>{
             gsap.to(e, {x: "-=400", duration: 4 + i, repeat: -1, yoyo: true, ease: 'expo.inOut'})
         }
     }
-/*
-    const logo_tl = gsap.timeline({
-        delay: 1.5,
-        repeat: -1,
-        yoyo: true,
-        defaults: {
-            ease: 'expo.inOut'
-        }
-    }) 
-    logo_tl.to(logoLChar.value, {y: 310})
-    logo_tl.to(logoBlackSolid.value, {y: 310})
-*/
+
+    new Sketch()
+ 
 })
 
 onUpdated(()=>{
