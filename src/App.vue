@@ -34,8 +34,8 @@ onMounted(()=>{
 <template>
   
   <div ref="contactBtn" 
-  class="fixed z-[150] bottom-7 left-1/2 -translate-x-1/2 bg-red-600 text-white hover:bg-white hover:text-black hover:border hover:border-black
-  rounded-full pr-6 pl-6 pt-3 pb-3 uppercase text-xs flex gap-2 justify-center items-center cursor-pointer">
+  class="fixed z-[150] bottom-7 left-1/2 -translate-x-1/2 bg-red-600 text-white  hover:border hover:border-black
+  rounded-none pr-6 pl-6 pt-3 pb-3 uppercase text-xs flex gap-2 justify-center items-center cursor-pointer">
     <div class="w-2 h-2 bg-black rounded-full"></div>
     <div class="leading-none">Vous avez un projet ?</div>
   </div>
