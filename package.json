@@ -20,6 +20,7 @@
     "split-type": "^0.3.3",
     "splitting": "^1.0.6",
     "three": "^0.134.0",
+    "three.interactive": "^1.7.0",
     "troisjs": "^0.3.4",
     "vue": "^3.2.45",
     "vue-meta": "^2.4.0",

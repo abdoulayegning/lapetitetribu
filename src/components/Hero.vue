@@ -1,6 +1,17 @@
 <template>  
     <div class=" border-red-500 relative" ref="lines"> 
-        <div ref="sketch" class="absolute border border-red-600 w-full h-full lg:block hidden z-50"></div>
+
+        <div class="absolute bottom-10 left-1/2 mix-blend-difference border-red-600 w-10 z-[60]">
+            <svg version="1.1" id="Layer_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 68.1 92.1" style="enable-background:new 0 0 68.1 92.1;" xml:space="preserve">
+            <polygon class="fill-white" points="3.1,57.5 34.1,88.5 34.1,88.4 34.1,88.4 65,57.5 62.2,54.7 36.1,80.8 36.1,3.6 32.1,3.6 32.1,80.8 
+                6,54.7 "/>
+            </svg>
+        </div>
+
+        <video muted autoplay loop class="hidden" ref="video" src="../assets/value.mp4"></video>
+
+        <div ref="sketch" class="absolute border-red-600 w-full h-full lg:block hidden z-50"></div>
         <!-- <video ref="headerVideoA" class="absolute z-50 lg:w-[20em] w-40 right-0 lg:bottom-16 lg:right-16 rotate-6" muted loop autoplay src="../assets/couro-teaser.mp4"></video> -->
         <!-- <video ref="headerVideoB" class="absolute z-50 lg:w-[30em] w-52 lg:bottom-40 bottom-0 lg:left-16 -rotate-3" muted loop autoplay src="../assets/DC.mp4"></video> -->
         <div data-graphics="text-line" :style="'left: -' + (j*30) + 'px' + '; opacity: ' + (j*0.01)" class="flex relative" ref="line" v-for="i,j in [0,1,2,3,4,5,6,8,9,10]">
@@ -73,12 +84,22 @@
 </style>
 
 <script setup> 
-import { ref, onMounted, onUpdated } from 'vue';
-import { Scene, OrthographicCamera, WebGLRenderer, PlaneGeometry, ShaderMaterial, Mesh } from 'three'
+import { 
+    ref, 
+    onMounted, 
+    onUpdated } 
+from 'vue';
+
+import { 
+    Scene, PerspectiveCamera, WebGLRenderer, 
+    PlaneGeometry, ShaderMaterial, Mesh, Vector2,
+    Clock, VideoTexture
+} from 'three'
+import { InteractionManager } from 'three.interactive';
 import gsap from 'gsap';
 const lines = ref(null)
 const sketch = ref(null)
-const logoBlackSolid = ref(null)
+const video = ref(null)
 const logoLChar = ref(null)
 const headerVideoA = ref(null)
 const headerVideoB = ref(null)
@@ -88,64 +109,154 @@ class Sketch{
         const width = window.innerWidth;
         const height = window.innerHeight;
         this.scene = new Scene()
-        this.camera = new OrthographicCamera( width / - 2, width / 2, height / 2, height / - 2, 1, 1000 );
-        this.renderer = new WebGLRenderer({alpha:true})
+        this.camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+        this.renderer = new WebGLRenderer({alpha:true, antialias: true})
         this.renderer.setSize( window.innerWidth, window.innerHeight );
-        sketch.value.appendChild(this.renderer.domElement)
-
-        const margin = 0.10
-        const geometry = new PlaneGeometry(width - (width * margin), height - (height * margin), 10, 10 );
+        if (sketch.value) {
+            sketch.value.appendChild(this.renderer.domElement)
+        }
+        this.interactionManager = new InteractionManager(this.renderer, this.camera, this.renderer.domElement)
+        const geometry = new PlaneGeometry(16/1.5, 9/1.5, 35, 15 );
         this.material = new ShaderMaterial({ 
-            wireframe: true,
+            wireframe: false,
             uniforms: {
-                uTime: {value: 0}, 
+                uTime: {value: 0.0, type: 'f'}, 
+                uMouse: { value: new Vector2() },
+                uWave : { value: 15. },
+                uNoiseIntensity : { value: 0    },
+                uTexture: {value: new VideoTexture(video.value)}
             },
             vertexShader:`
-            attribute vec2 attrPos;
             varying vec2 vUv;
+            varying vec3 vPosition;
+            uniform vec2 uMouse;
+            uniform float uTime;
+            uniform float uWave;
             void main(){
                 vUv = uv;
-                vec3 newPosition = position;
-                newPosition.xz += attrPos;
-                gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.);
+                
+                float dist = distance(uv - 0.5, vec2(uMouse.x, 0.)); 
+                
+                vPosition = position;
+                
+                vec3 warp = position;
+                
+                warp.y += (sin(uTime + warp.x) * uWave) * 0.05;
+                
+                vec3 newPosition = mix(position, warp, 1. - smoothstep(0.15, 0.65, dist)); 
+                
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.);
             }
             `,
-            fragmentShader:`
+            fragmentShader:` 
+            float rand(vec2 n) { 
+                return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
+            }
+
+            float noise(vec2 p){
+                vec2 ip = floor(p);
+                vec2 u = fract(p);
+                u = u*u*(3.0-2.0*u);
+                
+                float res = mix(
+                    mix(rand(ip),rand(ip+vec2(1.0,0.0)),u.x),
+                    mix(rand(ip+vec2(0.0,1.0)),rand(ip+vec2(1.0,1.0)),u.x),u.y);
+                return res*res;
+            }
+
+            float mixColor(float threshold, float a, float b){
+                float result = mix(a, b, threshold);
+                return result;
+            }
+
             varying vec2 vUv;
+            varying vec3 vPosition;
+            uniform vec2 uMouse;
+            uniform float uTime;
+            uniform float uNoiseIntensity;
+            uniform sampler2D uTexture;
+
             void main(){
-                gl_FragColor = vec4(vec3(vUv.y), 1.);
+
+                vec2 uv = vUv; 
+
+                float dist = distance(uv - 0.5, uMouse); 
+
+                vec3 position = vPosition; 
+
+                float n = noise(uv * 5. + (uTime));
+
+                vec2 distortUv = mix(uv, vec2(n), ((1. - dist)/3.) * uNoiseIntensity);
+
+                vec3 videoTexture = texture2D(uTexture, distortUv).rgb;
+
+                float videoTexture_r = texture2D(uTexture, mix(distortUv, uv, 0.5)).r;
+                float videoTexture_g = texture2D(uTexture, mix(distortUv, uv, 0.45)).g;
+                float videoTexture_b = texture2D(uTexture, mix(distortUv, uv, 0.75)).b;
+
+                gl_FragColor = vec4(videoTexture 
+                + vec3(videoTexture_r/6., 0., 0.) 
+                + vec3(0., videoTexture_g/5., 0.) 
+                + vec3(0., 0., videoTexture_g)/10., 1.); 
+
             } 
             `,
         })
-        const cube = new Mesh(geometry, this.material)
-        this.scene.add(cube)
+        this.material.needsUpdate = true
+        this.mesh = new Mesh(geometry, this.material)
+        this.scene.add(this.mesh)
 
-        this.camera.position.z = 5;
+        this.interactionManager.add(this.mesh);
+ 
+
+        this.mesh.addEventListener('mouseover', (event) => {  
+            this.material.uniforms.uNoiseIntensity.value = .65 
+        }); 
+
+        this.mesh.addEventListener('mouseleave', (event) => {  
+            this.material.uniforms.uNoiseIntensity.value = 0 
+        }); 
+
+        this.camera.position.z = 5; 
+
+        // Update mouse position when the mouse moves
+        document.addEventListener('mousemove', (event) => {
+            // Normalize mouse position to range [-1, 1]
+            let x =  (event.clientX / window.innerWidth) * 2 - 1;
+            let y = -(event.clientY / window.innerHeight) * 2 + 1;
+            gsap.to(this.material.uniforms.uMouse.value, {x: x, y: y, duration: .85}) 
+        });
+
+        this.clock = new Clock()
+
+        video.value.play()
 
         gsap.ticker.add(()=>{
             this.renderer.render(this.scene, this.camera)
+            this.material.uniforms.uTime.value = this.clock.getElapsedTime()
+            this.interactionManager.update();
         })
     }
 }
 
 onMounted(()=>{
 
-    let images = gsap.timeline({
-        onComplete: ()=>{
-            document.addEventListener('mousemove', (e)=>{
-                const smooth = 0.05
-                const dX = (e.clientX - window.innerWidth/2) * smooth
-                const dY = (e.clientY - window.innerHeight/2) * smooth
-                gsap.to(headerVideoA.value, {rotate: dX * 0.25})
-                gsap.to(headerVideoB.value, {rotate: -dX * 0.25})
-                gsap.to(headerVideoA.value, {x: dX, y: dY, rotate: dX})
-                gsap.to(headerVideoB.value, {x: dX, y: dY}) 
-            })
-        }
-    })
+    // let images = gsap.timeline({
+    //     onComplete: ()=>{
+    //         document.addEventListener('mousemove', (e)=>{
+    //             const smooth = 0.05
+    //             const dX = (e.clientX - window.innerWidth/2) * smooth
+    //             const dY = (e.clientY - window.innerHeight/2) * smooth
+    //             gsap.to(headerVideoA.value, {rotate: dX * 0.25})
+    //             gsap.to(headerVideoB.value, {rotate: -dX * 0.25})
+    //             gsap.to(headerVideoA.value, {x: dX, y: dY, rotate: dX})
+    //             gsap.to(headerVideoB.value, {x: dX, y: dY}) 
+    //         })
+    //     }
+    // })
 
-    images.fromTo(headerVideoA.value, {x: window.innerWidth/2, rotate: 80}, {x: 0, rotate: 10, duration: 1.5, ease: 'expo.inOut'}, 'default')
-    images.fromTo(headerVideoB.value, {x: -window.innerWidth/2, rotate: 80}, {x: 0, rotate: -10, duration: 1.5, ease: 'expo.inOut'}, 'default')
+    // images.fromTo(headerVideoA.value, {x: window.innerWidth/2, rotate: 80}, {x: 0, rotate: 10, duration: 1.5, ease: 'expo.inOut'}, 'default')
+    // images.fromTo(headerVideoB.value, {x: -window.innerWidth/2, rotate: 80}, {x: 0, rotate: -10, duration: 1.5, ease: 'expo.inOut'}, 'default')
     for (let i = 0; i < lines.value.children.length; i++) {
         const e = lines.value.children[i];
         if (e.getAttribute('data-graphics') == 'text-line') { 
