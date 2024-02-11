@@ -9,7 +9,7 @@
             </svg>
         </div>
 
-        <video muted autoplay loop class="hidden" ref="video" src="../assets/value.mp4"></video>
+        <video muted autoplay loop class="lg:hidden block absolute h-screen w-full object-cover" ref="video" src="../assets/value.mp4"></video>
 
         <div ref="sketch" class="absolute border-red-600 w-full h-full lg:block hidden z-50"></div>
         <!-- <video ref="headerVideoA" class="absolute z-50 lg:w-[20em] w-40 right-0 lg:bottom-16 lg:right-16 rotate-6" muted loop autoplay src="../assets/couro-teaser.mp4"></video> -->

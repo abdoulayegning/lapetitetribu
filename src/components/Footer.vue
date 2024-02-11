@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto pt-32 pb-32">
+    <!-- <div class="container mx-auto pt-32 pb-32">
         <div class="uppercase grid grid-cols-1 lg:grid-cols-3 text-2xl gap-3">
             <div @click="openURL('https://instagram/lapetitetribu.co')" class="border text-center p-3 flex justify-center gap-2 cursor-pointer social-link">
                 <div>instagram</div>
@@ -38,10 +38,39 @@
         <div class="text-center text-2xl lg:text-[8vw] mt-32 uppercase">
             let's 🙂‍ connect
         </div>
+    </div> -->
+    <div class="pt-12 text-center uppercase">let's connect</div>
+    <div class="">
+        <div class="container mx-auto pt-12 pb-24">
+    
+            <div class="flex flex-col lg:flex-row lg:gap-0 gap-5 uppercase text-base w-full border-t border-gray-400 pt-8">
+                
+                <div class="text-center lg:text-left lg:w-[20%]"> 
+                    <div class="text-gray-300">télécharger notre deck</div>
+                    <div class="">bientôt disponible !</div>
+                </div>
+    
+                <div class="flex gap-8 flex-row justify-center lg:w-[75%]"> 
+                        <div @click="openURL('https://instagram.com/lapetitetribu.co')" class="underline">instagram</div>
+                        <div @click="openURL('https://www.linkedin.com/company/11048102/')" class="underline">linkedin</div>
+                        <div @click="openURL('https://vimeo.com/lapetitetribu')" class="underline">vimeo</div> 
+                        <div @click="openURL('https://instagram/lapetitetribu.co')" class="underline">EMAIL</div> 
+                </div>
+    
+                <div class="lg:text-right text-center lg:w-[15%]">© {{ new Date().getFullYear() }}</div>
+    
+            </div>
+        </div> 
     </div>
 </template>
 
 <script setup>
+const openURL = (url)=>{
+    window.open(url)
+}
+</script>
+
+<!-- <script setup>
 import { onMounted } from 'vue';
 import {gsap} from 'gsap'
  
@@ -70,4 +99,4 @@ onMounted(()=>{
         })
     }
 })
-</script>
+</script> -->

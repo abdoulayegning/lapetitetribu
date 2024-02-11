@@ -23,8 +23,7 @@ onBeforeMount(()=>{
         // limit: props.length 
     })
     .then((entries)=>{
-        projects.value = entries.items 
-        console.log(projects.value)
+        projects.value = entries.items  
     })
 })
 
@@ -44,12 +43,13 @@ const go_to = (path)=>{
     <div class="container mx-auto"> 
         <div class="grid lg:grid-cols-2 gap-6">
             <div @click="go_to(p.fields.slug)" class="pl-0 pt-6 pb-6 cursor-pointer " v-for="p in projects">
-                <div>
-                    <img :src="p.fields.imageThumbnail.fields.file.url" alt="">
+                <div class="h-[350px]">
+                    <img class="w-full h-full object-cover" :src="p.fields.imageThumbnail.fields.file.url" alt="">
                 </div>
-                <div class="flex flex-col gap-1 border-t border-gray-300 pt-6 mt-6">  
+                <div class="gap-1 mt-6">  
                     <div class="uppercase font-medium">{{ p.fields.title }}</div> 
                     <div class="uppercase font-medium text-gray-400">{{ p.fields.category }}</div> 
+                    <div class="uppercase font-medium text-gray-300">{{ p.fields.client.fields.name }}</div> 
                 </div>
             </div>
         </div>
