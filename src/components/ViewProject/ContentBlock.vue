@@ -12,12 +12,15 @@
     <div class="text-block" v-else-if="block.fields.contentType[0] == 'Text'">
         <div class="lg:w-3/4 font-['DM_Sans'] font-normal text-2xl" v-for="node in block.fields.text.content">
              <div v-for="n in node.content">
+
                 <div v-if="n.nodeType == 'text'">
                     <div v-html="n.value"></div>
                 </div> 
-                <div class="text-gray-600 text-xl" v-if="n.nodeType == 'hyperlink'">  
-                    <a :href="n.data.uri">{{ n.content[0].value }}</a>
+
+                <div class="text-xl mt-5" v-if="n.nodeType == 'hyperlink'">  
+                    <a class=" pr-0 pl-0 pt-1 pb-1 rounded-none border-b border-black   " :href="n.data.uri">{{ n.content[0].value }}</a>
                 </div> 
+                
             </div> 
         </div>
     </div> 

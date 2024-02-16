@@ -15,9 +15,10 @@
             <div v-for="block in items.blocks"> 
                 <ContentBlock :block="block"/>
             </div> 
-            
         </div>
     </div>
+
+    <Footer></Footer>
 </template>
 
 <style scoped>
@@ -28,7 +29,7 @@ import { ref, onBeforeMount, onMounted, onUpdated } from 'vue';
 import { useRoute, useRouter } from 'vue-router'
 import { createClient } from 'contentful' 
 import ContentBlock from '../components/ViewProject/ContentBlock.vue';
-
+import Footer from '../components/Footer.vue';
 const router = useRouter()
 const route = useRoute()
 
