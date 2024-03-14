@@ -6,57 +6,158 @@ import Grid from '../components/Work/Grid.vue'
 import Footer from '../components/Footer.vue';
 import Services from '../components/Services.vue';
 let idx = 0
+const marquee1 = ref(null)
+const marquee2 = ref(null)
+const marqueeCount = ref([0,1,2,3,4,5,0,1,2,3,4,5])
 const wordingList = ['ambitieuses', 'audacieuses', 'innovantes']
- onMounted(()=>{
+
+onMounted(()=>{
     let wordings = document.querySelectorAll('.wording')
+
     for (let i = 0; i < wordings.length; i++) {
         const element = wordings[i];
         gsap.set(element, {display: 'none', opacity: 0})
     }
     gsap.set(wordings[0], {display: 'block', opacity: 0})
 
-    let tl = gsap.timeline({repeat: -1, defaults: {ease: 'power4.inOut', duration: 1.15}})
+    let tl = gsap.timeline({repeat: -1, defaults: {ease: 'none', duration: 0}})
 
-    tl.fromTo(wordings[0], {y: 100, opacity: 0, display: 'block'}, {y: 0, opacity: 1})
-    tl.to(wordings[0], {opacity: 0, delay: 1.5})
+    const delay = 0.45
 
-    tl.fromTo(wordings[1], {y: 100, opacity: 0, display: 'block'}, {y: 0, opacity: 1})
-    tl.to(wordings[1], {opacity: 0, delay: 1.5})
+    tl.fromTo(wordings[0], {opacity: 0, display: 'block'}, {opacity: 1})
+    tl.to(wordings[0], {opacity: 0, delay: delay})
 
-    tl.fromTo(wordings[2], {y: 100, opacity: 0, display: 'block'}, {y: 0, opacity: 1})
-    tl.to(wordings[2], {opacity: 0, delay: 1.5})
+    tl.fromTo(wordings[1], {opacity: 0, display: 'block'}, {opacity: 1})
+    tl.to(wordings[1], {opacity: 0, delay: delay})
+
+    tl.fromTo(wordings[2], {opacity: 0, display: 'block'}, {opacity: 1})
+    tl.to(wordings[2], {opacity: 0, delay: delay})
+ 
+     
+    // gsap.set(marqueeElement.children[1], {translateX: '50%'})
+    animateMarquee(marquee1.value)
+    animateReverseMarquee(marquee2.value)
 })
+
+const animateMarquee = (marquee)=>{
+  const marqueeDuration = 25
+    gsap.fromTo(marquee.children[0], {translateX: '-100%'}, {ease: 'linear', translateX: '100%', repeat: -1, duration: marqueeDuration})
+    gsap.fromTo(marquee.children[1], {translateX: '-100%'}, {ease: 'linear', translateX: '100%', repeat: -1, delay: marqueeDuration/2, duration: marqueeDuration})
+}
+
+const animateReverseMarquee = (marquee)=>{
+  const marqueeDuration = 25
+    gsap.fromTo(marquee.children[0], {translateX: '100%'}, {ease: 'linear', translateX: '-100%', repeat: -1, duration: marqueeDuration})
+    gsap.fromTo(marquee.children[1], {translateX: '100%'}, {ease: 'linear', translateX: '-100%', repeat: -1, delay: marqueeDuration/2, duration: marqueeDuration})
+}
+
 </script>
 
-<template>  
-<div id="content_homepage">
+
+<template> 
+
+  <div id="content_homepage"> 
+
+      <Hero></Hero>
+
+      <div class="container mx-auto">
+          <div class="lg:text-8xl text-5xl font-black uppercase mt-72 mb-72" style="border-bottom: 0px solid black;"> 
+              <h1 class="font-['PP_Neue_Machina_Plain'] text-left text-gray-300"><span class="text-black">le studio </span>créatif</h1>
+              <h1 class="font-['PP_Neue_Machina_Plain'] text-gray-300">pour des <span>marques</span></h1>
+              <div>
+                  <h1 class="font-['PP_Neue_Machina_Plain'] absolute text-center wording">ambitieuses</h1>  
+                  <h1 class="font-['PP_Neue_Machina_Plain'] absolute text-center wording">audacieuses</h1>  
+                  <h1 class="font-['PP_Neue_Machina_Plain'] absolute text-center wording">innovantes</h1>  
+              </div>  
+          </div>
+      </div>
+
+      <div class="relative h-72">
+        <div class="marquee-container bg-[#FF7283] -rotate-1" ref="marquee1">
+          
+          <div class="marquee-items-primary">
+              <div class="marquee-item" v-for="i,index in marqueeCount">
+                <div v-if="index%2 == 0">
+                  nos services
+                </div> 
     
-    <Hero></Hero>
-
-    <div class="container mx-auto">
-        <div class="lg:text-8xl text-5xl uppercase mt-72 mb-72" style="border-bottom: 0px solid black;"> 
-            <h1 class="font-['PP_Neue_Machina_Plain'] text-right text-gray-300"><span class="text-black">le studio </span>créatif</h1>
-            <h1 class="font-['PP_Neue_Machina_Plain'] text-gray-300">pour des <span>marques</span></h1>
-            <div>
-                <h1 class="font-['PP_Neue_Machina_Plain'] absolute text-center wording">ambitieuses</h1>  
-                <h1 class="font-['PP_Neue_Machina_Plain'] absolute text-center wording">audacieuses</h1>  
-                <h1 class="font-['PP_Neue_Machina_Plain'] absolute text-center wording">innovantes</h1>  
-            </div>  
+                <div v-else>
+                  +
+                </div>
+              </div>
+          </div> 
+          
+          <div class="marquee-items-secondary"> 
+            <div class="marquee-item" v-for="i,index in marqueeCount">
+                <div v-if="index%2 == 0">
+                  nos services
+                </div> 
+    
+                <div v-else>
+                  +
+                </div>
+              </div>
+          </div>
+    
         </div>
-    </div>
-
-    <div class="container mx-auto">
-        <div class="lg:text-8xl text-5xl uppercase mt-32" style="border-bottom: 0px solid black;"> 
-            <h1 class="font-['PP_Neue_Machina_Plain']">nos derniers</h1>
-            <h1 class="font-['PP_Neue_Machina_Plain']">projets</h1>  
+    
+        <div class="marquee-container bg-[#FFD872] rotate-3 scale-110" ref="marquee2">
+          
+          <div class="marquee-items-primary">
+            <div class="marquee-item" v-for="i,index in marqueeCount">
+    
+              <div v-if="index%2 == 0">
+                nos services
+              </div> 
+    
+              <div v-else>
+                +
+              </div>
+    
+            </div> 
+          </div> 
+    
+          <div class="marquee-items-secondary"> 
+            <div class="marquee-item" v-for="i,index in marqueeCount">
+              
+              <div v-if="index%2 == 0">
+                nos services
+              </div> 
+    
+              <div v-else>
+                +
+              </div>
+    
+            </div>
+          </div>
+    
+    
         </div>
-    </div>
+      </div>
 
-    <Grid :length="2"></Grid>
+      <div class="container mx-auto">
+          <div class="lg:text-8xl text-5xl font-black uppercase mt-32" style="border-bottom: 0px solid black;"> 
+              <h1 class="font-['PP_Neue_Machina_Plain'] text-gray-300">nos derniers</h1>
+              <h1 class="font-['PP_Neue_Machina_Plain']">projets</h1>  
+          </div>
+      </div>
 
-    <!-- <Services></Services> -->
+      <Grid :length="2"></Grid>
 
-    <Footer></Footer> 
+      <Footer></Footer> 
 
-</div>
+  </div>
+
 </template>
+
+<style scoped>
+.marquee-container {
+  @apply absolute w-[1920px] whitespace-nowrap border-red-600 h-[60px] 
+}
+.marquee-items-primary, .marquee-items-secondary {
+  @apply flex gap-0 justify-between items-center uppercase absolute top-1/2 -translate-y-1/2 w-full
+}  
+.marquee-item {
+  @apply text-center w-full text-[1.45em] gap-5 pr-0 pl-0
+}
+</style>

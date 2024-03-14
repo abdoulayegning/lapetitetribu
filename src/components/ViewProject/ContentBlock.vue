@@ -17,8 +17,8 @@
                     <div v-html="n.value"></div>
                 </div> 
 
-                <div class="text-xl mt-5" v-if="n.nodeType == 'hyperlink'">  
-                    <a class=" pr-0 pl-0 pt-1 pb-1 rounded-none border-b border-black   " :href="n.data.uri">{{ n.content[0].value }}</a>
+                <div class="text-base tracking-wide mt-5" v-if="n.nodeType == 'hyperlink'">  
+                    <a class=" pr-0 pl-0 pt-1 pb-1 rounded-none border-b border-black uppercase font-['PP_Neue_Machina_Plain'] " :href="n.data.uri">{{ n.content[0].value }}</a>
                 </div> 
                 
             </div> 

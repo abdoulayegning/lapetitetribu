@@ -45,12 +45,12 @@
     
             <div class="flex flex-col lg:flex-row lg:gap-0 gap-5 uppercase text-base w-full border-t border-gray-400 pt-8">
                 
-                <div class="text-center lg:text-left lg:w-[20%]"> 
+                <div class="text-center lg:text-left lg:w-[25%]"> 
                     <div class="text-gray-300">télécharger notre deck</div>
                     <div class="">bientôt disponible !</div>
                 </div>
     
-                <div class="flex gap-8 flex-row justify-center lg:w-[75%]"> 
+                <div class="flex gap-8 flex-row justify-center lg:w-[80%]"> 
                         <div @click="openURL('https://instagram.com/lapetitetribu.co')" class="underline">instagram</div>
                         <div @click="openURL('https://www.linkedin.com/company/11048102/')" class="underline">linkedin</div>
                         <div @click="openURL('https://vimeo.com/lapetitetribu')" class="underline">vimeo</div> 
