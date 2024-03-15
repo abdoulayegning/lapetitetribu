@@ -72,7 +72,7 @@ const animateReverseMarquee = (marquee)=>{
           </div>
       </div>
 
-      <div class="relative h-72">
+      <div class="relative h-52">
         <div class="marquee-container bg-[#FF7283] -rotate-1" ref="marquee1">
           
           <div class="marquee-items-primary">
@@ -132,6 +132,43 @@ const animateReverseMarquee = (marquee)=>{
           </div>
     
     
+        </div>
+      </div>
+
+      <div class="container mx-auto">
+        <div class="flex flex-col lg:flex-row gap-5 text-center lg:text-left uppercase">
+          <div class="lg:w-1/3 lg:pr-5 lg:pl-5">
+            <h1 class="text-2xl font-bold">développement web / ux & UI</h1>
+            <ul class="">
+              <li>LaNding page</li>
+              <li>SITE VITRINE</li>
+              <li>portfolio</li>
+              <li>webgl</li>
+              <li>ux/ui</li>
+            </ul>
+          </div>
+          <div class="lg:w-1/3 lg:pr-5 lg:pl-5">
+            <h1 class="text-2xl font-bold">animation 2D & 3D</h1>
+            <ul class="">
+              <li>motion design</li>
+              <li>video explicative</li>
+              <li>tutoriels</li>
+              <li>habillage vidéo</li>
+              <li>packshot</li>
+            </ul>
+          </div>
+          <div class="lg:w-1/3 lg:pr-5 lg:pl-5">
+            <h1 class="text-2xl font-bold">expériences immersives</h1>
+            <ul class="">
+              <li>filtre instagram & snapchat</li>
+              <li>réalité augmenté et virtuelle</li>
+              <li>jeux vidéos</li>
+              <li>installation interactive</li>
+              <li>design d’interaction</li>
+              <li>gamification</li>
+              <li>webgl</li>
+            </ul>
+          </div>
         </div>
       </div>
 
