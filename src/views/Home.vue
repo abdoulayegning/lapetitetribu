@@ -101,7 +101,7 @@ const animateReverseMarquee = (marquee)=>{
     
         </div>
     
-        <div class="marquee-container bg-[#FFD872] rotate-3 scale-110" ref="marquee2">
+        <div class="marquee-container bg-[#FFD872] rotate-3" ref="marquee2">
           
           <div class="marquee-items-primary">
             <div class="marquee-item" v-for="i,index in marqueeCount">
@@ -138,7 +138,7 @@ const animateReverseMarquee = (marquee)=>{
       <div class="container mx-auto">
         <div class="flex flex-col lg:flex-row gap-5 text-center lg:text-left uppercase">
           <div class="lg:w-1/3 lg:pr-5 lg:pl-5">
-            <h1 class="text-2xl font-bold">développement web / ux & UI</h1>
+            <h1 class="text-2xl font-bold mb-3">développement <br>web / ux & UI</h1>
             <ul class="">
               <li>LaNding page</li>
               <li>SITE VITRINE</li>
@@ -148,17 +148,18 @@ const animateReverseMarquee = (marquee)=>{
             </ul>
           </div>
           <div class="lg:w-1/3 lg:pr-5 lg:pl-5">
-            <h1 class="text-2xl font-bold">animation 2D & 3D</h1>
+            <h1 class="text-2xl font-bold mb-3">animation <br>2D & 3D</h1>
             <ul class="">
               <li>motion design</li>
               <li>video explicative</li>
+              <li>sound design</li>
               <li>tutoriels</li>
               <li>habillage vidéo</li>
               <li>packshot</li>
             </ul>
           </div>
           <div class="lg:w-1/3 lg:pr-5 lg:pl-5">
-            <h1 class="text-2xl font-bold">expériences immersives</h1>
+            <h1 class="text-2xl font-bold mb-3">expériences immersives</h1>
             <ul class="">
               <li>filtre instagram & snapchat</li>
               <li>réalité augmenté et virtuelle</li>
