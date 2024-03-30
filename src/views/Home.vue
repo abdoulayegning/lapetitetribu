@@ -58,10 +58,10 @@ const animateReverseMarquee = (marquee)=>{
 
   <div id="content_homepage"> 
 
-      <Hero></Hero>
+      <!-- <Hero></Hero> -->
 
       <div class="container mx-auto">
-          <div class="lg:text-8xl text-5xl font-black uppercase mt-72 mb-72" style="border-bottom: 0px solid black;"> 
+          <div class="lg:text-8xl text-3xl font-black uppercase mt-72 mb-72" style="border-bottom: 0px solid black;"> 
               <h1 class="font-['PP_Neue_Machina_Plain'] text-left text-gray-300"><span class="text-black">un studio </span>créatif</h1>
               <h1 class="font-['PP_Neue_Machina_Plain'] text-gray-300">pour des <span>marques</span></h1>
               <div>
@@ -72,7 +72,7 @@ const animateReverseMarquee = (marquee)=>{
           </div>
       </div>
 
-      <div class="relative h-52">
+      <div class="relative h-52 hidden">
         <div class="marquee-container bg-[#FF7283] -rotate-1" ref="marquee1">
           
           <div class="marquee-items-primary">
@@ -136,6 +136,22 @@ const animateReverseMarquee = (marquee)=>{
       </div>
 
       <div class="container mx-auto">
+          <div class="lg:text-8xl text-5xl font-black uppercase mt-32" style="border-bottom: 0px solid black;"> 
+              <h1 class="font-['PP_Neue_Machina_Plain'] text-gray-300">nos derniers</h1>
+              <h1 class="font-['PP_Neue_Machina_Plain']">projets</h1>  
+          </div>
+      </div>
+
+      <Grid :length="2"></Grid>
+
+      <div class="container mx-auto">
+          <div class="lg:text-8xl text-5xl font-black uppercase mb-32" style="border-bottom: 0px solid black;"> 
+              <h1 class="font-['PP_Neue_Machina_Plain'] text-gray-300">nos services</h1>
+              <h1 class="font-['PP_Neue_Machina_Plain']">à la carte</h1>  
+          </div>
+      </div>
+
+      <div class="container mx-auto">
         <div class="flex flex-col lg:flex-row gap-5 text-center lg:text-left uppercase">
           <div class="lg:w-1/3 lg:pr-5 lg:pl-5">
             <h1 class="text-2xl font-bold mb-3">développement <br>web / ux & UI</h1>
@@ -173,14 +189,6 @@ const animateReverseMarquee = (marquee)=>{
         </div>
       </div>
 
-      <div class="container mx-auto">
-          <div class="lg:text-8xl text-5xl font-black uppercase mt-32" style="border-bottom: 0px solid black;"> 
-              <h1 class="font-['PP_Neue_Machina_Plain'] text-gray-300">nos derniers</h1>
-              <h1 class="font-['PP_Neue_Machina_Plain']">projets</h1>  
-          </div>
-      </div>
-
-      <Grid :length="2"></Grid>
 
       <Footer></Footer> 
 
