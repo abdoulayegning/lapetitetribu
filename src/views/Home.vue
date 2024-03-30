@@ -62,7 +62,7 @@ const animateReverseMarquee = (marquee)=>{
 
       <div class="container mx-auto">
           <div class="lg:text-8xl text-5xl font-black uppercase mt-72 mb-72" style="border-bottom: 0px solid black;"> 
-              <h1 class="font-['PP_Neue_Machina_Plain'] text-left text-gray-300"><span class="text-black">le studio </span>créatif</h1>
+              <h1 class="font-['PP_Neue_Machina_Plain'] text-left text-gray-300"><span class="text-black">un studio </span>créatif</h1>
               <h1 class="font-['PP_Neue_Machina_Plain'] text-gray-300">pour des <span>marques</span></h1>
               <div>
                   <h1 class="font-['PP_Neue_Machina_Plain'] absolute text-center wording">ambitieuses</h1>  
