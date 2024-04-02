@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'PP Monument Extended';
+    src: url('PPMonumentExtended-Black.eot');
+    src: url('PPMonumentExtended-Black.eot?#iefix') format('embedded-opentype'),
+        url('PPMonumentExtended-Black.woff2') format('woff2'),
+        url('PPMonumentExtended-Black.woff') format('woff'),
+        url('PPMonumentExtended-Black.svg#PPMonumentExtended-Black') format('svg');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+

@@ -5,6 +5,7 @@ import Hero from '../components/Hero.vue';
 import Grid from '../components/Work/Grid.vue' 
 import Footer from '../components/Footer.vue';
 import Services from '../components/Services.vue';
+import TopBar from '../components/TopBar.vue'
 let idx = 0
 const marquee1 = ref(null)
 const marquee2 = ref(null)
@@ -58,19 +59,9 @@ const animateReverseMarquee = (marquee)=>{
 
   <div id="content_homepage"> 
 
-      <!-- <Hero></Hero> -->
+      <TopBar></TopBar>
 
-      <div class="container mx-auto">
-          <div class="lg:text-8xl text-3xl font-black uppercase mt-72 mb-72" style="border-bottom: 0px solid black;"> 
-              <h1 class="font-['PP_Neue_Machina_Plain'] text-left text-gray-300"><span class="text-black">un studio </span>créatif</h1>
-              <h1 class="font-['PP_Neue_Machina_Plain'] text-gray-300">pour des <span>marques</span></h1>
-              <div>
-                  <h1 class="font-['PP_Neue_Machina_Plain'] absolute text-center wording">ambitieuses</h1>  
-                  <h1 class="font-['PP_Neue_Machina_Plain'] absolute text-center wording">audacieuses</h1>  
-                  <h1 class="font-['PP_Neue_Machina_Plain'] absolute text-center wording">innovantes</h1>  
-              </div>  
-          </div>
-      </div>
+      <Hero></Hero> 
 
       <div class="relative h-52 hidden">
         <div class="marquee-container bg-[#FF7283] -rotate-1" ref="marquee1">
