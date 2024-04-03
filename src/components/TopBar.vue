@@ -1,6 +1,6 @@
 <template>
     <div class="fixed top-0 left-0 w-full flex justify-between items-center pt-4 pb-4 pr-4 pl-4 text-white mix-blend-difference">
-        <div class="uppercase">Vous avez un projet ?</div>
+        <div class="uppercase"><a href="mailto:abdoulaye@lapetitetribu.co">Vous avez un projet ?</a></div>
         <!-- <div class="flex">menu</div> -->
         <div class="uppercase">{{"Dakar / "+ ' ' +locale}}</div>
     </div>

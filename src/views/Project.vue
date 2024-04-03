@@ -4,12 +4,12 @@
             <div class="font-medium text-6xl">{{ items.title }}</div>
             <div class="mt-12 mb-12 grid grid-cols-2">
                 <div>
-                    <div class=" font-light text-xl font-['DM_Sans'] opacity-40">Client</div>
-                    <div class=" font-medium text-2xl font-['DM_Sans']">{{ items.client.fields.name }}</div>
+                    <h2 class=" font-light text-xl font-['DM_Sans'] opacity-40">Client</h2>
+                    <h1 class=" font-medium text-xl font-['DM_Sans'] uppercase">{{ items.client.fields.name }}</h1>
                 </div>
                 <div>
-                    <div class=" font-light text-xl font-['DM_Sans'] opacity-40">Type de projet</div>
-                    <div class=" font-medium text-2xl font-['DM_Sans']">{{ items.category }}</div>
+                    <h2 class=" font-light text-xl font-['DM_Sans'] opacity-40">Type de projet</h2>
+                    <h1 class=" font-medium text-xl font-['DM_Sans'] uppercase">{{ items.category }}</h1>
                 </div>
             </div>
             <div v-for="block in items.blocks"> 

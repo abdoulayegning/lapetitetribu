@@ -59,8 +59,6 @@ const animateReverseMarquee = (marquee)=>{
 
   <div id="content_homepage"> 
 
-      <TopBar></TopBar>
-
       <Hero></Hero> 
 
       <div class="relative h-52 hidden">
