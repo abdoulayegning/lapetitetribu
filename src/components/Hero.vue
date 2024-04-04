@@ -18,6 +18,7 @@
     <div ref="keen" class="keen-slider whitespace-nowrap">
         <div class="keen-slider__slide bg-slate-400 h-[190px]" v-for="(i,index) in [0,1,2,3,4,5,6,7,8,9]">
             <div v-if="index == 3"><img class="w-full h-[190px] object-cover" src="../assets/carrefour.png" alt=""></div>
+            <div v-if="index == 2"><img class="w-full h-[190px] object-cover" src="../assets/portal.png" alt=""></div>
             <div v-if="index == 0"><video class="w-full h-[190px] object-cover" muted autoplay loop src="../assets/value.mp4"></video></div>
             <div v-if="index == 1"><video class="w-full h-[190px] object-cover" muted autoplay loop src="../assets/canalplus.mp4"></video></div>
             <div v-if="index == 9"><video class="w-full h-[190px] object-cover" muted autoplay loop src="../assets/interactive.mp4"></video></div>
