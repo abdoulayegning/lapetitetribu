@@ -131,7 +131,7 @@ const animateReverseMarquee = (marquee)=>{
           </div>
       </div>
 
-      <Grid :length="2"></Grid>
+      <Grid></Grid>
 
       <div class="container mx-auto">
           <div class="lg:text-8xl text-5xl font-black uppercase mb-32" style="border-bottom: 0px solid black;"> 
