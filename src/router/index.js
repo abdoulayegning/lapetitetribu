@@ -6,11 +6,10 @@ import Project from '../views/Project.vue'
 import NotFound from '../views/NotFound.vue'
 
 const routes = [
-    {path: '/', component: Home},
-    {path: '/work', component: Work}, 
-    {path: '/:slug', component: Project}, 
-    // {path: '/temp', component: Temp}, 
-    {path: '/brief', component: () => import('../views/Brief.vue')},
+    {path: '/', component: Home, name: 'Home'},
+    {path: '/work', component: Work, name: 'Work'}, 
+    {path: '/:slug', component: Project, name: 'Project'},  
+    {path: '/brief', component: () => import('../views/Brief.vue'), name: 'Brief'},
     {path: '/:pathMatch(.*)*', component: NotFound, name: 'NotFound'}, 
 ]
 

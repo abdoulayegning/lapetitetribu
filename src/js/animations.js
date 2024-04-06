@@ -1,7 +1,6 @@
 import Splitting from "splitting";
 import gsap from 'gsap'
 
-
 const AnimateSplittingTextIn = (target)=>{
 
     const targetHeight = target.getBoundingClientRect().height

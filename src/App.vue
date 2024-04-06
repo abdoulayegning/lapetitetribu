@@ -4,6 +4,10 @@ import { onMounted, ref } from 'vue'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import TopBar from './components/TopBar.vue';
+import { useRoute, useRouter } from 'vue-router';
+
+const route = useRoute()
+const router = useRouter()
 
 const contactBtn = ref(null)
 
@@ -31,7 +35,17 @@ onMounted(()=>{
       const work = document.getElementById('work')
       if(work){
         lenis.scrollTo(work, {duration: 4})
+      } else {
+        router.push('/')
       }
+    })
+    
+    router.beforeEach((to, from)=>{
+      console.log(from.name)
+      if(from.name == 'Project'){
+        const work = document.getElementById('work')
+        lenis.scrollTo(work, {duration: 4})
+      }  
     })
 
     const redDot = contactBtn.value.children[0]

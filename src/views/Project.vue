@@ -47,7 +47,6 @@ onBeforeMount(()=>{
         'fields.slug': route.params.slug,
     })
     .then((entries)=>{ 
-        console.log(entries.items[0].fields) 
         items.value = entries.items[0].fields
     }) 
 })
