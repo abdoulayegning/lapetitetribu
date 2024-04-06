@@ -39,7 +39,7 @@ const go_to = (path)=>{
 </script>
 
 <template> 
-<div class="mt-10 mb-20">
+<div class="mt-10 mb-20" id="work">
     <div class="container mx-auto"> 
         <div class="grid lg:grid-cols-2 gap-6">
             <div @click="go_to(p.fields.slug)" class="pl-0 pt-6 pb-6 cursor-pointer " v-for="p in projects">

@@ -7,6 +7,8 @@ import TopBar from './components/TopBar.vue';
 
 const contactBtn = ref(null)
 
+const topbar = ref(null)
+
 gsap.registerPlugin(ScrollTrigger)
 
 onMounted(()=>{
@@ -24,6 +26,14 @@ onMounted(()=>{
     contactBtn.value.addEventListener("click", ()=>{
       window.open('mailto:abdoulaye@lapetitetribu.co');
     })
+
+    topbar.value.scrollToWork.addEventListener('click', ()=>{
+      const work = document.getElementById('work')
+      if(work){
+        lenis.scrollTo(work, {duration: 4})
+      }
+    })
+
     const redDot = contactBtn.value.children[0]
     gsap.fromTo(redDot, {opacity: 0}, {opacity: 1, repeat: -1})
     gsap.fromTo(contactBtn.value, {y: 0}, {y: 10, repeat: -1, yoyo: true, ease: 'power4.inOut'})
@@ -40,7 +50,7 @@ onMounted(()=>{
     <h1 class="leading-none">Vous avez un projet ?</h1>
   </div>
 
-  <TopBar></TopBar>  
+  <TopBar ref="topbar"></TopBar>  
   <router-view></router-view> 
 </template>
 

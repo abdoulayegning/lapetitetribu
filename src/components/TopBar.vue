@@ -1,6 +1,6 @@
 <template>
     <div class="fixed w-[85%] pr-12 pl-12 rounded-xl text-xs uppercase gap-0 left-1/2 -translate-x-1/2 mt-1 z-[1000] flex justify-between items-center pt-4 pb-4 text-white mix-blend-difference">
-        <div class="menu-btn">Projets</div>
+        <div class="menu-btn" ref="scrollToWork">Projets</div>
         <!-- <div class="menu-btn">à propos</div> -->
         <div class="font-['PP_Monument_Extended'] lowercase cursor-pointer" @click="router.push('/')">la petite tribu</div>
         <!-- <div class="menu-btn">nos services</div> -->
@@ -27,6 +27,10 @@ import {useRouter, useRoute} from 'vue-router'
 const router = useRouter()
 const route = useRoute()
 const locale = ref('')
+const scrollToWork = ref(null)
+defineExpose({
+    scrollToWork
+})
 onMounted(()=>{
     setInterval(()=>{
         locale.value = moment().tz("Africa/Dakar").format('LT')
