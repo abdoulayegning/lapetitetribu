@@ -1,11 +1,12 @@
 <template> 
-    <div class="w-full pb-40 pt-32 mx-auto container">
+    <div class="w-full pb-40 pt-32 lg:pl-24 lg:pr-24 mx-auto container">
         {{ entry }}
-        <div class="uppercase mb-2 grid lg:grid-cols-2 gap-3">
+        <div class="uppercase mb-2 grid lg:grid-cols-3 gap-3">
             <input v-model="name" placeholder="prénom(s) & nom" class="bg-transparent border-black border-b uppercase text-center" type="text" name="" id="">
             <input v-model="company" placeholder="Votre entreprise" class="bg-transparent border-black border-b uppercase text-center" type="text" name="" id="">
             <input v-model="email" placeholder="Email" class="bg-transparent border-black border-b uppercase text-center" type="text" name="" id="">
             <input v-model="phone" placeholder="Téléphone" class="bg-transparent border-black border-b uppercase text-center" type="text" name="" id="">
+            <input v-model="bugdet" placeholder="Budget" class="bg-transparent lg:col-span-2 border-black border-b uppercase text-center" type="text" name="" id="">
         </div> 
         <div class="uppercase mb-3 text-center mt-10 font-semibold">Nombre d'employés dans votre entreprise</div>
         <div class="grid lg:grid-cols-3 gap-3 uppercase justify-center" ref="companySize">
@@ -14,13 +15,13 @@
         <!-- Projet -->
         <div class="uppercase mb-3 mt-10 text-center font-bold">sur quel type de projet voulez vous collaborer avec nous ?</div>
         <div class="grid lg:grid-cols-3 gap-3 uppercase justify-center" ref="services">
-            <div class="btn">un site e-commerce</div>
+            <div class="btn">un site vitrine</div>
             <div class="btn">une landing page</div>
-            <div class="btn">un mini-jeu fun</div>
-            <div class="btn">un site portfolio</div>
-            <div class="btn">une vidéo animée</div>
-            <div class="btn">faire mon branding</div>
-        </div>
+            <div class="btn">mini-jeu fun</div>
+            <div class="btn">filtre pour snapchat</div>
+            <div class="btn">site portfolio</div>
+            <div class="btn">vidéo animée en 2D</div>
+         </div>
 
 
     </div>
@@ -42,12 +43,14 @@ const name = ref('')
 const company = ref('')
 const email = ref('')
 const phone = ref('')
+const budget = ref(0)
 
 let entry = ref(
     {
         name: name, 
         company: company,
         email: email,
+        budget: budget,
         phone: phone,
         service: '',
         companySize: ''
