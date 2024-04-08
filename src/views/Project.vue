@@ -1,15 +1,15 @@
 <template>
     <div class="mt-60 mb-60" v-if="items"> 
         <div class="mx-auto container"> 
-            <div class="font-medium text-6xl">{{ items.title }}</div>
-            <div class="mt-12 mb-12 grid grid-cols-2">
+            <div class="font-medium text-6xl text-center">{{ items.title }}</div>
+            <div class="mt-12 mb-12 grid lg:grid-cols-2 text-center">
                 <div>
                     <h2 class=" font-light text-xl font-['DM_Sans'] opacity-40">Client</h2>
-                    <h1 class=" font-medium text-xl font-['DM_Sans'] uppercase">{{ items.client.fields.name }}</h1>
+                    <h1 class=" font-medium text-xl font-['DM_Sans'] ">{{ items.client.fields.name }}</h1>
                 </div>
                 <div>
                     <h2 class=" font-light text-xl font-['DM_Sans'] opacity-40">Type de projet</h2>
-                    <h1 class=" font-medium text-xl font-['DM_Sans'] uppercase">{{ items.category }}</h1>
+                    <h1 class=" font-medium text-xl font-['DM_Sans'] ">{{ items.category }}</h1>
                 </div>
             </div>
             <div v-for="block in items.blocks"> 

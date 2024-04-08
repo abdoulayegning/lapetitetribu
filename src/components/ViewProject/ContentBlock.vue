@@ -10,7 +10,7 @@
     </div>
 
     <div class="text-block" v-else-if="block.fields.contentType[0] == 'Text'">
-        <div class="lg:w-3/4 font-['DM_Sans'] font-normal text-2xl" v-for="node in block.fields.text.content">
+        <div class="text-center font-['DM_Sans'] font-normal text-xl lg:pr-32 lg:pl-32" v-for="node in block.fields.text.content">
              <div v-for="n in node.content" class="pt-2 pb-2">
 
                 <div v-if="n.nodeType == 'text'">

@@ -5,7 +5,7 @@
         <div ref="about" class="lg:w-[60%] text-2xl lg:p-0 pl-6 pr-6">
             <div class="opacity-0"><span class="font-bold">Studio digital</span> basé à Dakar, Sénégal. </div> 
             <div class="opacity-0">Nous créons des <span class="font-bold">expériences digitales interactives</span></div>
-            <div class="opacity-0">pour les marques ambitieuses, <span class="underline">innovantes</span> et surtout <span class="italic">audacieuses</span> !</div>
+            <div class="opacity-0">pour les marques ambitieuses, <span class="underline">innovantes</span> et surtout <span class="italic font-['Benton_Italic_Regular']">audacieuses</span> !</div>
         </div>
     </div>
     <div ref="popups" class="w-full font-['DM_Sans'] uppercase lg:text-2xl text-base lg:absolute lg:top-0 left-0 lg:h-screen lg:block hidden grid-cols-3">
@@ -40,10 +40,10 @@ const logotype = ref(null)
 
 const AnimateInAboutText = ()=>{
     let tl = gsap.timeline({
-        delay: 1.,
+        delay: .0,
         defaults:{
-            ease: 'expo.inOut',
-            duration: 2
+            ease: 'expo.out',
+            duration: 1
         }
     })
     for (let i = 0; i < about.value.children.length; i++) {
@@ -57,7 +57,7 @@ onMounted(()=>{
     HideSplittingText(logotype.value)
     
     let tl = gsap.timeline({
-        defaults:{duration: 1.45},
+        defaults:{duration: .75},
         onComplete: ()=>{
             AnimateSplittingTextIn(logotype.value)
             AnimateInAboutText()
