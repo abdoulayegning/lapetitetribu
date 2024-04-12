@@ -23,7 +23,7 @@
             <div v-if="index == 0"><video class="w-full h-[190px] object-cover" muted autoplay loop src="../assets/value.mp4"></video></div>
             <div v-if="index == 1"><video class="w-full h-[190px] object-cover" muted autoplay loop src="../assets/canalplus.mp4"></video></div>
             <div v-if="index == 9"><video class="w-full h-[190px] object-cover" muted autoplay loop src="../assets/interactive.mp4"></video></div>
-            <div v-if="index == 6"><video class="w-full h-[190px] object-cover" muted autoplay loop src="../assets/dc.mp4"></video></div>
+            <div v-if="index == 6"><video class="w-full h-[190px] object-cover" muted autoplay loop src="../assets/cetud_dakar_en_commun.mp4"></video></div>
         </div> 
     </div>
 </template>
