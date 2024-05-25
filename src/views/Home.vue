@@ -6,6 +6,7 @@ import Grid from '../components/Work/Grid.vue'
 import Footer from '../components/Footer.vue';
 import Services from '../components/Services.vue';
 import TopBar from '../components/TopBar.vue'
+import Clients from '../components/Clients.vue';
 let idx = 0
 const marquee1 = ref(null)
 const marquee2 = ref(null)
@@ -133,7 +134,9 @@ const animateReverseMarquee = (marquee)=>{
 
       <Grid></Grid>
 
-      <div class="container mx-auto">
+      <Clients></Clients>
+
+      <div class="container mx-auto text-center">
           <div class="lg:text-8xl text-5xl font-black uppercase mb-32" style="border-bottom: 0px solid black;"> 
               <h1 class="font-['PP_Neue_Machina_Plain'] text-gray-300">nos services</h1>
               <h1 class="font-['PP_Neue_Machina_Plain']">à la carte</h1>  

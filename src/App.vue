@@ -40,13 +40,13 @@ onMounted(()=>{
       }
     })
     
-    router.beforeEach((to, from)=>{
-      console.log(from.name)
-      if(from.name == 'Project'){
-        const work = document.getElementById('work')
-        lenis.scrollTo(work, {duration: 4})
-      }  
-    })
+    // router.beforeEach((to, from)=>{
+    //   console.log(from.name)
+    //   if(from.name == 'Project'){
+    //     const work = document.getElementById('work')
+    //     lenis.scrollTo(work, {duration: 4})
+    //   }  
+    // })
 
     const redDot = contactBtn.value.children[0]
     gsap.fromTo(redDot, {opacity: 0}, {opacity: 1, repeat: -1})
