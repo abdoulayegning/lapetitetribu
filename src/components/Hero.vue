@@ -21,10 +21,10 @@
             <div v-if="index == 3"><img class="w-full h-[190px] object-cover" src="../assets/carrefour.png" alt=""></div>
             <div v-if="index == 4"><img class="w-full h-[190px] object-cover" src="../assets/sekou.png" alt=""></div>
             <div v-if="index == 2"><img class="w-full h-[190px] object-cover" src="../assets/portal.png" alt=""></div>
-            <div v-if="index == 0"><video class="w-full h-[190px] object-cover" muted autoplay loop src="../assets/value.mp4"></video></div>
-            <div v-if="index == 1"><video class="w-full h-[190px] object-cover" muted autoplay loop src="../assets/canalplus.mp4"></video></div>
-            <div v-if="index == 9"><video class="w-full h-[190px] object-cover" muted autoplay loop src="../assets/interactive.mp4"></video></div>
-            <div v-if="index == 6"><video class="w-full h-[190px] object-cover" muted autoplay loop src="../assets/cetud_dakar_en_commun.mp4"></video></div>
+            <div v-if="index == 0"><video class="w-full h-[190px] object-cover" muted autoplay loop playsinline disable-picture-in-picture="true " disablePictureInPicture src="../assets/value.mp4"></video></div>
+            <div v-if="index == 1"><video class="w-full h-[190px] object-cover" muted autoplay loop playsinline disable-picture-in-picture="true " disablePictureInPicture src="../assets/canalplus.mp4"></video></div>
+            <div v-if="index == 9"><video class="w-full h-[190px] object-cover" muted autoplay loop playsinline disable-picture-in-picture="true " disablePictureInPicture src="../assets/interactive.mp4"></video></div>
+            <div v-if="index == 6"><video class="w-full h-[190px] object-cover" muted autoplay loop playsinline disable-picture-in-picture="true " disablePictureInPicture src="../assets/cetud_dakar_en_commun.mp4"></video></div>
         </div> 
     </div>
 </template>

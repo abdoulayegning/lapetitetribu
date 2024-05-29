@@ -38,6 +38,14 @@
                 <option class="">vidéo animée en 2D</option>
             </select>
             
+            <div class="uppercase mb-3 mt-10 font-bold">Quels sont vos délais ?</div>
+            <select class="background-transparent uppercase focus:border-none appearance-none" ref="deadline">
+                <option class="">Dans un mois</option>
+                <option class="">Dans trois mois</option>
+                <option class="">Dans 6 mois</option>
+                <option class="">Plus de 6 mois</option>
+            </select>
+            
             <textarea ref="description" placeholder="DÉCRIVEZ-NOUS BRIÉVEMENT VOTRE PROJET ?" class="bg-transparent border-black border-b" type="text" name="" id=""></textarea>
 
             <div ref="alert" class="uppercase text-red-500 mt-10 text-xs opacity-0">
@@ -78,6 +86,7 @@ const company = ref(null)
 const services = ref(null)
 const companySize = ref(null)
 const description = ref(null)
+const deadline = ref(null)
 const alert = ref(null) 
 const firestore = getFirestore()
 //#endregion 
@@ -96,7 +105,8 @@ const SendBriefToDatabase = async ()=>{
             phone: phone.value.value,
             service: services.value.value,
             companySize: companySize.value.value,
-            description: description.value.value
+            description: description.value.value,
+            deadline: deadline.value.value
         }
 
         // add the document with a random uid

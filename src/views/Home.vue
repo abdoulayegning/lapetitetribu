@@ -5,7 +5,7 @@ import Hero from '../components/Hero.vue';
 import Grid from '../components/Work/Grid.vue' 
 import Footer from '../components/Footer.vue';
 import Services from '../components/Services.vue';
-import TopBar from '../components/TopBar.vue'
+import BriefCTA from '../components/BriefCTA.vue'
 import Clients from '../components/Clients.vue';
 let idx = 0
 const marquee1 = ref(null)
@@ -14,26 +14,26 @@ const marqueeCount = ref([0,1,2,3,4,5,0,1,2,3,4,5])
 const wordingList = ['ambitieuses', 'audacieuses', 'innovantes']
 
 onMounted(()=>{
-    let wordings = document.querySelectorAll('.wording')
+    // let wordings = document.querySelectorAll('.wording')
 
-    for (let i = 0; i < wordings.length; i++) {
-        const element = wordings[i];
-        gsap.set(element, {display: 'none', opacity: 0})
-    }
-    gsap.set(wordings[0], {display: 'block', opacity: 0})
+    // for (let i = 0; i < wordings.length; i++) {
+    //     const element = wordings[i];
+    //     gsap.set(element, {display: 'none', opacity: 0})
+    // }
+    // gsap.set(wordings[0], {display: 'block', opacity: 0})
 
-    let tl = gsap.timeline({repeat: -1, defaults: {ease: 'none', duration: 0}})
+    // let tl = gsap.timeline({repeat: -1, defaults: {ease: 'none', duration: 0}})
 
-    const delay = 0.45
+    // const delay = 0.45
 
-    tl.fromTo(wordings[0], {opacity: 0, display: 'block'}, {opacity: 1})
-    tl.to(wordings[0], {opacity: 0, delay: delay})
+    // tl.fromTo(wordings[0], {opacity: 0, display: 'block'}, {opacity: 1})
+    // tl.to(wordings[0], {opacity: 0, delay: delay})
 
-    tl.fromTo(wordings[1], {opacity: 0, display: 'block'}, {opacity: 1})
-    tl.to(wordings[1], {opacity: 0, delay: delay})
+    // tl.fromTo(wordings[1], {opacity: 0, display: 'block'}, {opacity: 1})
+    // tl.to(wordings[1], {opacity: 0, delay: delay})
 
-    tl.fromTo(wordings[2], {opacity: 0, display: 'block'}, {opacity: 1})
-    tl.to(wordings[2], {opacity: 0, delay: delay})
+    // tl.fromTo(wordings[2], {opacity: 0, display: 'block'}, {opacity: 1})
+    // tl.to(wordings[2], {opacity: 0, delay: delay})
  
      
     // gsap.set(marqueeElement.children[1], {translateX: '50%'})
@@ -58,7 +58,9 @@ const animateReverseMarquee = (marquee)=>{
 
 <template> 
 
-  <div id="content_homepage"> 
+  <div id="main-content"> 
+
+      <BriefCTA></BriefCTA>
 
       <Hero></Hero> 
 

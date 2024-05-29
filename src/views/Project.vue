@@ -12,9 +12,11 @@
                     <h1 class=" font-medium text-xl font-['DM_Sans'] ">{{ items.category }}</h1>
                 </div>
             </div>
-            <div v-for="block in items.blocks"> 
+            <!-- <div v-html="documentToHtmlString(items.content, options)"></div> -->
+            <!-- <RenderRichText :document="items"></RenderRichText> -->
+             <div v-for="block in items.blocks"> 
                 <ContentBlock :block="block"/>
-            </div> 
+            </div>  
         </div>
     </div>
 
@@ -30,6 +32,28 @@ import { useRoute, useRouter } from 'vue-router'
 import { createClient } from 'contentful' 
 import ContentBlock from '../components/ViewProject/ContentBlock.vue';
 import Footer from '../components/Footer.vue';
+// import RenderRichText  from '../components/RenderRichText.vue'
+import { BLOCKS } from '@contentful/rich-text-types';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+
+const RenderAsset = (node)=>{
+    const title = node.data.target.fields.title
+    const type = node.data.target.fields.file.contentType
+    const url = node.data.target.fields.file.url
+    if (type == "image/jpeg" || type == "image/png" || type == "image/webm" || type == "image/gif") {
+        return `<img src="` + url + `" alt="` + title + `">`
+    } else if (type == "video/mp4") {
+        // return `<video src="` + url + `" alt="` + title + `">`
+            return `<video muted autoplay loop playsinline disablePictureInPicture controlsList="nodownload"><source src="` + url + `" type="video/mp4"></video>`
+    }
+}
+
+const options = {
+  renderNode: {
+    [BLOCKS.EMBEDDED_ASSET]: (node) => `<div>` + RenderAsset(node) + `</div>`
+  }
+}
+
 const router = useRouter()
 const route = useRoute()
 
@@ -48,7 +72,8 @@ onBeforeMount(()=>{
     })
     .then((entries)=>{ 
         items.value = entries.items[0].fields
-    }) 
+        console.log(items.value.content)
+     }) 
 })
  
 

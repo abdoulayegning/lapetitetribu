@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed w-[85%] pr-12 pl-12 rounded-xl lg:text-xs uppercase gap-0 left-1/2 -translate-x-1/2 mt-1 z-[1000] flex lg:justify-between justify-center items-center pt-4 pb-4 text-white mix-blend-difference">
+    <div class="fixed w-[85%] pr-12 pl-12 rounded-xl lg:text-xs uppercase gap-0 left-1/2 -translate-x-1/2 mt-1 z-[800] flex lg:justify-between justify-center items-center pt-4 pb-4 text-white mix-blend-difference">
         <div class="menu-btn lg:block hidden" ref="scrollToWork">Projets</div>
         <!-- <div class="menu-btn">à propos</div> -->
         <div class="font-['PP_Monument_Extended'] lowercase cursor-pointer" @click="router.push('/')">la petite tribu</div>

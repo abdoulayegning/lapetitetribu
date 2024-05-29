@@ -28,7 +28,7 @@ onBeforeMount(()=>{
 })
 
 const go_to = (path)=>{
-    const content_homepage = document.getElementById('content_homepage')
+    const content_homepage = document.getElementById('main-content')
     if(content_homepage){
         gsap.to(content_homepage, {opacity: 0, onComplete: ()=>{
             router.push('/' + path)
