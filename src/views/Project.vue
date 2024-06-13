@@ -14,9 +14,11 @@
             </div>
             <!-- <div v-html="documentToHtmlString(items.content, options)"></div> -->
             <!-- <RenderRichText :document="items"></RenderRichText> -->
+             
              <div v-for="block in items.blocks"> 
                 <ContentBlock :block="block"/>
-            </div>  
+            </div> 
+
         </div>
     </div>
 
