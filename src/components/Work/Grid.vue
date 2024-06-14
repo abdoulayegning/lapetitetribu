@@ -42,7 +42,7 @@ const go_to = (path)=>{
 <div class="mt-10 mb-20" id="work">
     <div class="container mx-auto"> 
         <div class="grid lg:grid-cols-2 gap-6">
-            <div @click="go_to(p.fields.slug)" class="pl-0 pt-6 pb-6 cursor-pointer " v-for="p in projects">
+            <div v-if="projects" @click="go_to(p.fields.slug)" class="pl-0 pt-6 pb-6 cursor-pointer " v-for="p in projects"> 
                 <div class="h-[300px]">
                     <img class="w-full h-full object-cover" :src="p.fields.imageThumbnail.fields.file.url" alt="">
                 </div>
