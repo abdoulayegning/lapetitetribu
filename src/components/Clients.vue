@@ -30,7 +30,7 @@ onBeforeMount(()=>{
 
 <template>
     <div class="mx-auto container pt-28 pb-28">
-            <h1 class="font-['PP_Monument_Extended'] lg:text-8xl text-5xl lg:text-center">Good Friends !</h1>
+            <!-- <h1 class="font-['PP_Monument_Extended'] lg:text-8xl text-5xl lg:text-center">Good Friends !</h1> -->
             <div class="grid grid-cols-3 lg:grid-cols-7 justify-items-end">
                 <img v-for="client in clients" class="invert justify-items-center" :src="client.url" alt="">
             </div>

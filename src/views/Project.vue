@@ -2,30 +2,39 @@
     <div class="mt-60 mb-60" v-if="items"> 
         <div class="mx-auto container"> 
             <div class="font-medium text-6xl text-center">{{ items.title }}</div>
-            <div class="mt-12 mb-12 grid lg:grid-cols-2 text-center">
+            <div class="mt-12 mb-12 grid lg:grid-cols-1 gap-10 text-center">
                 <div>
-                    <h2 class=" font-light text-xl font-['DM_Sans'] opacity-40">Client</h2>
-                    <h1 class=" font-medium text-xl font-['DM_Sans'] ">{{ items.client.fields.name }}</h1>
+                    <h2 class=" font-light font-['PP_Neue_Machina_Plain'] opacity-40 uppercase text-base">Client</h2>
+                    <h1 class=" font-medium text-base font-['PP_Neue_Machina_Plain'] uppercase mt-0">{{ items.client.fields.name }}</h1>
                 </div>
                 <div>
-                    <h2 class=" font-light text-xl font-['DM_Sans'] opacity-40">Type de projet</h2>
-                    <h1 class=" font-medium text-xl font-['DM_Sans'] ">{{ items.category }}</h1>
+                    <h2 class=" font-light text-base font-['PP_Neue_Machina_Plain'] opacity-40 uppercase">savoir-faire</h2>
+                    <h1 class=" font-medium font-['PP_Neue_Machina_Plain'] uppercase text-base mt-0">{{ items.category }}</h1>
                 </div>
             </div>
+
             <!-- <div v-html="documentToHtmlString(items.content, options)"></div> -->
             <!-- <RenderRichText :document="items"></RenderRichText> -->
-             
-             <div v-for="block in items.blocks"> 
-                <ContentBlock :block="block"/>
-            </div> 
+            
+            <div class="" v-if="items.content">
+                <div v-html="documentToHtmlString(items.content, options)"></div>
+            </div>
 
+            <div v-else>
+                <!-- Only if CONTENT OBJECT doesn't exist -->
+                <div v-for="block in items.blocks"> 
+                    <ContentBlock :block="block"/>
+                </div> 
+            </div>
+
+ 
         </div>
     </div>
 
     <Footer></Footer>
 </template>
 
-<style scoped>
+<style scoped> 
 </style>
 
 <script setup>
@@ -43,17 +52,18 @@ const RenderAsset = (node)=>{
     const type = node.data.target.fields.file.contentType
     const url = node.data.target.fields.file.url
     if (type == "image/jpeg" || type == "image/png" || type == "image/webm" || type == "image/gif") {
-        return `<img src="` + url + `" alt="` + title + `">`
+        return `<img class="mb-20 mt-20" src="` + url + `" alt="` + title + `">`
     } else if (type == "video/mp4") {
         // return `<video src="` + url + `" alt="` + title + `">`
-            return `<video muted autoplay loop playsinline disablePictureInPicture controlsList="nodownload"><source src="` + url + `" type="video/mp4"></video>`
+        return `<video class="mb-20 mt-20" muted autoplay loop playsinline disablePictureInPicture controlsList="nodownload"><source src="` + url + `" type="video/mp4"></video>`
     }
 }
 
 const options = {
   renderNode: {
-    [BLOCKS.EMBEDDED_ASSET]: (node) => `<div>` + RenderAsset(node) + `</div>`
-  }
+    [BLOCKS.EMBEDDED_ASSET]: (node) => `<div>` + RenderAsset(node) + `</div>`,
+    [BLOCKS.PARAGRAPH]: (node, next) => `<div class="text-center font-['DM_Sans'] text-xl lg:w-[70%] mx-auto mt-6 mb-6">${next(node.content)}</div>`
+   }
 }
 
 const router = useRouter()

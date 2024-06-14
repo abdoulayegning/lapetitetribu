@@ -127,12 +127,21 @@ const animateReverseMarquee = (marquee)=>{
         </div>
       </div>
 
-      <div class="container mx-auto">
-          <div class="lg:text-8xl text-5xl font-black uppercase mt-32" style="border-bottom: 0px solid black;"> 
-              <h1 class="font-['PP_Neue_Machina_Plain'] text-gray-300">nos derniers</h1>
-              <h1 class="font-['PP_Neue_Machina_Plain']">projets</h1>  
-          </div>
-      </div>
+      <div class="container mx-auto relative pt-20 pb-14"> 
+ 
+          <svg class="w-8 h-8  absolute right-1" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <path d="M82.3333 0L56.6042 56.6042L0 82.3333L56.6042 108.062L82.3333 164.667L108.062 108.062L164.667 82.3333L108.062 56.6042" fill="black"/>
+          </svg> 
+          <svg class="w-4 h-4  absolute right-20" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <path d="M82.3333 0L56.6042 56.6042L0 82.3333L56.6042 108.062L82.3333 164.667L108.062 108.062L164.667 82.3333L108.062 56.6042" fill="black"/>
+          </svg> 
+          <svg class="w-4 h-4  absolute -left-6" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <path d="M82.3333 0L56.6042 56.6042L0 82.3333L56.6042 108.062L82.3333 164.667L108.062 108.062L164.667 82.3333L108.062 56.6042" fill="black"/>
+          </svg> 
+          
+          <h1 class="font-['PP_Neue_Machina_Plain'] text-gray-300 lg:text-8xl font-bold uppercase">nos derniers <span class="font-['PP_Neue_Machina_Plain'] text-black">pépites</span></h1>
+
+       </div>
 
       <Grid></Grid>
 
