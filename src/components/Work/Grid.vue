@@ -56,7 +56,7 @@ const OnHoverWrapper = (e)=>{
 }
     
 const OnLeaveWrapper = (e)=>{
-    gsap.to(e.target, {scale: 1, ease: 'expo.in'}) 
+    gsap.to(e.target, {scale: 1, ease: 'expo.out'}) 
 }
 
 </script>

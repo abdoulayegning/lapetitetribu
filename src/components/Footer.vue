@@ -39,11 +39,13 @@
             let's 🙂‍ connect
         </div>
     </div> -->
-    <div class="pt-12 text-center uppercase">let's connect</div>
+    <div class="pt-10 pb-10 border-t border-b mt-10">
+        <div ref="logotype" class="text-[9.5vw] text-center font-['PP_Monument_Extended'] opacity-20">la petite tribu</div>
+    </div>
     <div class="">
-        <div class="container mx-auto pt-12 pb-24">
+        <div class="container mx-auto pt-0 pb-24">
     
-            <div class="flex flex-col lg:flex-row lg:gap-0 gap-5 uppercase text-base w-full border-t border-gray-400 pt-8">
+            <div class="flex flex-col lg:flex-row lg:gap-0 gap-5 uppercase text-base w-full pt-12">
                 
                 <div class="text-center lg:text-left lg:w-[25%]"> 
                     <div class="text-gray-300">télécharger notre deck</div>
