@@ -52,11 +52,11 @@ const go_to = (path)=>{
 }
 
 const OnHoverWrapper = (e)=>{
-    gsap.to(e.target, {scale: 0.95, ease: 'expo.inOut', y: -10})
+    gsap.to(e.target, {scale: 0.95, ease: 'expo.out', y: -10})
 }
     
 const OnLeaveWrapper = (e)=>{
-    gsap.to(e.target, {scale: 1, ease: 'expo.inOut'}) 
+    gsap.to(e.target, {scale: 1, ease: 'expo.in'}) 
 }
 
 </script>
@@ -68,7 +68,7 @@ const OnLeaveWrapper = (e)=>{
 
             <div v-if="projects" @mouseenter="OnHoverWrapper" @mouseleave="OnLeaveWrapper" @click="go_to(p.fields.slug)" class="pl-0 pt-6 pb-6 cursor-pointer" v-for="p in projects"> 
 
-                <div @mouseenter="OnHover" @mouseleave="OnLeave" class="h-[300px] w-full relative">
+                <div @mouseenter="OnHover" @mouseleave="OnLeave" class="aspect-video	 w-full relative">
                     <img class="w-full h-full object-cover" :src="p.fields.imageThumbnail.fields.file.url" alt="">
                     <video class="w-full h-full object-cover absolute top-0 left-0 hidden" preload="metadata" muted nocontrols playsInline loop v-if="p.fields.videoThumbnail">
                         <source :src="p.fields.videoThumbnail.fields.file.url">
