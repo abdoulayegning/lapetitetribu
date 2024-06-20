@@ -15,14 +15,16 @@
 
             <!-- <div v-html="documentToHtmlString(items.content, options)"></div> -->
             <!-- <RenderRichText :document="items"></RenderRichText> -->
+
+            <!-- If there is a Vimeo or Youtube Iframe -->
+            <div class="" v-if="items.embed">
+                <div v-html="items.embed"></div>
+            </div>
             
             <div class="" v-if="items.content">
                 <div v-html="documentToHtmlString(items.content, options)"></div>
             </div>
 
-            <div class="" v-if="items.embed">
-                <div v-html="items.embed"></div>
-            </div>
 
             <div v-else>
                 <!-- Only if CONTENT OBJECT doesn't exist -->
