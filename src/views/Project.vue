@@ -57,9 +57,9 @@ const RenderAsset = (node)=>{
     const title = node.data.target.fields.title
     const type = node.data.target.fields.file.contentType
     const url = node.data.target.fields.file.url
-    if (type == "image/jpeg" || type == "image/png" || type == "image/webm" || type == "image/gif") {
+    if (type == "image/jpeg" || type == "image/png" || type == "image/webp" || type == "image/gif") {
         return `<img class="mb-20 mt-20" src="` + url + `" alt="` + title + `">`
-    } else if (type == "video/mp4") {
+    } else if (type == "video/mp4" || type == "video/webm") {
         // return `<video src="` + url + `" alt="` + title + `">`
         return `<video class="mb-20 mt-20" muted autoplay loop playsinline disablePictureInPicture controlsList="nodownload"><source src="` + url + `" type="video/mp4"></video>`
     }
