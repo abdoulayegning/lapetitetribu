@@ -90,8 +90,7 @@ onBeforeMount(()=>{
     })
     .then((entries)=>{ 
         items.value = entries.items[0].fields
-        console.log(items.value.content)
-     }) 
+      }) 
 })
  
 

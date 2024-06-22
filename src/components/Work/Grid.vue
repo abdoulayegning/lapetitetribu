@@ -8,6 +8,7 @@ const route = useRoute();
 const router = useRouter();
  
 
+const renderedProjects = ref(null)
 const projects = ref(null)
 
 const client = createClient({
@@ -27,13 +28,21 @@ onBeforeMount(()=>{
     })
 })
 
-const OnHover = (e)=>{ 
+const OnHover = (e)=>{   
     if (e.target.children[1]) {
         const video = e.target.children[1];
         video.style.display = 'block'
         video.play()   
     }
 }
+// const OnHover = (e)=>{ 
+//     if (e.target.children[1]) {
+//         const video = e.target.children[1];
+//         video.style.display = 'block'
+//         video.play()   
+//     }
+// }
+
 const OnLeave = (e)=>{ 
     if (e.target.children[1]) {
         const video = e.target.children[1];
@@ -52,6 +61,7 @@ const go_to = (path)=>{
 }
 
 const OnHoverWrapper = (e)=>{
+    console.log(e.target)
     gsap.to(e.target, {scale: 0.95, ease: 'expo.out', y: -10})
 }
     
@@ -59,16 +69,24 @@ const OnLeaveWrapper = (e)=>{
     gsap.to(e.target, {scale: 1, ease: 'expo.out'}) 
 }
 
+onUpdated(()=>{
+    for (let i = 0; i < renderedProjects.value.children.length; i++) {
+        const element = renderedProjects.value.children[i];
+        console.log(renderedProjects.value)
+         gsap.to(element, {filter: 'grayscale(0%)'})
+    }
+})
+
 </script>
 
 <template> 
 <div class="mt-10 mb-7" id="work">
     <div class="container mx-auto"> 
-        <div class="grid lg:grid-cols-2 gap-6">
+        <div class="grid lg:grid-cols-2 gap-6" ref="renderedProjects">
 
             <div v-if="projects" @mouseenter="OnHoverWrapper" @mouseleave="OnLeaveWrapper" @click="go_to(p.fields.slug)" class="pl-0 pt-6 pb-6 cursor-pointer" v-for="p in projects"> 
 
-                <div @mouseenter="OnHover" @mouseleave="OnLeave" class="aspect-video	 w-full relative">
+                <div @mouseenter="OnHover" @mouseleave="OnLeave" class="aspect-video w-full relative">
                     <img class="w-full h-full object-cover" :src="p.fields.imageThumbnail.fields.file.url" alt="">
                     <video class="w-full h-full object-cover absolute top-0 left-0 hidden" preload="metadata" muted nocontrols playsInline loop v-if="p.fields.videoThumbnail">
                         <source :src="p.fields.videoThumbnail.fields.file.url">
