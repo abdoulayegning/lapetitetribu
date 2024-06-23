@@ -1,7 +1,9 @@
 <script setup>
 import { ref, defineProps, onBeforeMount, onMounted, onUpdated } from 'vue';
 import { createClient } from 'contentful'
- 
+import Splitting from 'splitting'
+import gsap from 'gsap';
+
 const client = createClient({
     space: import.meta.env.VITE_CONTENTFUL_SPACE_ID,
     accessToken: import.meta.env.VITE_CONTENTFUL_API_KEY //Only published !!!
@@ -9,6 +11,7 @@ const client = createClient({
 })
 
 const clients = ref([])
+const rainbowText = ref(null)
 
 onBeforeMount(()=>{
     client.getEntries({
@@ -26,6 +29,22 @@ onBeforeMount(()=>{
        })
     })
 }) 
+
+onMounted(()=>{
+    let rainbow = gsap.timeline({repeat: -1, yoyo: true})
+
+    const chars = rainbowText.value.children[0].children[0].children
+
+    for (let i = 0; i < chars.length; i++) {
+        const el = chars[i];
+        rainbow.fromTo(el, {color: 'black'}, {color: 'red'}, i/10)  
+        rainbow.fromTo(el, {color: 'green'}, {color: 'blue'}, (i/10) + 0.35)  
+        rainbow.fromTo(el, {color: 'purple'}, {color: 'orange'}, (i/10) + 0.4)  
+        rainbow.fromTo(el, {color: 'pink'}, {color: 'black'}, (i/10) + 0.45)  
+    } 
+
+    console.log(rainbowText.value.children[0].children[0].children)
+})
 </script>
 
 <template>
@@ -33,7 +52,7 @@ onBeforeMount(()=>{
         <div class="lg:flex flex-col items-center justify-center">
             <p class="mt-6 lg:w-[70%] font-['DM_Sans'] text-center lg:text-3xl text-xl">
                 <!-- Laissez libre cours à votre imagination et décrivez-nous votre vision. Plus vous serez audacieux dans vos descriptions, plus nous pourrons vous surprendre avec des solutions innovantes et hors du commun. -->
-                Nous sommes impatients de vous avoir comme partenaire et de collaborer avec vous pour créer quelque chose de vraiment spectaculaire. 🚀✨
+                Nous sommes impatients de vous avoir comme partenaire et de collaborer avec vous pour créer quelque chose de vraiment <span ref="rainbowText" v-html="Splitting.html({content:`d'authentique`, by:'chars'})"></span>. 🚀✨
             </p>
             <div ref="button" @pointerleave="onLeave" @pointerenter="onEnter" @click="goto('/brief')" 
             class="flex lg:hidden justify-center items-center gap-2 cursor-pointer uppercase tracking-wider text-base rotate-0 bg-[#08ff08] pl-5 pr-5 pt-2 pb-2 rounded-full mt-5">

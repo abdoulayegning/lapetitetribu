@@ -108,6 +108,8 @@ const animateReverseMarquee = (marquee)=>{
         </div>
       </div>
 
+      <Clients></Clients>
+
       <div class="container mx-auto relative pt-20 pb-14"> 
  
           <svg class="w-8 h-8 absolute right-1 shining-star" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -123,10 +125,8 @@ const animateReverseMarquee = (marquee)=>{
           <h1 class="font-['PP_Neue_Machina_Plain'] text-gray-300 lg:text-8xl font-bold uppercase">nos derniers <span class="font-['PP_Neue_Machina_Plain'] text-black">pépites</span></h1>
 
        </div>
-
+       
       <Grid></Grid>
-
-      <Clients></Clients>
 
       <div class="container mx-auto text-center">
           <div class="lg:text-8xl text-5xl font-black uppercase mb-32" style="border-bottom: 0px solid black;"> 
