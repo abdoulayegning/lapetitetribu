@@ -52,7 +52,7 @@ onMounted(()=>{
         <div class="lg:flex flex-col items-center justify-center">
             <p class="mt-6 lg:w-[70%] font-['DM_Sans'] text-center lg:text-3xl text-xl">
                 <!-- Laissez libre cours à votre imagination et décrivez-nous votre vision. Plus vous serez audacieux dans vos descriptions, plus nous pourrons vous surprendre avec des solutions innovantes et hors du commun. -->
-                Nous sommes impatients de vous avoir comme partenaire et de collaborer avec vous pour créer quelque chose de vraiment <span ref="rainbowText" v-html="Splitting.html({content:`d'authentique`, by:'chars'})"></span>. 🚀✨
+                Nous sommes impatients de vous avoir comme partenaire et de collaborer avec vous pour créer quelque chose de vraiment <span ref="rainbowText" v-html="Splitting.html({content:`authentique`, by:'chars'})"></span>. 🚀✨
             </p>
             <div ref="button" @pointerleave="onLeave" @pointerenter="onEnter" @click="goto('/brief')" 
             class="flex lg:hidden justify-center items-center gap-2 cursor-pointer uppercase tracking-wider text-base rotate-0 bg-[#08ff08] pl-5 pr-5 pt-2 pb-2 rounded-full mt-5">

@@ -39,8 +39,8 @@
             let's 🙂‍ connect
         </div>
     </div> -->
-    <div class="pt-10 pb-10 border-t border-b mt-10">
-        <div ref="logotype" class="text-[9.5vw] text-center font-['PP_Monument_Extended'] opacity-20">la petite tribu</div>
+    <div class="pt-10 pb-10 mt-10">
+        <div ref="logotype" class="text-[8.5vw] text-center font-['PP_Monument_Extended'] opacity-20">la petite tribu</div>
     </div>
     <div class="">
         <div class="container mx-auto pt-0 pb-24">
