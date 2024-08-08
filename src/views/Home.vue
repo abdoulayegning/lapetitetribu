@@ -6,6 +6,7 @@ import Grid from '../components/Work/Grid.vue'
 import Footer from '../components/Footer.vue';
 import Services from '../components/Services.vue';
 import BriefCTA from '../components/BriefCTA.vue'
+import Testimonials from '../components/Testimonials.vue';
 import Clients from '../components/Clients.vue';
 let idx = 0
 const marquee1 = ref(null)
@@ -109,6 +110,8 @@ const animateReverseMarquee = (marquee)=>{
       </div>
 
       <Clients></Clients>
+
+      <Testimonials></Testimonials>
 
       <div class="container mx-auto relative pt-20 pb-14"> 
  
