@@ -111,7 +111,9 @@ const animateReverseMarquee = (marquee)=>{
 
       <Clients></Clients>
 
-      <Testimonials></Testimonials>
+      <!-- <Testimonials></Testimonials> -->
+
+      
 
       <div class="container mx-auto relative pt-20 pb-14"> 
  
@@ -128,6 +130,14 @@ const animateReverseMarquee = (marquee)=>{
           <h1 class="font-['PP_Neue_Machina_Plain'] text-gray-300 lg:text-8xl font-bold uppercase">nos derniers <span class="font-['PP_Neue_Machina_Plain'] text-black">pépites</span></h1>
 
        </div>
+
+       <div class="container mx-auto border">
+        <div class="h-[350px] mb-10 p-10">
+          <div class="uppercase font-bold text-4xl">Wave in the game</div>
+          <div class="uppercase text-gray-400">summer xeweul</div>
+          <div class="uppercase text-gray-500">jeu vidéo, UX/UI, Développement</div>
+        </div>
+      </div>
        
       <Grid></Grid>
 
