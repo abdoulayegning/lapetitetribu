@@ -8,7 +8,9 @@ import Services from '../components/Services.vue';
 import BriefCTA from '../components/BriefCTA.vue'
 import Testimonials from '../components/Testimonials.vue';
 import Clients from '../components/Clients.vue';
+import {useRouter} from 'vue-router'
 let idx = 0
+const router = useRouter()
 const marquee1 = ref(null)
 const marquee2 = ref(null)
 const marqueeCount = ref([0,1,2,3,4,5,0,1,2,3,4,5])
@@ -132,7 +134,7 @@ const animateReverseMarquee = (marquee)=>{
        </div>
 
        <div class="container mx-auto border">
-        <div class="h-[350px] mb-10 p-10">
+        <div class="h-[350px] mb-10 p-10 cursor-pointer" @click="router.push('/wave-summer-xeweul')">
           <div class="uppercase font-bold text-4xl">Wave in the game</div>
           <div class="uppercase text-gray-400">summer xeweul</div>
           <div class="uppercase text-gray-500">jeu vidéo, UX/UI, Développement</div>
