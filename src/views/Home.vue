@@ -42,7 +42,7 @@ const animateReverseMarquee = (marquee)=>{
 
 <template> 
 
-  <div id="main-content"> 
+  <div id="main-content" class=""> 
 
       <BriefCTA></BriefCTA>
 
@@ -111,11 +111,7 @@ const animateReverseMarquee = (marquee)=>{
         </div>
       </div>
 
-      <Clients></Clients>
-
-      <!-- <Testimonials></Testimonials> -->
-
-      
+      <Clients></Clients> 
 
       <div class="container mx-auto relative pt-20 pb-14"> 
  
@@ -131,9 +127,9 @@ const animateReverseMarquee = (marquee)=>{
           
           <h1 class="font-['PP_Neue_Machina_Plain'] text-gray-300 lg:text-8xl font-bold uppercase">nos derniers <span class="font-['PP_Neue_Machina_Plain'] text-black">pépites</span></h1>
 
-       </div>
+      </div>
 
-       <div class="container mx-auto border">
+      <div class="container mx-auto border" v-if="false">
         <div class="h-[350px] mb-10 p-10 cursor-pointer" @click="router.push('/wave-summer-xeweul')">
           <div class="uppercase font-bold text-4xl">Wave in the game</div>
           <div class="uppercase text-gray-400">summer xeweul</div>
@@ -187,7 +183,6 @@ const animateReverseMarquee = (marquee)=>{
           </div>
         </div>
       </div>
-
 
       <Footer></Footer> 
 

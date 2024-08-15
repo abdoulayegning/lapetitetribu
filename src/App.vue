@@ -31,14 +31,14 @@ onMounted(()=>{
       window.open('mailto:abdoulaye@lapetitetribu.co');
     })
 
-    topbar.value.scrollToWork.addEventListener('click', ()=>{
-      const work = document.getElementById('work')
-      if(work){
-        lenis.scrollTo(work, {duration: 4})
-      } else {
-        router.push('/')
-      }
-    })
+    // topbar.value.scrollToWork.addEventListener('click', ()=>{
+    //   const work = document.getElementById('work')
+    //   if(work){
+    //     lenis.scrollTo(work, {duration: 4})
+    //   } else {
+    //     router.push('/')
+    //   }
+    // })
     
     // router.beforeEach((to, from)=>{
     //   console.log(from.name)

@@ -2,13 +2,13 @@
     
     <div class="text-center relative flex justify-center items-center flex-col pt-32 pb-24">
         <div ref="logotype" class="text-[9.5vw] font-['PP_Monument_Extended']" v-html="Splitting.html({content: 'la petite tribu', by: 'chars'})"></div>
-        <div ref="about" class="lg:w-[60%] text-2xl lg:p-0 pl-6 pr-6">
+        <div ref="about" class="lg:w-[60%] lg:text-2xl lg:p-0 pl-6 pr-6">
             <div class="opacity-0"><span class="font-bold">Studio digital</span> basé à Dakar, Sénégal. </div> 
             <div class="opacity-0">Nous créons des <span class="font-bold">expériences digitales interactives</span></div>
             <div class="opacity-0">pour les marques ambitieuses, <span class="underline">innovantes</span> et surtout <span class="italic font-['Benton_Italic_Regular']">audacieuses</span> !</div>
         </div>
     </div>
-    <div ref="popups" class="w-full font-['DM_Sans'] uppercase lg:text-2xl text-base lg:absolute lg:top-0 left-0 lg:h-screen lg:block hidden grid-cols-3">
+    <div ref="popups" class="w-full font-['DM_Sans'] uppercase lg:text-xl text-base lg:absolute lg:top-8 left-0 lg:h-screen lg:block hidden grid-cols-3">
         <div class="lg:absolute border border-[#ff2390] bg-[#ffe1f0] text-[#ff2390] top-20 left-28 rounded-xl pl-3 pr-3 pt-1 pb-1 lg:rotate-6">ui/ux</div>
         <div class="lg:absolute border border-[#234bff] bg-[#e1e6ff] text-[#234bff] top-1/2 right-4 rounded-xl pl-3 pr-3 pt-1 pb-1 lg:rotate-6">site internet</div>
         <div class="lg:absolute border border-[#ff8623] bg-[#ffe1c9] text-[#ff8623] top-1/2 left-2 rounded-xl pl-3 pr-3 pt-1 pb-1 lg:-rotate-6">realité virtuelle</div>
