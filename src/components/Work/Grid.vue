@@ -72,8 +72,7 @@ const OnLeaveWrapper = (e)=>{
 onUpdated(()=>{
     for (let i = 0; i < renderedProjects.value.children.length; i++) {
         const element = renderedProjects.value.children[i];
-        console.log(renderedProjects.value)
-         gsap.to(element, {filter: 'grayscale(0%)'})
+        gsap.to(element, {filter: 'grayscale(0%)'})
     }
 })
 

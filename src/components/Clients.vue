@@ -43,8 +43,7 @@ onMounted(()=>{
         rainbow.fromTo(el, {color: 'pink'}, {color: 'black'}, (i/10) + 0.45)  
     } 
 
-    console.log(rainbowText.value.children[0].children[0].children)
-})
+ })
 </script>
 
 <template>
