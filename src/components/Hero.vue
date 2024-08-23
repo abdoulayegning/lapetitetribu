@@ -2,7 +2,7 @@
     
     <div class="text-center relative flex justify-center items-center flex-col pt-32 pb-24">
         <div ref="logotype" class="text-[9.5vw] font-['PP_Monument_Extended']" v-html="Splitting.html({content: 'la petite tribu', by: 'chars'})"></div>
-        <div ref="about" class="lg:w-[60%] lg:text-2xl lg:p-0 pl-6 pr-6">
+        <div ref="about" class="lg:w-[60%] lg:text-xl lg:p-0 pl-6 pr-6">
             <!-- <div class="opacity-0"><span class="font-bold">Studio digital</span> basé à Dakar, Sénégal. </div>  -->
             <div class="opacity-0">Des <span class="font-bold">expériences digitales interactives</span></div>
             <div class="opacity-0">pour des marques ambitieuses, <span class="underline">innovantes</span> et surtout <span class="italic font-['Benton_Italic_Regular']">audacieuses</span> !</div>

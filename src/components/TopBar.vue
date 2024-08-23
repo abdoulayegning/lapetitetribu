@@ -18,7 +18,7 @@
 
 <style scoped>
 .menu-btn {
-@apply cursor-pointer backdrop-blur-sm text-base bg-[#08ff08] text-black rounded-xl -rotate-2 pt-2 pb-1 pr-[15px] pl-[15px];
+@apply cursor-pointer backdrop-blur-sm text-base bg-[#08ff08] text-black rounded-none -rotate-2 pt-2 pb-1 pr-[15px] pl-[15px];
 }
 </style>
 
