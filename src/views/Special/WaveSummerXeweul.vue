@@ -85,5 +85,9 @@
             <img src="/wave-summer-xeweul/bundle.png" alt="">
         </div>
 
+        <div class="mt-16">
+            <img src="/wave-summer-xeweul/typo.png" alt="">
+        </div>
+
     </div>
 </template>
