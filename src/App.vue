@@ -64,12 +64,11 @@ onMounted(()=>{
     <h1 class="leading-none">Vous avez un projet ?</h1>
   </div>
 
-  <div class="text-[#08ff08] cursor-pointer uppercase rounded-full bottom-5 left-5 -rotate-2 text-xs bg-black pl-6 pr-6 pt-2 pb-2 fixed z-10 flex gap-2 items-center justify-center">
+  <!--div class="text-[#08ff08] cursor-pointer uppercase rounded-full bottom-5 left-5 -rotate-2 text-xs bg-black pl-6 pr-6 pt-2 pb-2 fixed z-10 flex gap-2 items-center justify-center">
     <span class="material-symbols-outlined text-xs">arrow_right_alt</span>
     <div>nos savoir-faire</div>
     <span class="material-symbols-outlined text-xs">arrow_left_alt</span>
-    <!-- <div class="w-2 h-2 bg-[#08ff08] rounded-full"></div>  -->
-  </div>
+  </div-->
 
   <TopBar ref="topbar"></TopBar>  
   <router-view></router-view> 

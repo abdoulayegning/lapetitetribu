@@ -129,12 +129,13 @@ const animateReverseMarquee = (marquee)=>{
 
       </div>
 
-      <div class="container mx-auto border" v-if="false">
-        <div class="h-[350px] mb-10 p-10 cursor-pointer" @click="router.push('/wave-summer-xeweul')">
-          <div class="uppercase font-bold text-4xl">Wave in the game</div>
-          <div class="uppercase text-gray-400">summer xeweul</div>
-          <div class="uppercase text-gray-500">jeu vidéo, UX/UI, Développement</div>
+      <div class="container mx-auto " v-if="false">
+        <div class="h-[350px] mb-10 cursor-pointer border" @click="router.push('/wave-summer-xeweul')">
+          <img class="w-full h-full object-cover" src="/wave-summer-xeweul/bg.jpg" alt="">
         </div>
+        <div class="uppercase font-bold text-4xl">Wave in the game</div>
+        <div class="uppercase text-gray-400">summer xeweul - édition 2024</div>
+        <div class="uppercase text-gray-500">jeu vidéo, UX/UI, Développement</div>
       </div>
        
       <Grid></Grid>

@@ -13,8 +13,7 @@
             </div>
             <div>
                 <div class="text-gray-400 font-['PP_Neue_Machina_Plain'] uppercase text-xs">Rôles</div>
-                <div>Conception de jeu</div>
-                <div>UX/UI</div>
+                <div>Conception de jeu & UX/UI</div>
                 <div>Direction artistique & créative</div>
                 <div>Prototype & Développement</div> 
                 <div>Déploiement</div>
@@ -51,25 +50,40 @@
             <img src="/wave-summer-xeweul/screenshot-4.png" alt="">
         </div>
 
-        <p class="mt-8 w-full text-center pl-32 pr-32 text-3xl font-['DM_Sans'] mb-10">
-            L’une des entreprises leader du secteur du mobile money Wave Mobile Money voudrait déployer un « advergame » en ligne dans le but d’accroître la capitale sympathie et d'améliorer encore plus le trafic digital.
-        </p>
+        <div class="mt-16 grid grid-cols-3 gap-4 font-['DM_Sans']">
+            <img src="/wave-summer-xeweul/mobile-src-1.jpg" alt="">
+            <img src="/wave-summer-xeweul/mobile-src-2.jpg" alt="">
+            <img src="/wave-summer-xeweul/mobile-src-3.jpg" alt="">
+        </div>
 
-        <div class="grid lg:grid-cols-3 font-['DM_Sans'] text-center">
+        <div class="text-4xl font-bold mt-20 text-center font-['DM_Sans']">Quelques chiffres...</div>
+
+        <div class="mt-16 grid lg:grid-cols-4 font-['DM_Sans'] text-center">
             <div>
                 <div class="">Nombre de joueurs</div>
-                <div class="text-5xl font-bold mt-3">+2000</div>
+                <div class="text-4xl font-bold mt-3">+2000</div>
             </div>
             <div>
                 <div class="">Durée d'engagement</div>
-                <div class="text-5xl font-bold mt-3">5 à 10 minutes</div>
+                <div class="text-4xl font-bold mt-3">5 à 10 minutes</div>
             </div>
             <div>
                 <div class="">Utilisateurs actifs par minute</div>
-                <div class="text-5xl font-bold mt-3">+10</div>
+                <div class="text-4xl font-bold mt-3">+10</div>
+            </div> 
+            <div>
+                <div class="">Utilisateurs sur mobile</div>
+                <div class="text-4xl font-bold mt-3">+95%</div>
             </div> 
         </div>
 
+        <p class="mt-8 w-full text-center pl-32 pr-32 font-['DM_Sans'] mb-10">
+            Un fort engagement a été noté par la communauté <u>Instagram</u> de Wave.
+        </p>
+
+        <div class="mt-16">
+            <img src="/wave-summer-xeweul/bundle.png" alt="">
+        </div>
 
     </div>
 </template>
