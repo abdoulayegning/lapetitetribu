@@ -85,9 +85,20 @@
             <img src="/wave-summer-xeweul/bundle.png" alt="">
         </div>
 
-        <div class="mt-16">
-            <img src="/wave-summer-xeweul/typo.png" alt="">
+        <div class="grid lg:grid-cols-2 font-['DM_Sans']">
+            <div class="">
+                <h4 class="underline text-center mb-7">Typographie</h4>
+                <img src="/wave-summer-xeweul/typo.png" alt="">
+            </div> 
+            <div>
+                <h4 class="underline text-center mb-7">Palette</h4>
+                <Palette :colors="['#6FC3F1', '#5352D6', '#CAEAFD', '#F5E398', '#4549D4']"></Palette>
+            </div>
         </div>
 
     </div>
 </template>
+
+<script setup>
+import Palette from '../../components/Palette.vue'
+</script>

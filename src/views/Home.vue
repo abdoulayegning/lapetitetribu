@@ -9,12 +9,32 @@ import BriefCTA from '../components/BriefCTA.vue'
 import Testimonials from '../components/Testimonials.vue';
 import Clients from '../components/Clients.vue';
 import {useRouter} from 'vue-router'
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+
 let idx = 0
 const router = useRouter()
 const marquee1 = ref(null)
 const marquee2 = ref(null)
 const marqueeCount = ref([0,1,2,3,4,5,0,1,2,3,4,5])
 const wordingList = ['ambitieuses', 'audacieuses', 'innovantes']
+const services = ref(null)
+
+import { createClient } from 'contentful'
+
+const client = createClient({
+    space: import.meta.env.VITE_CONTENTFUL_SPACE_ID,
+    accessToken: import.meta.env.VITE_CONTENTFUL_API_KEY //Only published !!!
+    //Preview : yaKRL3ryC8Pr9YLZiDE_tD3L5zGB6CBYxXZzgQkbaLY
+})
+
+onBeforeMount(()=>{
+  client.getEntries({
+        content_type: 'service', 
+    })
+    .then((entries)=>{
+        services.value = entries.items
+    })
+})
 
 onMounted(()=>{
     const stars = document.querySelectorAll('.shining-star')
@@ -181,6 +201,26 @@ const animateReverseMarquee = (marquee)=>{
               <li>gamification</li>
               <li>webgl</li>
             </ul>
+          </div>
+        </div>
+      </div>
+
+<!-- lg:h-[360px] -->
+      <div v-if="false" v-for="service in services" :style="`background-color:` + service.fields.backgroundColor + `; color: ` + service.fields.textColor +`;`" class='bg-red-500 pt-16 pb-16 lg:h-[30em]'> 
+        <div class="container mx-auto">
+          <div class="flex">
+            <div class="lg:w-[70%]">
+              <div class="font-['PP_Monument_Extended'] font-bold text-5xl w-1/2">{{service.fields.title}}</div>
+              <div class="grid lg:grid-cols-2 gap-10 mt-6">
+                <div class="font-['DM_Sans'] pt-4 text-xl leading-tight" v-html="documentToHtmlString(service.fields.description)"></div>
+                <div class="p-4 text-xs font-['DM_Sans']">
+                  <div v-for="item in service.fields.list">{{item}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="lg:w-[30%]"> 
+              <video class="w-full h-full object-cover rounded-md" src="../assets/interactive.mp4"></video>
+            </div>
           </div>
         </div>
       </div>

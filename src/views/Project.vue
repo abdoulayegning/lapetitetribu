@@ -54,15 +54,18 @@ import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const RenderAsset = (node)=>{
+    
     const title = node.data.target.fields.title
     const type = node.data.target.fields.file.contentType
     const url = node.data.target.fields.file.url
+
     if (type == "image/jpeg" || type == "image/png" || type == "image/webp" || type == "image/gif") {
-        return `<img class="mb-20 mt-20" src="` + url + `" alt="` + title + `">`
+        return `<img class="mb-20 mt-20 w-full" src="` + url + `" alt="` + title + `">`
     } else if (type == "video/mp4" || type == "video/webm") {
         // return `<video src="` + url + `" alt="` + title + `">`
-        return `<video class="mb-20 mt-20" muted autoplay loop playsinline disablePictureInPicture controlsList="nodownload"><source src="` + url + `" type="video/mp4"></video>`
+        return `<video style="clip-path: inset(1px)" class="mb-20 mt-20" muted autoplay loop playsinline disablePictureInPicture controlsList="nodownload"><source src="` + url + `" type="video/mp4"></video>`
     }
+
 }
 
 const options = {
