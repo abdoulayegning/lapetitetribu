@@ -5,7 +5,7 @@ const resend = new Resend(import.meta.env.VITE_RESEND_API_KEY);
 export async function SendMessage () {
 
   const { data, error } = await resend.emails.send({
-    from: 'Acme <onboarding@resend.dev>',
+    from: 'Laye Gning <layegning@gmail.com>',
     to: ['abdoulaye@lapetitetribu.co'],
     subject: 'Hello World',
     html: '<strong>It works!</strong>',
