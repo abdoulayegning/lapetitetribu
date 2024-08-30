@@ -24,6 +24,7 @@
     "keen-slider": "^6.8.6",
     "mailersend": "^2.2.0",
     "moment-timezone": "^0.5.45",
+    "resend": "^4.0.0",
     "split-type": "^0.3.3",
     "splitting": "^1.0.6",
     "three": "^0.134.0",
