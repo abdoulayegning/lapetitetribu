@@ -1,11 +1,18 @@
 <template>
-    <div>
-        <button @click="SendMessage">send email</button>
+    <div class="mt-20">
+        <form action="https://submit-form.com/gSsFqdNRj">
+            <input
+                type="hidden"
+                name="_redirect"
+                value="https://lapetitetribu.co/"
+            />
+            <input type="email" name="email" />
+            <button type="submit">Subscribe</button>
+        </form>
     </div>
 </template>
 
 <script setup>
 import { useRouter } from 'vue-router';
-import { SendMessage } from '../js/email'
-const router = useRouter()
+ const router = useRouter()
 </script>

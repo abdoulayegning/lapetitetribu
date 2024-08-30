@@ -17,8 +17,6 @@ gsap.registerPlugin(ScrollTrigger)
 
 onMounted(()=>{
 
-    console.log(import.meta.env.VITE_RESEND_API_KEY)
-
     const lenis = new Lenis()
     
     lenis.on('scroll', ScrollTrigger.update)
