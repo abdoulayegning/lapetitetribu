@@ -102,9 +102,19 @@ const SendBriefToDatabase = async ()=>{
 
     if(name.value.value !== '' && company.value.value !== '' && email.value.value !== '' && budget.value.value !== '' && phone.value.value !== '' && services.value.value !== '' && companySize.value.value !== '' && description.value.value !== '' && deadline.value.value !== ''){
         
+        const date = new Date()
+        // calling a constructor, can use other methods to extract info from returned value
+
+        let day = date.getDate()
+        let month = date.getMonth() + 1
+        let year = date.getFullYear()
+
+        let fullDate = `${month}-${day}-${year}`
+ 
         //Get the data
         let data = 
         {
+            date: fullDate,
             name: name.value.value, 
             company: company.value.value,
             email: email.value.value,
@@ -121,10 +131,9 @@ const SendBriefToDatabase = async ()=>{
 
         // add the document with a random uid
         try {
-        const docRef = await addDoc(collection(firestore, "briefs"), data).then(()=>{
-
-        })
-        // console.log("Document written with ID: ", docRef.id);
+            const docRef = await addDoc(collection(firestore, "briefs"), data)
+            .then(()=>{})
+            // console.log("Document written with ID: ", docRef.id);
         } 
         
         //Check for error if applicable

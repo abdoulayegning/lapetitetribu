@@ -5,6 +5,7 @@ import Hero from '../components/Hero.vue';
 import Grid from '../components/Work/Grid.vue' 
 import Footer from '../components/Footer.vue';
 import Services from '../components/Services.vue';
+import DeckCTA from '../components/DeckCTA.vue'
 import BriefCTA from '../components/BriefCTA.vue'
 import Testimonials from '../components/Testimonials.vue';
 import Clients from '../components/Clients.vue';
@@ -64,7 +65,9 @@ const animateReverseMarquee = (marquee)=>{
 
   <div id="main-content" class=""> 
 
-      <BriefCTA></BriefCTA>
+      <!-- <BriefCTA></BriefCTA> -->
+
+      <DeckCTA></DeckCTA>
 
       <Hero></Hero> 
 
@@ -167,7 +170,7 @@ const animateReverseMarquee = (marquee)=>{
           </div>
       </div>
 
-      <div class="container mx-auto">
+      <div v-if="false" class="container mx-auto">
         <div class="flex flex-col lg:flex-row gap-5 text-center lg:text-left uppercase">
           <div class="lg:w-1/3 lg:pr-5 lg:pl-5">
             <h1 class="text-2xl font-bold mb-3">développement <br>web / ux & UI</h1>
@@ -206,22 +209,28 @@ const animateReverseMarquee = (marquee)=>{
       </div>
 
 <!-- lg:h-[360px] -->
-      <div v-if="false" v-for="service in services" :style="`background-color:` + service.fields.backgroundColor + `; color: ` + service.fields.textColor +`;`" class='bg-red-500 pt-16 pb-16 lg:h-[30em]'> 
+      <div v-if="true" v-for="service in services" :style="`background-color:` + service.fields.backgroundColor + `; color: ` + service.fields.textColor +`;`" class='bg-red-500 pt-16 pb-16'> 
         <div class="container mx-auto">
-          <div class="flex">
-            <div class="lg:w-[70%]">
-              <div class="font-['PP_Monument_Extended'] font-bold text-5xl w-1/2">{{service.fields.title}}</div>
-              <div class="grid lg:grid-cols-2 gap-10 mt-6">
-                <div class="font-['DM_Sans'] pt-4 text-xl leading-tight" v-html="documentToHtmlString(service.fields.description)"></div>
-                <div class="p-4 text-xs font-['DM_Sans']">
+
+          <div class="flex lg:flex-row flex-col pb-10 lg:gap-0 gap-5">
+
+            <div class="lg:w-[70%] border-red-700">
+              <div class="font-['PP_Monument_Extended'] font-bold text-2xl lg:text-5xl">{{service.fields.title}}</div>
+              <div class="grid lg:grid-cols-2 lg:gap-10 gap-3 mt-6">
+                <div class="font-['DM_Sans'] lg:pt-4 lg:text-2xl leading-tight" v-html="documentToHtmlString(service.fields.description)"></div>
+                <div class="lg:p-4 lg:text-xl text-xs uppercase text-gray-500">
                   <div v-for="item in service.fields.list">{{item}}</div>
                 </div>
               </div>
             </div>
-            <div class="lg:w-[30%]"> 
-              <video class="w-full h-full object-cover rounded-md" src="../assets/interactive.mp4"></video>
+
+            <div class="lg:w-[30%] border-red-700"> 
+              <img class="lg:w-72 w-full mx-auto" :src="service.fields.image.fields.file.url" alt="">
+               <!-- <video muted autoplay loop class="w-full h-full object-cover rounded-md" src="../assets/interactive.mp4"></video> -->
             </div>
+
           </div>
+
         </div>
       </div>
 

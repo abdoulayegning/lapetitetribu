@@ -16,6 +16,7 @@ const topbar = ref(null)
 gsap.registerPlugin(ScrollTrigger)
 
 onMounted(()=>{
+ 
 
     const lenis = new Lenis()
     
