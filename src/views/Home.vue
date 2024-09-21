@@ -152,7 +152,7 @@ const animateReverseMarquee = (marquee)=>{
 
       </div>
 
-      <div class="container mx-auto " v-if="false">
+      <div class="container mx-auto " v-if="true">
         <div class="h-[350px] mb-10 cursor-pointer border" @click="router.push('/wave-summer-xeweul')">
           <img class="w-full h-full object-cover" src="/wave-summer-xeweul/bg.jpg" alt="">
         </div>
@@ -217,7 +217,7 @@ const animateReverseMarquee = (marquee)=>{
             <div class="lg:w-[70%] border-red-700">
               <div class="font-['PP_Monument_Extended'] font-bold text-2xl lg:text-5xl">{{service.fields.title}}</div>
               <div class="grid lg:grid-cols-2 lg:gap-10 gap-3 mt-6">
-                <div class="font-['DM_Sans'] lg:pt-4 lg:text-2xl leading-tight" v-html="documentToHtmlString(service.fields.description)"></div>
+                <div class="font-['DM_Sans'] lg:pt-4 lg:text-xl leading-tight" v-html="documentToHtmlString(service.fields.description)"></div>
                 <div class="lg:p-4 lg:text-xl text-xs uppercase text-gray-500">
                   <div v-for="item in service.fields.list">{{item}}</div>
                 </div>

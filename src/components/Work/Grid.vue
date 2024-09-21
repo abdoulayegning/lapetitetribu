@@ -60,8 +60,7 @@ const go_to = (path)=>{
     }
 }
 
-const OnHoverWrapper = (e)=>{
-    console.log(e.target)
+const OnHoverWrapper = (e)=>{ 
     gsap.to(e.target, {scale: 0.95, ease: 'expo.out', y: -10})
 }
     
