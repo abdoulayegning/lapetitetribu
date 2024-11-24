@@ -53,7 +53,8 @@ onMounted(()=>{
                 <!-- Laissez libre cours à votre imagination et décrivez-nous votre vision. Plus vous serez audacieux dans vos descriptions, plus nous pourrons vous surprendre avec des solutions innovantes et hors du commun. -->
                 Nous sommes impatients de vous avoir comme partenaire et de collaborer avec vous pour créer quelque chose de vraiment <span ref="rainbowText" v-html="Splitting.html({content:`authentique`, by:'chars'})"></span>. 🚀✨
             </p>
-            <div ref="button" @pointerleave="onLeave" @pointerenter="onEnter" @click="goto('/brief')" 
+            
+            <div v-if="false" ref="button" @pointerleave="onLeave" @pointerenter="onEnter" @click="goto('/brief')" 
             class="flex lg:hidden justify-center items-center gap-2 cursor-pointer uppercase tracking-wider text-base rotate-0 bg-[#08ff08] pl-5 pr-5 pt-2 pb-2 rounded-full mt-5">
                 <div class="w-4">
                     <svg ref="star" class="w-full" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,6 +65,7 @@ onMounted(()=>{
                     Un projet ? <span class="underline">Cliquez ici !</span>
                 </div>
             </div>
+
         </div>
         <div class="grid grid-cols-3 lg:grid-cols-7 justify-items-end">
             <img v-for="client in clients" class="invert justify-items-center" :src="client.url" alt="">

@@ -1,6 +1,6 @@
 <template>
     <!-- bg-[rgba(0,0,0,0.75)] -->
-    <div ref="dialog" class="fixed z-[1200] top-0 left-0 w-full h-full font-['DM_Sans'] hidden justify-center items-center">
+    <div ref="dialog" id="dialog-wrapper" class="fixed z-[1200] top-0 left-0 w-full h-full font-['DM_Sans'] hidden justify-center items-center">
 
         <div class="bg-[#AAFF1F] rounded-[10px] flex flex-col gap-5 justify-center items-center p-16 lg:w-[50vw] text-center">
             <div class="w-72"><img class="w-full" src="/deck-cta.png" alt=""></div>
@@ -17,7 +17,7 @@
 
     </div>
 
-    <div ref="deck" class="font-['DM_Sans'] bg-white rounded-[12px] lg:hidden hidden flex-col justify-center items-center w-72 p-6 fixed z-[1000] bottom-6 right-6">
+    <div ref="deck" id="deck-wrapper" class="font-['DM_Sans'] bg-white rounded-[12px] lg:hidden hidden flex-col justify-center items-center w-72 p-6 fixed z-[1000] bottom-6 right-6">
        
         <!-- Image CTA -->
         <div class="w-full p-5"><img class="w-full" src="/deck-cta.png" alt=""></div>
@@ -62,7 +62,7 @@ const closeCTA = ()=>{
 const openDialog = ()=>{
     let target = deck.value
     gsap.to(target, {rotate: 80, x: window.innerWidth/4, ease:'expo.in', duration: .85, 
-    
+
         onComplete: ()=>{
             target.style.display = 'none'
             gsap.fromTo(dialog.value, {y: window.innerHeight}, {y: 0, ease: 'expo.out', duration: 1.3, onStart:()=>{dialog.value.style.display = 'flex'}})
@@ -73,7 +73,7 @@ const openDialog = ()=>{
         },
 
     })
- }
+}
 
 onMounted(()=>{
 

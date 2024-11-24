@@ -44,22 +44,32 @@
     </div>
     <div class="">
         <div class="container mx-auto pt-0 pb-24">
-    
-            <div class="flex flex-col lg:flex-row lg:gap-0 gap-5 uppercase text-base w-full pt-12">
-                
-                <div class="text-center lg:text-left lg:w-[25%]"> 
-                    <div class="text-gray-300">télécharger notre deck</div>
-                    <div class="">bientôt disponible !</div>
+
+            <div class="flex w-full border-black flex-col lg:flex-row gap-10 lg:mb-14 mb-2">
+                 <!-- Button CTA -->
+                 <div class="lg:w-1/2"><img class="w-full mx-auto" src="/deck-cta.png" alt=""></div>
+
+                <div class="uppercase flex justify-center items-center text-center flex-col lg:w-1/2">
+                    <div class="text-base mb-4">Découvrez nos savoir-faire !</div>
+                    <div class="text-xl text-gray-400 mb-4">Téléchargez gratuitement notre présentation pour avoir un aperçu de notre vision et de nos projets !</div>
+                    <button @click="openDialog" class="uppercase text-center bg-[#AAFF1F] pb-3 pt-3 pr-6 pl-6 rounded-[10px] mb-3 flex gap-4">
+                       <img class="w-4" src="/download.svg" alt="">
+                       Télécharger le deck
+                    </button>
                 </div>
+
+            </div>
     
-                <div class="flex gap-8 flex-row justify-center lg:w-[80%]"> 
+            <div class="flex flex-col lg:flex-row lg:gap-0 gap-9 uppercase text-base w-full pt-12"> 
+    
+                <div class="flex gap-8 lg:flex-row flex-col lg:text-left text-center justify-start lg:w-[50%]"> 
                         <div @click="openURL('https://instagram.com/lapetitetribu.co')" class="underline">instagram</div>
                         <div @click="openURL('https://www.linkedin.com/company/11048102/')" class="underline">linkedin</div>
                         <div @click="openURL('https://vimeo.com/lapetitetribu')" class="underline">vimeo</div> 
                         <div @click="openURL('https://instagram/lapetitetribu.co')" class="underline">EMAIL</div> 
                 </div>
     
-                <div class="lg:text-right text-center lg:w-[15%]">© {{ new Date().getFullYear() }}</div>
+                <div class="lg:text-right text-center lg:w-[50%]">© {{ new Date().getFullYear() }}</div>
     
             </div>
         </div> 
@@ -67,6 +77,27 @@
 </template>
 
 <script setup>
+import { addNewDeckDownload } from '../js/firebase'
+import gsap from 'gsap';
+
+const openDialog = ()=>{
+    let target = document.getElementById('deck-wrapper')
+    gsap.to(target, {rotate: 80, x: window.innerWidth/4, ease:'expo.in', duration: .85, 
+
+        onComplete: ()=>{
+            target.style.display = 'none'
+            gsap.fromTo(document.getElementById('dialog-wrapper'), {y: window.innerHeight}, {y: 0, ease: 'expo.out', duration: 1.3, onStart:()=>{
+                document.getElementById('dialog-wrapper').style.display = 'flex'
+            }})
+        },
+        
+        onStart: ()=>{
+            // target.style.display = 'none'
+        },
+
+    })
+}
+
 const openURL = (url)=>{
     window.open(url)
 }
