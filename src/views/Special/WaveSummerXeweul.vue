@@ -27,15 +27,16 @@
         
          
         
-        <div class="mt-24">
-            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1034507359?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="La Petite Tribu x Wave Sénégal - Summer Xeweul 2024 - Case Study"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-        </div>
-
-        <div class="text-3xl text-center font-['DM_Sans'] font-bold">Mécaniques inspirées d’un classique</div>
+        
+        <div class="text-3xl text-center font-['DM_Sans'] font-bold mt-10">Mécaniques inspirées d’un classique</div>
         <div class="mt-8 mb-24 text-xl text-center font-['DM_Sans'] font-medium">
             Garder les mécaniques de Tetris sur la logique de la construction tout en faisant le rappel du nom de la marque.
             Le joueur a pour but d'écrire le mot « Wave » à l’horizontal, ce qui fait monter au niveau supérieur et pour corser l'expérience la vitesse du jeu s'accélérate au fil des niveaux.
         </div> 
+
+        <div class="mt-24">
+            <div v-html="embed" style="padding:56.25% 0 0 0;position:relative;"></div>
+        </div>
 
         <div class="mt-10 mb-10">
             <img src="/wave-summer-xeweul/screenshot-1.png" alt="">
@@ -64,7 +65,7 @@
         <div class="mt-16 grid lg:grid-cols-4 font-['DM_Sans'] text-center">
             <div>
                 <div class="">Nombre de joueurs</div>
-                <div class="text-4xl font-bold mt-3">+2000</div>
+                <div class="text-4xl font-bold mt-3">+5000</div>
             </div>
             <div>
                 <div class="">Durée d'engagement</div>
@@ -84,7 +85,7 @@
             Un fort engagement a été noté par la communauté <u>Instagram</u> de Wave.
         </p>
 
-        <div class="mt-16">
+        <!-- <div class="mt-16">
             <img src="/wave-summer-xeweul/bundle.png" alt="">
         </div>
 
@@ -97,11 +98,13 @@
                 <h4 class="underline text-center mb-7">Palette</h4>
                 <Palette :colors="['#6FC3F1', '#5352D6', '#CAEAFD', '#F5E398', '#4549D4']"></Palette>
             </div>
-        </div>
+        </div> -->
 
     </div>
 </template>
 
 <script setup>
 import Palette from '../../components/Palette.vue'
+import 'https://player.vimeo.com/api/player.js'
+const embed = `<iframe src="https://player.vimeo.com/video/1034507359?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="La Petite Tribu x Wave Sénégal - Summer Xeweul 2024 - Case Study"></iframe>`
 </script>
