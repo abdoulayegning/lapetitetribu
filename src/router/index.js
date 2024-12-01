@@ -6,6 +6,8 @@ const routes = [
     {path: '/work', component: () => import('../views/Work.vue'), name: 'Work'}, 
     {path: '/:slug', component: () => import('../views/Project.vue'), name: 'Project'},  
     {path: '/brief', component: () => import('../views/Brief.vue'), name: 'Brief'},
+    {path: '/crm/login', component: () => import('../views/CRM/Login.vue'), name: 'Login'},
+    {path: '/crm/deck', component: () => import('../views/CRM/Deck.vue'), name: 'Deck'},
     {path: '/contact', component: () => import('../views/Contact.vue'), name: 'Contact'},
     {path: '/:pathMatch(.*)*', component:  () => import('../views/NotFound.vue'), name: 'NotFound'}, 
     //Special Projects

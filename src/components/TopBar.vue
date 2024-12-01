@@ -2,7 +2,7 @@
 
     <div class="fixed w-[85%] pr-12 pl-12 uppercase left-1/2 -translate-x-1/2 mt-1 z-[800] flex lg:justify-between justify-center items-center pt-4 pb-4 text-black gap-5">
         <div class="font-['PP_Monument_Extended'] lowercase cursor-pointer" @click="router.push('/')">la petite tribu</div>
-        <div class="menu-btn" ref="deckDownloadButton" @click="OpenMenu">
+        <div class="menu-btn hidden" ref="deckDownloadButton" @click="OpenMenu">
           <span class="material-symbols-outlined">menu</span>
         </div>
     </div>
