@@ -35,7 +35,8 @@
         </div> 
 
         <div class="mt-24">
-            <div v-html="embed" style="padding:56.25% 0 0 0;position:relative;"></div>
+            <!-- <div v-html="embed" style="padding:56.25% 0 0 0;position:relative;"></div> -->
+             <video controls muted autoplay loop src="/wave-summer-xeweul/wave-summer-xeweul-case-study.mp4"></video>
         </div>
 
         <div class="mt-10 mb-10">
