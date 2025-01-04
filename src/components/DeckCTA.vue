@@ -1,5 +1,6 @@
 <template>
     <!-- bg-[rgba(0,0,0,0.75)] -->
+
     <div ref="dialog" id="dialog-wrapper" class="fixed z-[1200] top-0 left-0 w-full h-full font-['DM_Sans'] hidden justify-center items-center">
 
         <div class="bg-[#AAFF1F] rounded-[10px] flex flex-col gap-5 justify-center items-center p-16 lg:w-[50vw] text-center">
@@ -23,15 +24,17 @@
         <div class="w-full p-5"><img class="w-full" src="/deck-cta.png" alt=""></div>
        
         <!-- Button CTA -->
+        <div class="mb-1">Découvrez nos savoir-faire !</div>
+
         <div class="bg-[#AAFF1F] flex gap-3 pb-3 pt-3 pr-6 pl-6 rounded-[10px] mb-3">
             <div><img class="w-4" src="/download.svg" alt=""></div>
             <button @click="openDialog">Télécharger le deck</button>
         </div>
 
-        <div>Découvrez nos savoir-faire !</div>
         <div class="text-xs text-gray-400 cursor-pointer mt-1 underline" @click="closeCTA">Peut être plus tard !</div>
 
     </div> 
+
 </template>
 
 <script setup>

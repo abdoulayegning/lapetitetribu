@@ -42,15 +42,6 @@ onMounted(()=>{
 </script>
 
 <template>
-  
-  <!-- <div ref="contactBtn" 
-  class="fixed z-[150] bottom-7 left-1/2 -translate-x-1/2 bg-red-600 text-white  hover:border hover:border-black
-  rounded-none pr-6 pl-6 pt-3 pb-3 uppercase text-xs hidden gap-2 justify-center items-center cursor-pointer">
-    <div class="w-2 h-2 bg-black rounded-full"></div>
-    <h1 class="leading-none">Vous avez un projet ?</h1>
-  </div> -->
- 
-  <TopBar ref="topbar"></TopBar>  
   <router-view></router-view> 
 </template>
 
