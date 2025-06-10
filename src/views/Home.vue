@@ -95,16 +95,13 @@ onMounted(()=>{
 
       <div class="mx-auto container border-t border-black pt-10">
         
-        <div class="">
+        <div>
   
           <div class="container mx-auto text-left leading-[7vw] text-[8vw] font-bold font-['Acid_Grotesk'] mb-10">
-              
               <h1 class="">Services</h1>
               <h1 class="">à la carte</h1>  
-    
           </div>
      
-          
           <div class="grid lg:grid-cols-3 gap-20 mt-20 mb-20">
   
             <div v-for="service in services" class="mt-4 mb-10"> 
@@ -121,6 +118,30 @@ onMounted(()=>{
           </div>
   
         </div>
+
+        <div>
+  
+          <div class="container mx-auto text-right leading-[7vw] text-[8vw] font-bold font-['Acid_Grotesk'] mb-10">
+              <h1 class="">Nos produits</h1> 
+          </div>
+     
+          <div class="grid lg:grid-cols-2 gap-20 mt-20 mb-20">
+  
+            <div class="mt-4 mb-10"> 
+      
+              <div class="text-2xl mb-4 font-['Acid_Grotesk'] font-bold">dAIrector</div>
+              <div class="leading-tight"><span class="font-medium">Craft your cinematic masterpiece !</span><br>Create, preview, mix with powerful AI models in one place !<br>Flux, Imagen 3, Ideogram, Photon and more to come...</div>
+
+              <div class="w-1/2">
+                <button class="text-xs mr-3 opacity-40"></button>
+              </div>
+       
+            </div>
+  
+          </div>
+  
+        </div>
+
       </div>
 
 
