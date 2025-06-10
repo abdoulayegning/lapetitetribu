@@ -18,7 +18,7 @@
 
     </div>
 
-    <div ref="deck" id="deck-wrapper" class="font-['DM_Sans'] bg-white rounded-[12px] lg:hidden hidden flex-col justify-center items-center w-72 p-6 fixed z-[1000] bottom-6 right-6">
+    <div ref="deck" id="deck-wrapper" class="bg-white lg:hidden hidden flex-col justify-center items-center w-60 text-xs p-6 fixed z-[1000] bottom-6 right-6">
        
         <!-- Image CTA -->
         <div class="w-full p-5"><img class="w-full" src="/deck-cta.png" alt=""></div>
@@ -26,9 +26,9 @@
         <!-- Button CTA -->
         <div class="mb-1">Découvrez nos savoir-faire !</div>
 
-        <div class="bg-[#AAFF1F] flex gap-3 pb-3 pt-3 pr-6 pl-6 rounded-[10px] mb-3">
+        <div class="bg-[#AAFF1F] flex gap-3 pb-3 pt-3 pr-6 pl-6 mb-3">
             <div><img class="w-4" src="/download.svg" alt=""></div>
-            <button @click="openDialog">Télécharger le deck</button>
+            <button class="" @click="openDialog">Télécharger le deck</button>
         </div>
 
         <div class="text-xs text-gray-400 cursor-pointer mt-1 underline" @click="closeCTA">Peut être plus tard !</div>

@@ -34,14 +34,7 @@ const OnHover = (e)=>{
         video.style.display = 'block'
         video.play()   
     }
-}
-// const OnHover = (e)=>{ 
-//     if (e.target.children[1]) {
-//         const video = e.target.children[1];
-//         video.style.display = 'block'
-//         video.play()   
-//     }
-// }
+} 
 
 const OnLeave = (e)=>{ 
     if (e.target.children[1]) {
@@ -91,10 +84,10 @@ onUpdated(()=>{
                     </video>
                 </div>
 
-                <div class="gap-1 mt-6">  
-                    <div class="uppercase font-medium">{{ p.fields.title }}</div> 
-                    <div class="uppercase font-medium text-gray-400">{{ p.fields.category }}</div> 
-                    <div class="uppercase font-medium text-gray-300">{{ p.fields.client.fields.name }}</div> 
+                <div class="gap-1 mt-6 leading-tight ">  
+                    <div class="font-medium font-['Acid_Grotesk'] uppercase text-xl ">{{ p.fields.title }}</div> 
+                    <div class="font-medium uppercase text-base text-gray-400">{{ p.fields.category }}</div> 
+                    <div class="font-medium uppercase text-base text-gray-300">{{ p.fields.client.fields.name }}</div> 
                 </div>
 
             </div>

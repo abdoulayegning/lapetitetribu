@@ -1,0 +1,91 @@
+@font-face {
+    font-family: 'Acid Grotesk Extra';
+    src: url('AcidGrotesk-ExtraLight.eot');
+    src: url('AcidGrotesk-ExtraLight.eot?#iefix') format('embedded-opentype'),
+        url('AcidGrotesk-ExtraLight.woff2') format('woff2'),
+        url('AcidGrotesk-ExtraLight.woff') format('woff'),
+        url('AcidGrotesk-ExtraLight.ttf') format('truetype'),
+        url('AcidGrotesk-ExtraLight.svg#AcidGrotesk-ExtraLight') format('svg');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acid Grotesk';
+    src: url('AcidGrotesk-Regular.eot');
+    src: url('AcidGrotesk-Regular.eot?#iefix') format('embedded-opentype'),
+        url('AcidGrotesk-Regular.woff2') format('woff2'),
+        url('AcidGrotesk-Regular.woff') format('woff'),
+        url('AcidGrotesk-Regular.ttf') format('truetype'),
+        url('AcidGrotesk-Regular.svg#AcidGrotesk-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acid Grotesk';
+    src: url('AcidGrotesk-Light.eot');
+    src: url('AcidGrotesk-Light.eot?#iefix') format('embedded-opentype'),
+        url('AcidGrotesk-Light.woff2') format('woff2'),
+        url('AcidGrotesk-Light.woff') format('woff'),
+        url('AcidGrotesk-Light.ttf') format('truetype'),
+        url('AcidGrotesk-Light.svg#AcidGrotesk-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acid Grotesk Normal';
+    src: url('AcidGrotesk-Normal.eot');
+    src: url('AcidGrotesk-Normal.eot?#iefix') format('embedded-opentype'),
+        url('AcidGrotesk-Normal.woff2') format('woff2'),
+        url('AcidGrotesk-Normal.woff') format('woff'),
+        url('AcidGrotesk-Normal.ttf') format('truetype'),
+        url('AcidGrotesk-Normal.svg#AcidGrotesk-Normal') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acid Grotesk';
+    src: url('AcidGrotesk-Thin.eot');
+    src: url('AcidGrotesk-Thin.eot?#iefix') format('embedded-opentype'),
+        url('AcidGrotesk-Thin.woff2') format('woff2'),
+        url('AcidGrotesk-Thin.woff') format('woff'),
+        url('AcidGrotesk-Thin.ttf') format('truetype'),
+        url('AcidGrotesk-Thin.svg#AcidGrotesk-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acid Grotesk';
+    src: url('AcidGrotesk-Medium.eot');
+    src: url('AcidGrotesk-Medium.eot?#iefix') format('embedded-opentype'),
+        url('AcidGrotesk-Medium.woff2') format('woff2'),
+        url('AcidGrotesk-Medium.woff') format('woff'),
+        url('AcidGrotesk-Medium.ttf') format('truetype'),
+        url('AcidGrotesk-Medium.svg#AcidGrotesk-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Acid Grotesk';
+    src: url('AcidGrotesk-Bold.eot');
+    src: url('AcidGrotesk-Bold.eot?#iefix') format('embedded-opentype'),
+        url('AcidGrotesk-Bold.woff2') format('woff2'),
+        url('AcidGrotesk-Bold.woff') format('woff'),
+        url('AcidGrotesk-Bold.ttf') format('truetype'),
+        url('AcidGrotesk-Bold.svg#AcidGrotesk-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

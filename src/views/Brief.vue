@@ -1,5 +1,7 @@
 <template>
-    <div></div>
+    <div>
+        <div><input type="text" name="" id=""></div>
+    </div>
 </template>
 
 <script setup>

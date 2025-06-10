@@ -1,0 +1,66 @@
+@font-face {
+    font-family: 'PP Radio Grotesk';
+    src: url('PPRadioGrotesk-BlackItalic.woff2') format('woff2'),
+        url('PPRadioGrotesk-BlackItalic.woff') format('woff'),
+        url('PPRadioGrotesk-BlackItalic.ttf') format('truetype'),
+        url('PPRadioGrotesk-BlackItalic.svg#PPRadioGrotesk-BlackItalic') format('svg');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PP Radio Grotesk';
+    src: url('PPRadioGrotesk-Black.woff2') format('woff2'),
+        url('PPRadioGrotesk-Black.woff') format('woff'),
+        url('PPRadioGrotesk-Black.ttf') format('truetype'),
+        url('PPRadioGrotesk-Black.svg#PPRadioGrotesk-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PP Radio Grotesk';
+    src: url('PPRadioGrotesk-Regular.woff2') format('woff2'),
+        url('PPRadioGrotesk-Regular.woff') format('woff'),
+        url('PPRadioGrotesk-Regular.ttf') format('truetype'),
+        url('PPRadioGrotesk-Regular.svg#PPRadioGrotesk-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PP Radio Grotesk';
+    src: url('PPRadioGrotesk-Ultralight.woff2') format('woff2'),
+        url('PPRadioGrotesk-Ultralight.woff') format('woff'),
+        url('PPRadioGrotesk-Ultralight.ttf') format('truetype'),
+        url('PPRadioGrotesk-Ultralight.svg#PPRadioGrotesk-Ultralight') format('svg');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PP Radio Grotesk';
+    src: url('PPRadioGrotesk-UltralightItalic.woff2') format('woff2'),
+        url('PPRadioGrotesk-UltralightItalic.woff') format('woff'),
+        url('PPRadioGrotesk-UltralightItalic.ttf') format('truetype'),
+        url('PPRadioGrotesk-UltralightItalic.svg#PPRadioGrotesk-UltralightItalic') format('svg');
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PP Radio Grotesk';
+    src: url('PPRadioGrotesk-RegularItalic.woff2') format('woff2'),
+        url('PPRadioGrotesk-RegularItalic.woff') format('woff'),
+        url('PPRadioGrotesk-RegularItalic.ttf') format('truetype'),
+        url('PPRadioGrotesk-RegularItalic.svg#PPRadioGrotesk-RegularItalic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+

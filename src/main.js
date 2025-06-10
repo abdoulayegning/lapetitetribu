@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import VueMeta from 'vue-meta';
 import { TroisJSVuePlugin } from 'troisjs';
+import VueCarousel from 'vue-carousel';
 
 
 /* Styles */
@@ -10,9 +11,12 @@ import './styles/style.css'
 import './styles/global.css'
 import './styles/layouts.css'
 
+import 'swiper/css';
+
+
+import './assets/AcidGrotesk/stylesheet.css'
+import './assets/RadioGrotesk/stylesheet.css'
 import './assets/NeueMachina/stylesheet.css'
-import './assets/Benton/stylesheet.css' 
-import './assets/Montreal/stylesheet.css' 
 import './assets/PPExtended/stylesheet.css' 
 
 
@@ -28,6 +32,6 @@ import { faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 library.add(faAsterisk, faInstagram, faLinkedinIn, faArrowUp, faChevronUp)
 
 createApp(App)
-.use(router, TroisJSVuePlugin, VueMeta)
+.use(router, TroisJSVuePlugin, VueCarousel, VueMeta)
 .component('font-awesome-icon', FontAwesomeIcon)
 .mount('#app')
