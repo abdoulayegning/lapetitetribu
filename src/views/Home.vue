@@ -50,9 +50,7 @@ onMounted(()=>{
 
 <template> 
 
-  <div id="main-content" class=""> 
-
-      <!-- <BriefCTA></BriefCTA> -->
+  <div id="main-content" class="">  
 
       <DeckCTA></DeckCTA>
 
@@ -60,12 +58,11 @@ onMounted(()=>{
 
       <Clients></Clients> 
 
-      <div class="p-20 bg-[#efefef] mt-10">
+      <div class="lg:p-20 p-6 bg-[#efefef] mt-10">
         <video class="w-full h-full rounded-none object-cover" muted autoplay loop playsinline disable-picture-in-picture="true " 
         disablePictureInPicture src="../assets/canalplus.mp4"></video>
       </div>
  
-
       <div class="container mx-auto relative pt-20 pb-14"> 
  
           <svg class="w-8 h-8 absolute right-1 shining-star" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -24,7 +24,7 @@
         </div>
  
 
-        <div ref="target" class="grid grid-cols-7">
+        <div ref="target" class="grid lg:grid-cols-7 grid-cols-3">
             <img v-for="client in clients" class="invert justify-items-center" :src="client.url" alt="">
         </div>
 
