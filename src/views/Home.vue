@@ -98,19 +98,19 @@ function openExternalLink(url) {
         
         <div>
   
-          <div class="container mx-auto text-left leading-[7vw] text-[8vw] font-bold font-['Acid_Grotesk'] mb-10">
+          <div class="container mx-auto text-left lg:leading-[7vw] lg:text-[8vw] text-6xl font-bold font-['Acid_Grotesk'] mb-10">
               <h1 class="">Services</h1>
               <h1 class="">à la carte</h1>  
           </div>
      
-          <div class="grid lg:grid-cols-3 gap-20 mt-20 mb-20">
+          <div class="grid lg:grid-cols-3 gap-20 mt-10 mb-20">
   
             <div v-for="service in services" class="mt-4 mb-10"> 
       
               <div class="text-2xl mb-4 font-['Acid_Grotesk'] font-bold">{{service.fields.title}}</div>
               <div class="leading-tight" v-html="documentToHtmlString(service.fields.description)"></div>
 
-              <div class="w-1/2">
+              <div class="lg:w-1/2">
                 <button class="text-xs mr-3 opacity-40" v-for="item in service.fields.list">#{{item}}</button>
               </div>
        
@@ -122,7 +122,7 @@ function openExternalLink(url) {
 
         <div>
   
-          <div class="container mx-auto text-right leading-[7vw] text-[8vw] font-bold font-['Acid_Grotesk'] mb-10">
+          <div class="container mx-auto text-left leading-[7vw] text-[8vw] font-bold font-['Acid_Grotesk'] mb-10">
               <h1 class="">Nos produits</h1> 
           </div>
 

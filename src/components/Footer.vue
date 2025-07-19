@@ -1,18 +1,22 @@
 <template>
    
 
-        <div class="container mx-auto pt-0 pb-10">
+        <div class="container mx-auto pt-10 pb-10">
 
             <div class="flex justify-between items-center gap-4">
-                
-                <button @click="openDialog" class="uppercase text-center rounded-[10px] mb-3 flex gap-4 items-center">
+
+                <div class="text-xs mt-5 mb-5 font-['PP_Monument_Extended'] text-center">
+                    la petite tribu
+                </div>
+                        
+                <button v-if="false" @click="openDialog" class="uppercase text-center rounded-[10px] mb-3 flex gap-4 items-center">
                     <img class="w-4" src="/download.svg" alt="">
                     Télécharger le deck
                 </button>
     
                 <!-- <div ref="logotype" class="text-3xl text-center font-['PP_Monument_Extended'] opacity-20">la petite tribu</div> -->
         
-                <div class="flex gap-8 lg:flex-row flex-col lg:text-left uppercase text-center justify-start"> 
+                <div v-if="false" class="flex gap-8 lg:flex-row flex-col lg:text-left uppercase text-center justify-start"> 
                     <div @click="openURL('https://instagram.com/lapetitetribu.co')" class="underline">instagram</div>
                     <div @click="openURL('https://www.linkedin.com/company/11048102/')" class="underline">linkedin</div>
                     <div @click="openURL('https://vimeo.com/lapetitetribu')" class="underline">vimeo</div> 
