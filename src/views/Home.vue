@@ -140,8 +140,8 @@ function openExternalLink(url) {
               <span class="lg:text-base">Create, preview, mix with powerful AI models in one place ! Flux, Imagen 3, Ideogram, Photon and more to come...</span>
               </div>
             </div>
-            
-            <!-- Image -->
+
+            <!-- Product image -->
              <div class="relative">
               <img class="absolute -top-1/2 -rotate-6 scale-110 hidden lg:block" src="/dairector-images.png" alt="">
               <img class="block p-4 rounded-lg lg:hidden" src="/dairector-thumbnail.png" alt="">
