@@ -43,6 +43,10 @@ onMounted(()=>{
       gsap.fromTo(s, {scale: 0.8}, {scale: 1.4, rotate: 360, duration: 4 + (Math.random()*10), repeat: -1, ease: 'expo.inOut', yoyo: true})
     }) 
 })
+
+function openExternalLink(url) {
+  window.open(url, '_blank', 'noopener,noreferrer');
+}
  
 
 </script>
@@ -121,21 +125,29 @@ onMounted(()=>{
           <div class="container mx-auto text-right leading-[7vw] text-[8vw] font-bold font-['Acid_Grotesk'] mb-10">
               <h1 class="">Nos produits</h1> 
           </div>
-     
-          <div class="grid lg:grid-cols-2 gap-20 mt-20 mb-20">
-  
-            <div class="mt-4 mb-10"> 
-      
-              <div class="text-2xl mb-4 font-['Acid_Grotesk'] font-bold">dAIrector</div>
-              <div class="leading-tight"><span class="font-medium">Craft your cinematic masterpiece !</span><br>Create, preview, mix with powerful AI models in one place !<br>Flux, Imagen 3, Ideogram, Photon and more to come...</div>
 
-              <div class="w-1/2">
-                <button class="text-xs mr-3 opacity-40"></button>
+            <div
+            style="clip-path: inset(0 0);"
+            class="mt-16 mb-10 lg:h-[50vh] text-white rounded-none grid lg:grid-cols-2 gap-8 bg-[#000] cursor-pointer"
+            @click="openExternalLink('https://dairector.app')"
+            >
+
+            <!-- Desc. -->
+            <div class="p-8">
+              <div class="mb-2 font-['Acid_Grotesk'] font-bold"><img class="w-36" src="/logo-red-white.svg" alt=""></div>
+              <div class="leading-tight">
+              <div class="lg:text-2xl text-xl mb-1 leading-tight">Pre-production with less headaches !</div>
+              <span class="lg:text-base">Create, preview, mix with powerful AI models in one place ! Flux, Imagen 3, Ideogram, Photon and more to come...</span>
               </div>
-       
             </div>
-  
-          </div>
+            
+            <!-- Image -->
+             <div class="relative">
+              <img class="absolute -top-1/2 -rotate-6 scale-110 hidden lg:block" src="/dairector-images.png" alt="">
+              <img class="block p-4 rounded-lg lg:hidden" src="/dairector-thumbnail.png" alt="">
+             </div>
+
+            </div> 
   
         </div>
 

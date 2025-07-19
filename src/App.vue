@@ -15,8 +15,16 @@ const topbar = ref(null)
 
 gsap.registerPlugin(ScrollTrigger)
 
-const contactForm = ref(false)
-const formStatus = ref('submitted')
+// This is the status of the form
+// It can be one of the following:
+/*
+closed: Form is closed
+opened: Form is open
+is-submitting: Form is being submitted
+submitted: Form has been submitted
+*/
+
+const formStatus = ref('closed')
 
 const name = ref('')
 const email = ref('')
@@ -106,8 +114,10 @@ function initializeForm() {
           </div>
           
           <div v-if="formStatus == ('submitted')" class="text-center flex flex-col items-center justify-center gap-3">
-            <div><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 1024 1024"><!-- Icon from Element Plus by Element Plus - https://github.com/element-plus/element-plus-icons/blob/main/packages/svg/package.json --><path fill="#888888" d="M512 64a448 448 0 1 1 0 896a448 448 0 0 1 0-896m-55.808 536.384l-99.52-99.584a38.4 38.4 0 1 0-54.336 54.336l126.72 126.72a38.27 38.27 0 0 0 54.336 0l262.4-262.464a38.4 38.4 0 1 0-54.272-54.336z"/></svg></div>
-            Nous avons bien reçu votre message, nous vous répondrons dans les plus brefs délais !
+            <div><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 1024 1024"><!-- Icon from Element Plus by Element Plus - https://github.com/element-plus/element-plus-icons/blob/main/packages/svg/package.json --><path fill="#68ba32" d="M512 64a448 448 0 1 1 0 896a448 448 0 0 1 0-896m-55.808 536.384l-99.52-99.584a38.4 38.4 0 1 0-54.336 54.336l126.72 126.72a38.27 38.27 0 0 0 54.336 0l262.4-262.464a38.4 38.4 0 1 0-54.272-54.336z"/></svg></div>
+            Nous avons bien reçu votre message,<br> nous vous répondrons dans les plus brefs délais !
+
+            <div @click="formStatus = 'closed'" class="font-medium mt-10 w-fit border-black border-b cursor-pointer opacity-100">Fermer</div>
           </div>
   
           <div v-if="formStatus == ('opened')">
@@ -142,7 +152,7 @@ function initializeForm() {
 
   <div class="fixed bottom-20 left-0 z-40 cursor-pointer" @click="initializeForm">
 
-    <div class="flex justify-center items-center gap-3 pt-3 pb-3 pr-6 pl-6 bg-white duration-300">
+    <div class="flex justify-center items-center gap-3 pt-3 pb-3 pr-6 pl-6 bg-white duration-300 text">
       <div class="hidden lg:block">Let's Talk</div>
       <div class="w-auto"><svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Material Symbols by Google - https://github.com/google/material-design-icons/blob/master/LICENSE --><path fill="#000" d="M18.175 17H15q-.425 0-.712-.288T14 16t.288-.712T15 15h3.175l-.9-.9Q17 13.825 17 13.413t.3-.713q.275-.275.7-.275t.7.275l2.6 2.6q.125.125.2.312t.075.388t-.075.387t-.2.313l-2.6 2.6q-.275.275-.687.288T17.3 19.3q-.275-.275-.275-.7t.275-.7zM4 17q-.825 0-1.412-.587T2 15V5q0-.825.588-1.412T4 3h13q.825 0 1.413.588T19 5v4.075q0 .4-.3.7t-.7.3q-.425 0-.712-.288T17 9.076V6.4L10.4 11L4 6.425V15h7.075q.425 0 .713.288t.287.712t-.287.713t-.713.287zM5.45 5l4.95 3.55L15.5 5zM4 15V5z"/></svg></div>
     </div>
