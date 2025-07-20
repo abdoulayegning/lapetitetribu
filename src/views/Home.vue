@@ -69,25 +69,25 @@ function openExternalLink(url) {
  
       <div class="container mx-auto relative pt-20 pb-14"> 
  
-          <svg class="w-8 h-8 absolute right-1 shining-star" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="w-8 h-8 absolute right-1 shining-star hidden lg:block" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
              <path d="M82.3333 0L56.6042 56.6042L0 82.3333L56.6042 108.062L82.3333 164.667L108.062 108.062L164.667 82.3333L108.062 56.6042" fill="black"/>
           </svg> 
-          <svg class="w-4 h-4 absolute right-20 shining-star" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="w-4 h-4 absolute right-20 shining-star hidden lg:block" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
              <path d="M82.3333 0L56.6042 56.6042L0 82.3333L56.6042 108.062L82.3333 164.667L108.062 108.062L164.667 82.3333L108.062 56.6042" fill="black"/>
           </svg> 
-          <svg class="w-4 h-4 absolute -left-6 shining-star" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="w-4 h-4 absolute -left-6 shining-star hidden lg:block" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
              <path d="M82.3333 0L56.6042 56.6042L0 82.3333L56.6042 108.062L82.3333 164.667L108.062 108.062L164.667 82.3333L108.062 56.6042" fill="black"/>
           </svg> 
           
-          <h1 class="font-['Acid_Grotesk'] text-gray-300 lg:text-8xl font-bold">Nos dernières <span class="font-['Acid_Grotesk'] text-black">pépites</span></h1>
+          <h1 class="font-['Acid_Grotesk'] text-gray-300 lg:text-8xl text-5xl font-bold">Nos dernières <span class="font-['Acid_Grotesk'] text-black">pépites</span></h1>
 
       </div>
 
       <div class="container mx-auto " v-if="true">
-        <div class="h-[350px] mb-10 cursor-pointer border" @click="router.push('/wave-summer-xeweul')">
+        <div class="lg:h-[350px] aspect-video lg:aspect-auto mb-10 cursor-pointer border" @click="router.push('/wave-summer-xeweul')">
           <img class="w-full h-full object-cover" src="/wave-summer-xeweul/bg.jpg" alt="">
         </div>
-        <div class="uppercase font-bold text-4xl">Wave sénégal in the game</div>
+        <div class="uppercase lg:font-bold lg:text-4xl text-xl">Wave sénégal in the game</div>
         <div class="uppercase text-gray-400">summer xeweul - édition 2024</div>
         <div class="uppercase text-gray-500">jeu vidéo, UX/UI, Développement</div>
       </div>
@@ -103,7 +103,7 @@ function openExternalLink(url) {
               <h1 class="">à la carte</h1>  
           </div>
      
-          <div class="grid lg:grid-cols-3 gap-20 mt-10 mb-20">
+          <div class="grid lg:grid-cols-3 lg:gap-20 gap-10 mt-10 mb-20">
   
             <div v-for="service in services" class="mt-4 mb-10"> 
       
@@ -122,7 +122,7 @@ function openExternalLink(url) {
 
         <div>
   
-          <div class="container mx-auto text-left leading-[7vw] text-[8vw] font-bold font-['Acid_Grotesk'] mb-10">
+          <div class="container mx-auto text-left lg:leading-[7vw] lg:text-[8vw] text-6xl font-bold font-['Acid_Grotesk'] mb-10">
               <h1 class="">Nos produits</h1> 
           </div>
 
