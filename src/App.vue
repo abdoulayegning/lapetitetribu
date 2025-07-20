@@ -102,7 +102,7 @@ function openExternalLink(url) {
 <template>
 
   <!-- Form -->
-  <div v-if="formStatus == ('opened') || formStatus == ('is-submitting')  || formStatus == ('submitted')" class="flex justify-center items-center fixed top-0 left-0 z-[9000] bg-black/40 w-full h-full lg:p-0 p-10">
+  <div v-if="formStatus == ('opened') || formStatus == ('is-submitting')  || formStatus == ('submitted')" class="flex justify-center items-center fixed top-0 left-0 z-[9000] bg-black/40 w-full h-full lg:p-0 p-5">
 
       <div class="flex lg:flex-row flex-col gap-3 bg-white p-4 lg:w-[600px] w-full h-fit pb-36">
 
@@ -140,7 +140,7 @@ function openExternalLink(url) {
 
           <div v-if="formStatus == ('opened')" class="flex justify-between items-center">
 
-            <button v-if="email == ''" class="font-medium mt-10 w-fit cursor-pointer">Une adresse email est requise !</button>
+            <button v-if="email == ''" class="font-medium mt-10 w-1/2 cursor-pointer text-left">Une adresse email est requise !</button>
 
             <button v-if="email !== ''" type="submit" class="font-bold mt-10 w-fit border-black border-b-2 cursor-pointer">Envoyer</button>
 
@@ -154,6 +154,7 @@ function openExternalLink(url) {
     
   </div>
 
+  <!-- Sticky Buttons -->
   <div class="fixed bottom-20 left-0 z-40 flex flex-col gap-1">
 
     <div class="cursor-pointer" @click="initializeForm">
@@ -166,7 +167,6 @@ function openExternalLink(url) {
     </div>
 
     <!-- Social -->
-
     <div class="cursor-pointer" @click="openExternalLink('https://www.instagram.com/lapetitetribu.co/')">
 
       <div class="w-fit pt-3 pb-3 pr-3 pl-3 bg-white duration-300 text">

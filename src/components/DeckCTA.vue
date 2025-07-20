@@ -18,7 +18,7 @@
 
     </div>
 
-    <div ref="deck" id="deck-wrapper" class="bg-white lg:hidden hidden flex-col justify-center items-center w-60 text-xs p-6 fixed z-[1000] bottom-6 right-6">
+    <div ref="deck" id="deck-wrapper" class="bg-white lg:hidden hidden flex-col justify-center items-center w-72 text- p-6 fixed z-[1000] bottom-6 right-6">
        
         <!-- Image CTA -->
         <div class="w-full p-5"><img class="w-full" src="/deck-cta.png" alt=""></div>
