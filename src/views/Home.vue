@@ -126,7 +126,7 @@ function openExternalLink(url) {
   
         </div>
 
-        <div>
+        <div v-if="false">
   
           <div id="products" class="container mx-auto text-left lg:leading-[7vw] lg:text-[8vw] text-6xl font-bold font-['Acid_Grotesk'] mb-10">
               <h1 class="">Nos produits</h1> 
