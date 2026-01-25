@@ -2,7 +2,7 @@
 
     <div class="w-full relative p-8 text-black">
         
-        <div ref="logotype" class="lg:text-[7.45vw] text-[7vw] mt-10 font-['PP_Monument_Extended'] text-center" v-html="Splitting.html({content: 'la petite tribu', by: 'chars'})"></div>
+        <div ref="logotype" class="lg:text-[7.45vw] text-[7vw] mt-28 font-['PP_Monument_Extended'] text-center" v-html="Splitting.html({content: 'la petite tribu', by: 'chars'})"></div>
         
         <div ref="about" class="text-xl text-center mt-10">
             <div class="opacity-0"><span class="font-bold">Studio digital</span> basé à Dakar, Sénégal. </div> 

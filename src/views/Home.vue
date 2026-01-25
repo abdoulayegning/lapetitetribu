@@ -52,7 +52,13 @@ function openExternalLink(url) {
 </script>
 
 
-<template> 
+<template>
+
+  <div class="fixed hidden lg:flex left-1/2 top-10 items-center -translate-x-1/2 gap-10 z-10 backdrop-blur-xl bg-black/50 pt-2 pb-2 pl-10 pr-10 rounded-full text-white">
+    <a href="#products" class="font-medium no-underline cursor-pointer text-white">La fabrique</a>
+    <div class="font-['PP_Monument_Extended']">la petite tribu</div>
+    <a href="#projects" class="font-medium no-underline cursor-pointer text-white">Réalisations</a>
+  </div>
 
   <div id="main-content" class="">  
 
@@ -83,7 +89,7 @@ function openExternalLink(url) {
 
       </div>
 
-      <div class="container mx-auto " v-if="true">
+      <div id="projects" class="container mx-auto " v-if="true">
         <div class="lg:h-[350px] aspect-video lg:aspect-auto mb-10 cursor-pointer border" @click="router.push('/wave-summer-xeweul')">
           <img class="w-full h-full object-cover" src="/wave-summer-xeweul/bg.jpg" alt="">
         </div>
@@ -122,7 +128,7 @@ function openExternalLink(url) {
 
         <div>
   
-          <div class="container mx-auto text-left lg:leading-[7vw] lg:text-[8vw] text-6xl font-bold font-['Acid_Grotesk'] mb-10">
+          <div id="products" class="container mx-auto text-left lg:leading-[7vw] lg:text-[8vw] text-6xl font-bold font-['Acid_Grotesk'] mb-10">
               <h1 class="">Nos produits</h1> 
           </div>
 
