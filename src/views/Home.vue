@@ -54,15 +54,9 @@ function openExternalLink(url) {
 
 <template>
 
-  <div class="fixed hidden lg:flex left-1/2 top-10 items-center -translate-x-1/2 gap-10 z-10 backdrop-blur-xl bg-black/50 pt-2 pb-2 pl-10 pr-10 rounded-full text-white">
-    <a href="#products" class="font-medium no-underline cursor-pointer text-white">La fabrique</a>
-    <div class="font-['PP_Monument_Extended']">la petite tribu</div>
-    <a href="#projects" class="font-medium no-underline cursor-pointer text-white">Réalisations</a>
-  </div>
-
   <div id="main-content" class="">  
 
-      <DeckCTA></DeckCTA>
+      <!-- <DeckCTA></DeckCTA> -->
 
       <Hero></Hero> 
 
@@ -85,7 +79,7 @@ function openExternalLink(url) {
              <path d="M82.3333 0L56.6042 56.6042L0 82.3333L56.6042 108.062L82.3333 164.667L108.062 108.062L164.667 82.3333L108.062 56.6042" fill="black"/>
           </svg> 
           
-          <h1 class="font-['Acid_Grotesk'] text-gray-300 lg:text-8xl text-5xl font-bold">Nos dernières <span class="font-['Acid_Grotesk'] text-black">pépites</span></h1>
+          <h1 class="text-gray-500 lg:text-8xl text-5xl">Nos dernières <span class="text-black">pépites</span></h1>
 
       </div>
 
@@ -93,9 +87,9 @@ function openExternalLink(url) {
         <div class="lg:h-[350px] aspect-video lg:aspect-auto mb-10 cursor-pointer border" @click="router.push('/wave-summer-xeweul')">
           <img class="w-full h-full object-cover" src="/wave-summer-xeweul/bg.jpg" alt="">
         </div>
-        <div class="uppercase lg:font-bold lg:text-4xl text-xl">Wave sénégal in the game</div>
-        <div class="uppercase text-gray-400">summer xeweul - édition 2024</div>
-        <div class="uppercase text-gray-500">jeu vidéo, UX/UI, Développement</div>
+        <div class="lg:text-4xl text-xl">Wave Sénégal</div>
+        <div class="text-gray-400">Summer Xeweul - Édition 2024</div>
+        <div class="text-gray-500">Jeu Vidéo, UX/UI, Développement</div>
       </div>
        
       <Grid></Grid>
@@ -104,7 +98,7 @@ function openExternalLink(url) {
         
         <div>
   
-          <div class="container mx-auto text-left lg:leading-[7vw] lg:text-[8vw] text-6xl font-bold font-['Acid_Grotesk'] mb-10">
+          <div class="container mx-auto text-left lg:leading-[7vw] lg:text-[8vw] text-6xl mb-10">
               <h1 class="">Services</h1>
               <h1 class="">à la carte</h1>  
           </div>
@@ -112,14 +106,8 @@ function openExternalLink(url) {
           <div class="grid lg:grid-cols-3 lg:gap-20 gap-10 mt-10 mb-20">
   
             <div v-for="service in services" class="mt-4 mb-10"> 
-      
-              <div class="text-2xl mb-4 font-['Acid_Grotesk'] font-bold">{{service.fields.title}}</div>
+              <div class="text-2xl mb-4 font-['Outfit']">{{service.fields.title}}</div>
               <div class="leading-tight" v-html="documentToHtmlString(service.fields.description)"></div>
-
-              <div class="lg:w-1/2">
-                <button class="text-xs mr-3 opacity-40" v-for="item in service.fields.list">#{{item}}</button>
-              </div>
-       
             </div>
   
           </div>
@@ -128,7 +116,7 @@ function openExternalLink(url) {
 
         <div v-if="false">
   
-          <div id="products" class="container mx-auto text-left lg:leading-[7vw] lg:text-[8vw] text-6xl font-bold font-['Acid_Grotesk'] mb-10">
+          <div id="products" class="container mx-auto text-left lg:leading-[7vw] lg:text-[8vw] text-6xl font-bold mb-10">
               <h1 class="">Nos produits</h1> 
           </div>
 
@@ -140,7 +128,7 @@ function openExternalLink(url) {
 
             <!-- Desc. -->
             <div class="p-8">
-              <div class="mb-2 font-['Acid_Grotesk'] font-bold"><img class="w-36" src="/logo-red-white.svg" alt=""></div>
+              <div class="mb-2 font-bold"><img class="w-36" src="/logo-red-white.svg" alt=""></div>
               <div class="leading-tight">
               <div class="lg:text-2xl text-xl mb-1 leading-tight">Pre-production with less headaches !</div>
               <span class="lg:text-base">Create, preview, mix with powerful AI models in one place ! Flux, Imagen 3, Ideogram, Photon and more to come...</span>

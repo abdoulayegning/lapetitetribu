@@ -1,20 +1,17 @@
 <template>
     <div class="mt-60 mb-60" v-if="items"> 
         <div class="mx-auto container"> 
-            <div class="font-medium text-6xl text-center">{{ items.title }}</div>
+            <div class="font-light text-6xl text-center">{{ items.title }}</div>
             <div class="mt-12 mb-12 grid lg:grid-cols-1 gap-10 text-center">
                 <div>
-                    <h2 class=" font-light font-['PP_Neue_Machina_Plain'] opacity-40 uppercase text-base">Client</h2>
-                    <h1 class=" font-medium text-base font-['PP_Neue_Machina_Plain'] uppercase mt-0">{{ items.client.fields.name }}</h1>
+                    <h2 class="font-light opacity-40 text-base">Client</h2>
+                    <h1 class="text-base mt-0">{{ items.client.fields.name }}</h1>
                 </div>
                 <div>
-                    <h2 class=" font-light text-base font-['PP_Neue_Machina_Plain'] opacity-40 uppercase">savoir-faire</h2>
-                    <h1 class=" font-medium font-['PP_Neue_Machina_Plain'] uppercase text-base mt-0">{{ items.category }}</h1>
+                    <h2 class="text-base opacity-40">Savoir-faire</h2>
+                    <h1 class="text-base mt-0">{{ items.category }}</h1>
                 </div>
-            </div>
-
-            <!-- <div v-html="documentToHtmlString(items.content, options)"></div> -->
-            <!-- <RenderRichText :document="items"></RenderRichText> -->
+            </div> 
 
             <!-- If there is a Vimeo or Youtube Iframe -->
             <div class="" v-if="items.embed">
@@ -39,10 +36,7 @@
 
     <Footer></Footer>
 </template>
-
-<style scoped> 
-</style>
-
+ 
 <script setup>
 import { ref, onBeforeMount, onMounted, onUpdated } from 'vue'; 
 import { useRoute, useRouter } from 'vue-router'
@@ -71,7 +65,7 @@ const RenderAsset = (node)=>{
 const options = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => `<div>` + RenderAsset(node) + `</div>`,
-    [BLOCKS.PARAGRAPH]: (node, next) => `<div class="text-center font-['DM_Sans'] text-xl lg:w-[70%] mx-auto mt-6 mb-6">${next(node.content)}</div>`
+    [BLOCKS.PARAGRAPH]: (node, next) => `<div class="text-center text-xl lg:w-[70%] mx-auto mt-6 mb-6">${next(node.content)}</div>`
    }
 }
 

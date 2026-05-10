@@ -24,7 +24,7 @@
                 
             </div> 
         </div> -->
-        <div style="text-align: center; font-size: 24px; font-family: DM Sans;" v-html="documentToHtmlString(block.fields.text)"></div>
+        <div style="text-align: center; font-size: 24px;" v-html="documentToHtmlString(block.fields.text)"></div>
         <!-- <div style="" v-html="getRichTextEntityLinks(block.fields.text)"></div> -->
         <!-- {{ documentToHtmlString(block.fields.text) }} -->
     </div> 

@@ -85,9 +85,9 @@ onUpdated(()=>{
                 </div>
 
                 <div class="gap-1 mt-6 leading-tight ">  
-                    <div class="font-medium font-['Acid_Grotesk'] uppercase text-xl ">{{ p.fields.title }}</div> 
-                    <div class="font-medium uppercase text-base text-gray-400">{{ p.fields.category }}</div> 
-                    <div class="font-medium uppercase text-base text-gray-300">{{ p.fields.client.fields.name }}</div> 
+                    <div class="text-xl ">{{ p.fields.title }}</div> 
+                    <div class="text-base text-gray-400">{{ p.fields.category }}</div> 
+                    <div class="text-base text-gray-300">{{ p.fields.client.fields.name }}</div> 
                 </div>
 
             </div>
