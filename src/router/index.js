@@ -9,6 +9,7 @@ const routes = [
     {path: '/crm/login', component: () => import('../views/CRM/Login.vue'), name: 'Login'},
     {path: '/crm/deck', component: () => import('../views/CRM/Deck.vue'), name: 'Deck'},
     {path: '/contact', component: () => import('../views/Contact.vue'), name: 'Contact'},
+    {path: '/pricing', component: () => import('../views/Pricing.vue'), name: 'Pricing'},
     {path: '/:pathMatch(.*)*', component:  () => import('../views/NotFound.vue'), name: 'NotFound'}, 
     //Special Projects
     {path: '/wave-summer-xeweul', component: () => import('../views/Special/WaveSummerXeweul.vue'), name: 'WaveSummerXeweul'},

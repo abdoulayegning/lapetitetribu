@@ -1,4 +1,5 @@
 <script setup>  
+import Header from './components/Header.vue';
 import Lenis from '@studio-freight/lenis'
 import { onMounted, ref } from 'vue'
 import { gsap } from 'gsap';
@@ -199,6 +200,7 @@ function openExternalLink(url) {
 
   </div>
 
+  <Header></Header>
 
   <router-view></router-view> 
 

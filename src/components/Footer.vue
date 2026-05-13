@@ -10,14 +10,17 @@
                 </div>
                         
                 <div>
-                    <div class="opacity-40">Social</div>
+                    <div class="opacity-40 mb-4">Social</div>
                     <div @click="openURL('https://instagram.com/lapetitetribu.co')">Instagram</div>
                     <div @click="openURL('https://www.linkedin.com/company/11048102/')">LinkedIn</div>
                 </div>
 
                 <div>
-                    <div class="opacity-40">Nos produits</div>
-                    <div @click="openURL('https://popmyproduct.com/')">popmyproduct.com</div>
+                    <div class="opacity-40 mb-4">Nos produits</div>
+                    <div @click="openURL('https://popmyproduct.com/')" class="flex items-center gap-3">
+                       <div><img class="w-7" src="/popmyproduct-icon.png" alt=""></div>
+                       <div>Pop My Product</div>
+                    </div>
                 </div>
     
                 <!-- <div ref="logotype" class="text-3xl text-center font-['PP_Monument_Extended'] opacity-20">la petite tribu</div> -->
