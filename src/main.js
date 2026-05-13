@@ -14,10 +14,11 @@ import './styles/layouts.css'
 import 'swiper/css';
 
 
-import './assets/AcidGrotesk/stylesheet.css'
-import './assets/RadioGrotesk/stylesheet.css'
-import './assets/NeueMachina/stylesheet.css'
-import './assets/PPExtended/stylesheet.css' 
+// import './assets/AcidGrotesk/stylesheet.css'
+// import './assets/RadioGrotesk/stylesheet.css'
+// import './assets/NeueMachina/stylesheet.css'
+// import './assets/PPExtended/stylesheet.css' 
+import './assets/pp-neue-montreal/style.css' 
 
 
 import 'keen-slider/keen-slider.min.css'

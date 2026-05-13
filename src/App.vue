@@ -155,7 +155,7 @@ function openExternalLink(url) {
   </div>
 
   <!-- Sticky Buttons -->
-  <div class="fixed bottom-20 left-0 z-40 flex flex-col gap-1">
+  <div v-if="false" class="fixed bottom-20 left-0 z-40 flex flex-col gap-1">
 
     <div class="cursor-pointer" @click="initializeForm">
   

@@ -54,7 +54,7 @@ const go_to = (path)=>{
 }
 
 const OnHoverWrapper = (e)=>{ 
-    gsap.to(e.target, {scale: 0.95, ease: 'expo.out', y: -10})
+    // gsap.to(e.target, {scale: 0.95, ease: 'expo.out', y: -10})
 }
     
 const OnLeaveWrapper = (e)=>{
@@ -72,22 +72,22 @@ onUpdated(()=>{
 
 <template> 
 <div class="mt-10 mb-7" id="work">
-    <div class="container mx-auto"> 
-        <div class="grid lg:grid-cols-2 gap-6" ref="renderedProjects">
+    <div class=""> 
+        <div class="grid lg:grid-cols-2 gap-0" ref="renderedProjects">
 
-            <div v-if="projects" @mouseenter="OnHoverWrapper" @mouseleave="OnLeaveWrapper" @click="go_to(p.fields.slug)" class="pl-0 pt-6 pb-6 cursor-pointer" v-for="p in projects"> 
+            <div v-if="projects" @mouseenter="OnHoverWrapper" @mouseleave="OnLeaveWrapper" @click="go_to(p.fields.slug)" class="pl-0 cursor-pointer relative" v-for="p in projects"> 
 
-                <div @mouseenter="OnHover" @mouseleave="OnLeave" class="aspect-video w-full relative">
+                <div @mouseenter="OnHover" @mouseleave="OnLeave" class="aspect-video w-full relative brightness-75">
                     <img class="w-full h-full object-cover" :src="p.fields.imageThumbnail.fields.file.url" alt="">
                     <video class="w-full h-full object-cover absolute top-0 left-0 hidden" preload="metadata" muted nocontrols playsInline loop v-if="p.fields.videoThumbnail">
                         <source :src="p.fields.videoThumbnail.fields.file.url">
                     </video>
                 </div>
 
-                <div class="gap-1 mt-6 leading-tight ">  
-                    <div class="text-xl ">{{ p.fields.title }}</div> 
-                    <div class="text-base text-gray-400">{{ p.fields.category }}</div> 
-                    <div class="text-base text-gray-300">{{ p.fields.client.fields.name }}</div> 
+                <div class="leading-tight absolute bottom-10 left-6 text-white">  
+                    <div class="text-xl">{{ p.fields.title }}</div> 
+                    <div class="text-xs" v-if="false">{{ p.fields.category }}</div> 
+                    <div class="text-base" v-if="false">{{ p.fields.client.fields.name }}</div> 
                 </div>
 
             </div>

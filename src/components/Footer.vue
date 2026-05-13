@@ -3,16 +3,22 @@
 
         <div class="container mx-auto pt-10 pb-10">
 
-            <div class="flex justify-between items-center gap-4">
+            <div class="lg:flex lg:justify-between lg:items-start grid grid-cols-1 gap-4">
 
-                <div class="text-xs mt-5 mb-5 font-['PP_Monument_Extended'] text-center">
+                <div class="text-base font-['PP_Monument_Extended'] lg:text-center">
                     la petite tribu
                 </div>
                         
-                <button v-if="false" @click="openDialog" class="uppercase text-center rounded-[10px] mb-3 flex gap-4 items-center">
-                    <img class="w-4" src="/download.svg" alt="">
-                    Télécharger le deck
-                </button>
+                <div>
+                    <div class="opacity-40">Social</div>
+                    <div @click="openURL('https://instagram.com/lapetitetribu.co')">Instagram</div>
+                    <div @click="openURL('https://www.linkedin.com/company/11048102/')">LinkedIn</div>
+                </div>
+
+                <div>
+                    <div class="opacity-40">Nos produits</div>
+                    <div @click="openURL('https://popmyproduct.com/')">popmyproduct.com</div>
+                </div>
     
                 <!-- <div ref="logotype" class="text-3xl text-center font-['PP_Monument_Extended'] opacity-20">la petite tribu</div> -->
         
@@ -23,7 +29,7 @@
                     <div @click="openURL('https://instagram/lapetitetribu.co')" class="underline">EMAIL</div> 
                 </div> 
                 
-                <div class="lg:text-right text-center">© {{ new Date().getFullYear() }}</div>
+                <div class="lg:text-right">© {{ new Date().getFullYear() }}</div>
 
             </div>
 

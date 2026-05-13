@@ -60,53 +60,49 @@ function openExternalLink(url) {
 
       <Hero></Hero> 
 
-      <Clients></Clients> 
+      <!-- <Clients></Clients>  -->
 
-      <div class="lg:p-20 p-6 bg-[#efefef] mt-10">
-        <video class="w-full h-full rounded-none object-cover" muted autoplay loop playsinline disable-picture-in-picture="true " 
-        disablePictureInPicture src="../assets/canalplus.mp4"></video>
-      </div>
- 
-      <div class="container mx-auto relative pt-20 pb-14"> 
- 
-          <svg class="w-8 h-8 absolute right-1 shining-star hidden lg:block" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
-             <path d="M82.3333 0L56.6042 56.6042L0 82.3333L56.6042 108.062L82.3333 164.667L108.062 108.062L164.667 82.3333L108.062 56.6042" fill="black"/>
-          </svg> 
-          <svg class="w-4 h-4 absolute right-20 shining-star hidden lg:block" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
-             <path d="M82.3333 0L56.6042 56.6042L0 82.3333L56.6042 108.062L82.3333 164.667L108.062 108.062L164.667 82.3333L108.062 56.6042" fill="black"/>
-          </svg> 
-          <svg class="w-4 h-4 absolute -left-6 shining-star hidden lg:block" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
-             <path d="M82.3333 0L56.6042 56.6042L0 82.3333L56.6042 108.062L82.3333 164.667L108.062 108.062L164.667 82.3333L108.062 56.6042" fill="black"/>
-          </svg> 
-          
-          <h1 class="text-gray-500 lg:text-8xl text-5xl">Nos dernières <span class="text-black">pépites</span></h1>
-
+      <div class="">
+        <div class="container mx-auto relative pt-20 pb-14"> 
+   
+            <svg class="w-8 h-8 absolute right-1 shining-star hidden lg:block" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M82.3333 0L56.6042 56.6042L0 82.3333L56.6042 108.062L82.3333 164.667L108.062 108.062L164.667 82.3333L108.062 56.6042" fill="black"/>
+            </svg> 
+            <svg class="w-4 h-4 absolute right-20 shining-star hidden lg:block" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M82.3333 0L56.6042 56.6042L0 82.3333L56.6042 108.062L82.3333 164.667L108.062 108.062L164.667 82.3333L108.062 56.6042" fill="black"/>
+            </svg> 
+            <svg class="w-4 h-4 absolute -left-6 shining-star hidden lg:block" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path d="M82.3333 0L56.6042 56.6042L0 82.3333L56.6042 108.062L82.3333 164.667L108.062 108.062L164.667 82.3333L108.062 56.6042" fill="black"/>
+            </svg> 
+            
+            <h1 class="text-gray-500 lg:text-8xl text-5xl">Nos dernières <span class="text-black">pépites</span></h1>
+  
+        </div>
       </div>
 
-      <div id="projects" class="container mx-auto " v-if="true">
-        <div class="lg:h-[350px] aspect-video lg:aspect-auto mb-10 cursor-pointer border" @click="router.push('/wave-summer-xeweul')">
+      <div id="projects" class="container mx-auto " v-if="false">
+        <div class="lg:h-[350px] aspect-video lg:aspect-auto mb-6 cursor-pointer border" @click="router.push('/wave-summer-xeweul')">
           <img class="w-full h-full object-cover" src="/wave-summer-xeweul/bg.jpg" alt="">
         </div>
-        <div class="lg:text-4xl text-xl">Wave Sénégal</div>
-        <div class="text-gray-400">Summer Xeweul - Édition 2024</div>
-        <div class="text-gray-500">Jeu Vidéo, UX/UI, Développement</div>
+        <div class="text-base font-bold">Wave Sénégal</div>
+        <div class="text-gray-400" text-xs v-if="true">Summer Xeweul - Édition 2024</div>
+        <div class="text-gray-500" v-if="false">Jeu Vidéo, UX/UI, Développement</div>
       </div>
        
       <Grid></Grid>
 
-      <div class="mx-auto container border-t border-black pt-10">
+      <div class="mx-auto container pt-10">
         
         <div>
   
           <div class="container mx-auto text-left lg:leading-[7vw] lg:text-[8vw] text-6xl mb-10">
-              <h1 class="">Services</h1>
-              <h1 class="">à la carte</h1>  
+              <h1 class="">Services à la carte</h1>  
           </div>
      
           <div class="grid lg:grid-cols-3 lg:gap-20 gap-10 mt-10 mb-20">
   
             <div v-for="service in services" class="mt-4 mb-10"> 
-              <div class="text-2xl mb-4 font-['Outfit']">{{service.fields.title}}</div>
+              <div class="text-2xl mb-4">{{service.fields.title}}</div>
               <div class="leading-tight" v-html="documentToHtmlString(service.fields.description)"></div>
             </div>
   
@@ -114,35 +110,14 @@ function openExternalLink(url) {
   
         </div>
 
-        <div v-if="false">
+        <div>
   
-          <div id="products" class="container mx-auto text-left lg:leading-[7vw] lg:text-[8vw] text-6xl font-bold mb-10">
+          <div id="products" class="container mx-auto text-left lg:leading-[7vw] lg:text-[8vw] text-6xl mb-10">
               <h1 class="">Nos produits</h1> 
           </div>
+          
+          <img class="w-full mt-12 mb-6 cursor-pointer hover:scale-105 duration-200" src="/popmyproduct.jpg" alt="">
 
-            <div
-            style="clip-path: inset(0 0);"
-            class="mt-16 mb-10 lg:h-[50vh] text-white rounded-none grid lg:grid-cols-2 gap-8 bg-[#000] cursor-pointer"
-            @click="openExternalLink('https://dairector.app')"
-            >
-
-            <!-- Desc. -->
-            <div class="p-8">
-              <div class="mb-2 font-bold"><img class="w-36" src="/logo-red-white.svg" alt=""></div>
-              <div class="leading-tight">
-              <div class="lg:text-2xl text-xl mb-1 leading-tight">Pre-production with less headaches !</div>
-              <span class="lg:text-base">Create, preview, mix with powerful AI models in one place ! Flux, Imagen 3, Ideogram, Photon and more to come...</span>
-              </div>
-            </div>
-
-            <!-- Product image -->
-             <div class="relative">
-              <img class="absolute -top-1/2 -rotate-6 scale-110 hidden lg:block" src="/dairector-images.png" alt="">
-              <img class="block p-4 rounded-lg lg:hidden" src="/dairector-thumbnail.png" alt="">
-             </div>
-
-            </div> 
-  
         </div>
 
       </div>
