@@ -12,16 +12,14 @@
         
     </div> 
 
-    <div class="w-full aspect-video p-20">
+    <div class="w-full aspect-video lg:p-20">
         <video class="w-full h-full object-cover" muted autoplay loop src="/typos/typos.mp4"></video>
     </div>
 
     <div class="mt-10">
         <div class="mx-auto container">
-            <div class="lg:text-6xl">
-                Studio digital basé à Dakar, Sénégal. 
-                <br>
-                Nous créons des expériences digitales interactives pour des marques ambitieuses, innovantes et surtout audacieuses.
+            <div class="lg:text-6xl text-3xl">
+                Studio digital basé à Dakar, Sénégal. Nous créons des expériences digitales interactives pour des marques ambitieuses, innovantes et surtout audacieuses.
             </div>
         </div>
     </div>
