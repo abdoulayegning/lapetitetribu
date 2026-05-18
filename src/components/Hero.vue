@@ -18,7 +18,7 @@
 
     <div class="mt-10">
         <div class="mx-auto container">
-            <div class="lg:text-6xl text-3xl">
+            <div class="lg:text-6xl text-xl">
                 Studio digital basé à Dakar, Sénégal. Nous créons des expériences digitales interactives pour des marques ambitieuses, innovantes et surtout audacieuses.
             </div>
         </div>
