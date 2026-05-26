@@ -11,7 +11,7 @@ const route = useRoute()
         <div class="container mx-auto h-full">
             <div class="flex justify-between items-center h-full">
                 <div @click="router.push('/')">
-                    <div class="text-3xl font-['PP_Monument_Extended'] lg:text-center cursor-pointer">
+                    <div class="lg:text-3xl text-xl font-['PP_Monument_Extended'] lg:text-center cursor-pointer">
                         la petite tribu
                     </div>
                 </div>
