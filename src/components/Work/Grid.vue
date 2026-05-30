@@ -1,6 +1,6 @@
 <script setup>
 import { useRoute, useRouter } from 'vue-router';
-import { ref, defineProps, onBeforeMount, onUpdated } from 'vue';
+import { ref, defineProps, onBeforeMount, onUpdated, onMounted, nextTick, watch } from 'vue';
 import { createClient } from 'contentful'
 import gsap from 'gsap'
 
@@ -14,7 +14,6 @@ const projects = ref(null)
 const client = createClient({
     space: import.meta.env.VITE_CONTENTFUL_SPACE_ID,
     accessToken: import.meta.env.VITE_CONTENTFUL_API_KEY //Only published !!!
-    //Preview : yaKRL3ryC8Pr9YLZiDE_tD3L5zGB6CBYxXZzgQkbaLY
 })
  
 
@@ -34,7 +33,7 @@ const OnHover = (e)=>{
         video.style.display = 'block'
         video.play()   
     }
-} 
+ } 
 
 const OnLeave = (e)=>{ 
     if (e.target.children[1]) {
@@ -42,6 +41,7 @@ const OnLeave = (e)=>{
         video.style.display = 'none'
         video.pause()   
     }
+
 }
     
 const go_to = (path)=>{
@@ -55,17 +55,28 @@ const go_to = (path)=>{
 
 const OnHoverWrapper = (e)=>{ 
     // gsap.to(e.target, {scale: 0.95, ease: 'expo.out', y: -10})
-}
-    
-const OnLeaveWrapper = (e)=>{
-    gsap.to(e.target, {scale: 1, ease: 'expo.out'}) 
+    const text = e.target.children[1].children[0]
+    gsap.to(text, {scale: 1.1, x: 10, ease: 'expo.out'})
 }
 
-onUpdated(()=>{
-    for (let i = 0; i < renderedProjects.value.children.length; i++) {
-        const element = renderedProjects.value.children[i];
-        gsap.to(element, {filter: 'grayscale(0%)'})
-    }
+const OnLeaveWrapper = (e)=>{
+    // gsap.to(e.target, {scale: 1, ease: 'expo.out'}) 
+    const text = e.target.children[1].children[0]
+    gsap.to(text, {scale: 1.0, x: 0, ease: 'expo.out'})
+}
+
+
+watch(projects, async(newProjects)=>{
+    await nextTick()
+    if(newProjects && newProjects.length > 0){
+        if(newProjects.length % 2 != 0){ 
+            renderedProjects.value.children[renderedProjects.value.children.length - 1].classList.add('lg:col-span-2', 'aspect-auto')
+        }
+    }   
+})
+
+onMounted(async()=>{
+    
 })
 
 </script>

@@ -56,14 +56,10 @@ function openExternalLink(url) {
 
   <div id="main-content" class="">  
 
-      <!-- <DeckCTA></DeckCTA> -->
-
       <Hero></Hero> 
 
-      <!-- <Clients></Clients>  -->
-
       <div class="">
-        <div class="container mx-auto relative pt-20 pb-14"> 
+        <div class="container mx-auto relative lg:pt-20 pt-6 lg:pb-14 pb-3"> 
    
             <svg class="w-8 h-8 absolute right-1 shining-star hidden lg:block" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
                <path d="M82.3333 0L56.6042 56.6042L0 82.3333L56.6042 108.062L82.3333 164.667L108.062 108.062L164.667 82.3333L108.062 56.6042" fill="black"/>
@@ -91,7 +87,7 @@ function openExternalLink(url) {
        
       <Grid></Grid>
 
-      <div class="mx-auto container pt-10">
+      <div class="mx-auto container lg:pt-10">
         
         <div>
   

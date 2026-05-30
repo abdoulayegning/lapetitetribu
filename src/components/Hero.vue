@@ -12,7 +12,7 @@
         
     </div> 
 
-    <div class="w-full aspect-video lg:p-20">
+    <div class="w-full aspect-video">
         <video class="w-full h-full object-cover" muted autoplay loop src="/typos/typos.mp4"></video>
     </div>
 
