@@ -12,7 +12,7 @@ const routes = [
     {path: '/pricing', component: () => import('../views/Pricing.vue'), name: 'Pricing'},
     {path: '/:pathMatch(.*)*', component:  () => import('../views/NotFound.vue'), name: 'NotFound'}, 
     //Special Projects
-    {path: '/wave-summer-xeweul', component: () => import('../views/Special/WaveSummerXeweul.vue'), name: 'WaveSummerXeweul'},
+    // {path: '/wave-summer-xeweul', component: () => import('../views/Special/WaveSummerXeweul.vue'), name: 'WaveSummerXeweul'},
 
 ]
 
