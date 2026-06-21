@@ -38,14 +38,19 @@
 </template>
  
 <script setup>
-import { ref, onBeforeMount, onMounted, onUpdated } from 'vue'; 
+import { ref, onBeforeMount, onMounted, onUpdated, nextTick } from 'vue'; 
 import { useRoute, useRouter } from 'vue-router'
 import { createClient } from 'contentful' 
 import ContentBlock from '../components/ViewProject/ContentBlock.vue';
 import Footer from '../components/Footer.vue';
 // import RenderRichText  from '../components/RenderRichText.vue'
-import { BLOCKS } from '@contentful/rich-text-types';
+import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+
+//gsap
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
 
 const RenderAsset = (node)=>{
     
@@ -54,18 +59,24 @@ const RenderAsset = (node)=>{
     const url = node.data.target.fields.file.url
 
     if (type == "image/jpeg" || type == "image/png" || type == "image/webp" || type == "image/gif") {
-        return `<img class="mb-20 mt-20 w-full" src="` + url + `" alt="` + title + `">`
+        return `<img class="mb-3 mt-3 w-full" src="` + url + `" alt="` + title + `">`
     } else if (type == "video/mp4" || type == "video/webm") {
-        // return `<video src="` + url + `" alt="` + title + `">`
-        return `<video style="clip-path: inset(1px)" class="mb-20 mt-20" muted autoplay loop playsinline disablePictureInPicture controlsList="nodownload"><source src="` + url + `" type="video/mp4"></video>`
+        return `<video style="clip-path: inset(1px)" class="mb-3 mt-3" muted autoplay loop playsinline disablePictureInPicture controlsList="nodownload"><source src="` + url + `" type="video/mp4"></video>`
     }
 
 }
 
 const options = {
+  renderMark: {
+    [MARKS.BOLD]: (text) => `<span class="font-['PP_Bold']">${text}</span>`,
+    [MARKS.ITALIC]: (text) => `<em class="italic">${text}</em>`,
+    [MARKS.UNDERLINE]: (text) => `<span class="underline">${text}</span>`,
+    [MARKS.CODE]: (text) => `<code class="px-1 bg-gray-100 rounded">${text}</code>`,
+  },
+
   renderNode: {
-    [BLOCKS.EMBEDDED_ASSET]: (node) => `<div>` + RenderAsset(node) + `</div>`,
-    [BLOCKS.PARAGRAPH]: (node, next) => `<div class="text-center text-xl lg:w-[70%] mx-auto mt-6 mb-6">${next(node.content)}</div>`
+    [BLOCKS.EMBEDDED_ASSET]: (node) => `<div data-asset>` + RenderAsset(node) + `</div>`,
+    [BLOCKS.PARAGRAPH]: (node, next) => `<div class="text-center text-xl lg:w-[70%] mx-auto mt-16 mb-16">${next(node.content)}</div>`
    }
 }
 
@@ -79,19 +90,28 @@ const client = createClient({
 })
  
 const items = ref(null)
+ 
 
-onBeforeMount(()=>{
+onMounted(()=>{  
+
     client.getEntries({
         content_type: 'studioWork',
         'fields.slug': route.params.slug,
     })
-    .then((entries)=>{ 
+    .then(async(entries)=>{ 
         items.value = entries.items[0].fields
-      }) 
-})
- 
-
-onMounted(()=>{  
+        await nextTick()
+        // all data-asset
+        const assets = document.querySelectorAll('[data-asset]')
+        console.log('assets', assets)
+        assets.forEach((asset)=>{
+            gsap.fromTo(asset, {opacity: 0, y: 150}, {opacity: 1, y: 0, duration: 1, scrollTrigger: {
+                trigger: asset, 
+                scrub: false
+            }})
+        })
+    }) 
+    
 })
 
 </script>

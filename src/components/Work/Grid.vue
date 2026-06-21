@@ -56,7 +56,7 @@ const go_to = (path)=>{
 const OnHoverWrapper = (e)=>{ 
     // gsap.to(e.target, {scale: 0.95, ease: 'expo.out', y: -10})
     const text = e.target.children[1].children[0]
-    gsap.to(text, {scale: 1.1, x: 10, ease: 'expo.out'})
+    // gsap.to(text, {scale: 1.1, x: 10, ease: 'expo.out'})
 }
 
 const OnLeaveWrapper = (e)=>{
@@ -97,7 +97,7 @@ onMounted(async()=>{
 
                 <div class="leading-tight absolute bottom-10 left-6 text-white">  
                     <div class="text-xl">{{ p.fields.title }}</div> 
-                    <div class="text-xs" v-if="false">{{ p.fields.category }}</div> 
+                    <div class="text-xs" v-if="true">{{ p.fields.category }}</div> 
                     <div class="text-base" v-if="false">{{ p.fields.client.fields.name }}</div> 
                 </div>
 
