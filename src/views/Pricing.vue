@@ -149,7 +149,7 @@ const pricings = ref([
             }
         ]
     },
-
+    /*
     {
         tagline: 'All-In-One',
         title: 'Combo',
@@ -175,6 +175,7 @@ const pricings = ref([
             }
         ]
     },
+    */
 
     {
         tagline: 'Expérience interactive',
