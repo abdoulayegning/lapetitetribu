@@ -1,5 +1,5 @@
 <template>
-    <div v-if="contactForm" class="border fixed bg-gray-100 w-full h-screen z-10 flex justify-center items-center">
+    <div v-if="contactForm || route.query.form == 'true'" class="border fixed bg-gray-100 w-full h-screen z-10 flex justify-center items-center">
         <div class="mx-auto container lg:pl-60 lg:pr-60">
             <div></div>
             <form class="flex flex-col gap-4" action="https://api.web3forms.com/submit" method="POST">
@@ -82,8 +82,10 @@
 </template>
 
 <script setup>
+import { useRoute } from 'vue-router';
 import Footer from '../components/Footer.vue';
 import {ref, onMounted} from 'vue'
+const route = useRoute()
 const contactForm = ref(false)
 const pricings = ref([
     {

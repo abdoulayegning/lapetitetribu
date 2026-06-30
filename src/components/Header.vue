@@ -18,6 +18,7 @@ const route = useRoute()
                 <div class="flex text-base gap-4">
                     <div class="border-white cursor-pointer" @click="router.push('/')" :class="route.path == '/' ? `border-b` : `border-none`">Work</div>
                     <div class="border-white cursor-pointer" @click="router.push('/pricing')" :class="route.path == '/pricing' ? `border-b` : `border-none`">Tarifs</div>
+                    <div class="border-white cursor-pointer" @click="router.push('/pricing?form=true')" :class="route.path == '/pricing?form=true' ? `border-b` : `border-none`">Contact</div>
                 </div>
             </div>
         </div>
