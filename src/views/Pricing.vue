@@ -5,15 +5,18 @@
             <form class="flex flex-col gap-4" action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="ec632a69-de8c-4fe2-864a-b63001799fe3" />
                 <input type="hidden" name="subject" value="Let's talk about your project!" />
-                <input type="hidden" name="redirect" value="https://google.com/">
+                <input type="hidden" name="redirect" value="https://lapetitetribu.co/">
                 <input type="hidden" name="from_name" value="La Petite Tribu" />
-                <input class="p-3.5 outline-none" type="text" name="name" placeholder="Votre nom">
-                <input class="p-3.5 outline-none" type="text" name="company" placeholder="Votre entreprise">
-                <input class="p-3.5 outline-none" type="email" name="email" placeholder="Votre email">
-                <textarea class="p-3.5 resize-none outline-none" name="message" placeholder="Votre message"></textarea>
-                <div class="flex gap-4">
+                <input v-model="contactName" class="p-3.5 outline-none" type="text" name="name" placeholder="Votre nom">
+                <input v-model="contactCompany" class="p-3.5 outline-none" type="text" name="company" placeholder="Votre entreprise">
+                <input v-model="contactEmail" class="p-3.5 outline-none" type="email" name="email" placeholder="Votre email">
+                <textarea v-model="contactMessage" class="p-3.5 resize-none outline-none" name="message" placeholder="Votre message"></textarea>
+                <div v-if="contactName && contactCompany && contactEmail && contactMessage" class="flex gap-4">
                     <button class="border w-1/2 pt-4 pb-4 bg-black text-white" type="submit">Envoyer</button>
                     <button class="border w-1/2 pt-4 pb-4" @click="contactForm = false">Fermer</button>
+                </div>
+                <div v-else>
+                    Veuillez remplir tous les champs pour envoyer le formulaire
                 </div>
             </form>
         </div>
@@ -87,6 +90,10 @@ import Footer from '../components/Footer.vue';
 import {ref, onMounted} from 'vue'
 const route = useRoute()
 const contactForm = ref(false)
+const contactName = ref('')
+const contactCompany = ref('')
+const contactEmail = ref('')
+const contactMessage = ref('')
 const pricings = ref([
     {
         tagline: 'Présence digitale premium',
