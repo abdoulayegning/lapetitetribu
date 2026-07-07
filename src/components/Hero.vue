@@ -1,45 +1,135 @@
 <template>
 
-    <div class="w-full relative p-8 text-black hidden">
-        
-        <div ref="logotype" class="lg:text-[7.45vw] text-[7vw] mt-28 font-['PP_Monument_Extended'] text-center" v-html="Splitting.html({content: 'la petite tribu', by: 'chars'})"></div>
-        
-        <div ref="about" class="text-xl text-center mt-10">
-            <div class="opacity-0"><span class="font-bold">Studio digital</span> basé à Dakar, Sénégal. </div> 
-            <div class="opacity-0">Des <span class="font-bold">expériences digitales interactives</span></div>
-            <div class="opacity-0">pour des marques ambitieuses, <span class="underline">innovantes</span> et surtout <span class="italic">audacieuses</span> !</div>
-        </div>  
-        
-    </div> 
+    <div class="mx-auto container text-left text-4xl lg:text-9xl leading-tight mb-10 pt-40">
+        Des projets sur-mesure, qui laissent une empreinte.
+    </div>
 
-    <div class="w-full aspect-video">
+    <div class="w-full aspect-video hidden">
         <video class="w-full h-full object-cover" muted autoplay loop src="/typos/typos.mp4"></video>
     </div>
-
-    <div class="mt-10">
-        <div class="mx-auto container">
-            <div class="lg:text-6xl text-xl">
-                Studio digital basé à Dakar, Sénégal. Nous créons des expériences digitales interactives pour des marques ambitieuses, innovantes et surtout audacieuses.
-            </div>
-        </div>
-    </div>
+ 
   
 </template>
 
 <script setup>
 import KeenSlider from 'keen-slider'
-import {ref, onMounted} from 'vue'
+import {ref, onMounted, onUnmounted, nextTick} from 'vue'
 import Splitting from 'splitting'
 import gsap from 'gsap';
 import {AnimateSplittingTextIn, HideSplittingText} from '../js/animations'
+import * as THREE from 'three'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import title_3d from '../assets/title-3d.gltf?url'
 const keen = ref(null)
 const about = ref(null)
 const popups = ref(null)
 const logotype = ref(null)
-const frames = ref(null) 
+const frames = ref(null)
 
-onMounted(()=>{
- 
- 
+function createCanvas(){
+    const container = document.getElementById('three-canvas')
+    if(!container) return
+
+    const scene = new THREE.Scene()
+    const camera = new THREE.PerspectiveCamera(10, container.clientWidth / container.clientHeight, 0.1, 100)
+    // camera.position.y = 5
+    // camera.position.x = -5
+    camera.position.z = 16
+    camera.lookAt(scene.position)
+
+    const gridHelper = new THREE.GridHelper(100, 100, 0x888888, 0x444444)
+    // scene.add(gridHelper)
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+    renderer.setSize(container.clientWidth, container.clientHeight)
+    renderer.setPixelRatio(window.devicePixelRatio || 1)
+    container.appendChild(renderer.domElement)
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 9)
+    // scene.add(ambientLight)
+
+    const loader = new GLTFLoader()
+    let gltfScene = null
+    loader.load(
+        title_3d,
+        (gltf) => {
+            const uniformScale = 0.3
+            gltfScene = gltf.scene
+            const children = gltfScene.children
+            gltfScene.scale.set(uniformScale, uniformScale, uniformScale)
+            scene.add(gltfScene)
+
+            console.log(gltfScene.position)
+
+            children.forEach(child => {
+                const axes = ['x', 'y', 'z']
+                const axis = axes[Math.floor(Math.random() * axes.length)]
+                const direction = Math.random() < 0.5 ? 1 : -1
+                const rotationAmount = 6.28319 + Math.random() * 6.28319
+
+                // gsap.to(child.rotation, {
+                //     [axis]: `+=${direction * rotationAmount/1}`,
+                //     duration: 20 + Math.random() * 10,
+                //     repeat: -1,
+                //     ease: "linear"
+                // })
+            })
+
+            gltf.scene.traverse((child) => {
+            if (child.isMesh) {
+                const materials = Array.isArray(child.material) ? child.material : [child.material];
+                
+                const newMaterials = materials.map((oldMat) => {
+                const newMat = new THREE.MeshBasicMaterial({
+                    map: oldMat.map || null,
+                    color: oldMat.color || 0xffffff,
+                });
+                oldMat.dispose();
+                return newMat;
+                });
+
+                child.material = Array.isArray(child.material) ? newMaterials : newMaterials[0];
+            }
+            });
+        },
+        undefined,
+        (error) => {
+            console.error('Error loading GLTF model:', error)
+        }
+    )
+
+    let rafId = null
+    function onResize(){
+        const w = container.clientWidth
+        const h = container.clientHeight
+        camera.aspect = w / h
+        camera.updateProjectionMatrix()
+        renderer.setSize(w, h)
+    }
+
+    function animate(){
+        renderer.render(scene, camera)
+        rafId = requestAnimationFrame(animate)
+    }
+
+    window.addEventListener('resize', onResize)
+    animate()
+
+    return ()=>{
+        window.removeEventListener('resize', onResize)
+        if(rafId) cancelAnimationFrame(rafId)
+        renderer.dispose()
+        if(renderer.domElement && renderer.domElement.parentNode) renderer.domElement.parentNode.removeChild(renderer.domElement)
+    }
+}
+
+let disposeThree = null
+onMounted(async ()=>{
+    await nextTick()
+    disposeThree = createCanvas()
+})
+
+onUnmounted(()=>{
+    if(typeof disposeThree === 'function') disposeThree()
 })
 </script>

@@ -6,7 +6,12 @@ import gsap from 'gsap'
 
 const route = useRoute();
 const router = useRouter();
- 
+const props = defineProps({
+    length: {
+        type: String,
+        default: 'all'
+    }
+})
 
 const renderedProjects = ref(null)
 const projects = ref(null)
@@ -17,13 +22,19 @@ const client = createClient({
 })
  
 
+
+
+
 onBeforeMount(()=>{
     client.getEntries({
         content_type: 'studioWork',
-        // limit: props.length 
     })
     .then((entries)=>{
-        projects.value = entries.items  
+        projects.value = entries.items 
+        if(props.length != 'all'){
+            const shuffledProjects = shuffleArray(projects.value)
+            projects.value = shuffledProjects.slice(0, 2)
+        }
     })
 })
 
@@ -42,6 +53,15 @@ const OnLeave = (e)=>{
         video.pause()   
     }
 
+}
+
+const shuffleArray = (array) => {
+    const shuffled = [...array]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
+    return shuffled
 }
     
 const go_to = (path)=>{
@@ -66,14 +86,14 @@ const OnLeaveWrapper = (e)=>{
 }
 
 
-watch(projects, async(newProjects)=>{
-    await nextTick()
-    if(newProjects && newProjects.length > 0){
-        if(newProjects.length % 2 != 0){ 
-            renderedProjects.value.children[renderedProjects.value.children.length - 1].classList.add('lg:col-span-2', 'aspect-auto')
-        }
-    }   
-})
+// watch(projects, async(newProjects)=>{
+//     await nextTick()
+//     if(newProjects && newProjects.length > 0){
+//         if(newProjects.length % 2 != 0){ 
+//             renderedProjects.value.children[renderedProjects.value.children.length - 1].classList.add('lg:col-span-2', 'aspect-auto')
+//         }
+//     }   
+// })
 
 onMounted(async()=>{
     
@@ -82,23 +102,21 @@ onMounted(async()=>{
 </script>
 
 <template> 
-<div class="mt-10 mb-7" id="work">
-    <div class=""> 
-        <div class="grid lg:grid-cols-2 gap-0" ref="renderedProjects">
+<div class="mt-10 mb-10" id="work">
+    <div class="mx-auto container"> 
+        <div class="grid lg:grid-cols-2 gap-8" ref="renderedProjects">
 
-            <div v-if="projects" @mouseenter="OnHoverWrapper" @mouseleave="OnLeaveWrapper" @click="go_to(p.fields.slug)" class="pl-0 cursor-pointer relative" v-for="p in projects"> 
+            <div v-if="projects" @mouseenter="OnHoverWrapper" @mouseleave="OnLeaveWrapper" @click="go_to(p.fields.slug)" class="p-0 bg-gray-200/0 cursor-pointer relative rounded-md" v-for="p in projects"> 
 
                 <div @mouseenter="OnHover" @mouseleave="OnLeave" class="aspect-video w-full relative brightness-75">
-                    <img class="w-full h-full object-cover" :src="p.fields.imageThumbnail.fields.file.url" alt="">
-                    <video class="w-full h-full object-cover absolute top-0 left-0 hidden" preload="metadata" muted nocontrols playsInline loop v-if="p.fields.videoThumbnail">
+                    <img class="w-full h-full object-cover rounded-none" :src="p.fields.imageThumbnail.fields.file.url" alt="">
+                    <video class="w-full h-full object-cover rounded-none absolute top-0 left-0 hidden" preload="metadata" muted nocontrols playsInline loop v-if="p.fields.videoThumbnail">
                         <source :src="p.fields.videoThumbnail.fields.file.url">
                     </video>
                 </div>
 
-                <div class="leading-tight absolute bottom-10 left-6 text-white">  
-                    <div class="text-xl">{{ p.fields.title }}</div> 
-                    <div class="text-xs" v-if="true">{{ p.fields.category }}</div> 
-                    <div class="text-base" v-if="false">{{ p.fields.client.fields.name }}</div> 
+                <div class="text-black mt-4">  
+                    <div class="text-sm">{{ p.fields.title }} <span class="mr-1 ml-1">→</span> <span class="opacity-30">{{ p.fields.client.fields.name }}</span></div>
                 </div>
 
             </div>

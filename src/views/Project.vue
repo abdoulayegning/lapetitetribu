@@ -1,5 +1,8 @@
 <template>
-    <div class="mt-60 mb-60" v-if="items"> 
+
+    <div @click="router.push('/')" class="fixed left-0 top-1/2 -translate-y-1/2 pt-4 pb-4 pr-2 pl-2 text-xl bg-black text-white cursor-pointer">←</div>
+
+    <div class="mt-60 mb-60" v-if="items">
         <div class="mx-auto container"> 
             <div class="font-light text-6xl text-center">{{ items.title }}</div>
             <div class="mt-12 mb-12 grid lg:grid-cols-1 gap-10 text-center">
@@ -33,6 +36,9 @@
  
         </div>
     </div>
+    
+    <div class="mx-auto container">Ces projets pourraient vous intéresser <span class="ml-6">↓</span></div>
+    <Grid :length="'recommendation'"></Grid>
 
     <Footer></Footer>
 </template>
@@ -41,6 +47,7 @@
 import { ref, onBeforeMount, onMounted, onUpdated, nextTick } from 'vue'; 
 import { useRoute, useRouter } from 'vue-router'
 import { createClient } from 'contentful' 
+import Grid from '../components/Work/Grid.vue';
 import ContentBlock from '../components/ViewProject/ContentBlock.vue';
 import Footer from '../components/Footer.vue';
 // import RenderRichText  from '../components/RenderRichText.vue'
