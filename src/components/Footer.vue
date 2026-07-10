@@ -5,9 +5,7 @@
 
             <div class="lg:flex lg:justify-between lg:items-start grid grid-cols-1 gap-4">
 
-                <div class="text-base font-['PP_Monument_Extended'] lg:text-center">
-                    la petite tribu
-                </div>
+                <img class="w-40 h-auto" src="/logo-lpt-black.svg" alt="Logo">
                         
                 <div>
                     <div class="opacity-40 mb-4 text-xs">Social</div>

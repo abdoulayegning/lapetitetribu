@@ -1,10 +1,15 @@
 <template>
+    
+    <!-- <div class="absolute top-0 right-0 left-0 bottom-0" ref="canvas"></div>
+    <div class="w-[80%] h-[80dvh] text-6xl text-white" ref="plane">
+        the plane
+    </div> -->
 
     <div class="mx-auto container text-left text-4xl lg:text-9xl leading-tight mb-10 pt-40">
         Des projets sur-mesure, qui laissent une empreinte.
     </div>
 
-    <div class="w-full aspect-video hidden">
+    <div v-if="false" class="w-full aspect-video hidden">
         <video class="w-full h-full object-cover" muted autoplay loop src="/typos/typos.mp4"></video>
     </div>
  
@@ -17,9 +22,16 @@ import {ref, onMounted, onUnmounted, nextTick} from 'vue'
 import Splitting from 'splitting'
 import gsap from 'gsap';
 import {AnimateSplittingTextIn, HideSplittingText} from '../js/animations'
+
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import title_3d from '../assets/title-3d.gltf?url'
+
+// import {Curtains, Plane} from 'curtainsjs';
+
+
+// import '../js/blotter.min.js'
+
 const keen = ref(null)
 const about = ref(null)
 const popups = ref(null)
@@ -124,9 +136,20 @@ function createCanvas(){
 }
 
 let disposeThree = null
+
+const plane = ref(null)
+const canvas = ref(null)
+
 onMounted(async ()=>{
     await nextTick()
     disposeThree = createCanvas()
+
+    // // "canvas" is the ID of our HTML container element
+    // const curtains = new Curtains({
+    //     container: canvas.value
+    // });
+
+    // const _plane = new Plane(curtains, plane.value);
 })
 
 onUnmounted(()=>{
