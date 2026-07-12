@@ -42,7 +42,8 @@
              </div>
         </div>
         <div class="grid lg:grid-cols-1 gap-8 mt-8">
-            <div class="p-7 border bg-[#fffc] relative">
+
+            <div v-if="false" class="p-7 border bg-[#fffc] relative">
                 <h1 class="text-xl mb-6">{{ pricings[pricings.length-2].title }}</h1>
                 <div class="mb-3 mt-3 text-3xl">{{ pricings[pricings.length-2].price }}</div>
                 <div class="mb-3 mt-3 text-2xl font-light">{{ pricings[pricings.length-2].description }}</div>
@@ -79,6 +80,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><!-- Icon from Material Design Icons by Pictogrammers - https://github.com/Templarian/MaterialDesign/blob/master/LICENSE --><path fill="white" d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2"/></svg>
                 </div>
             </div>
+
         </div>
     </div>
     <Footer></Footer>
