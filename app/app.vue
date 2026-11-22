@@ -13,7 +13,8 @@ const router = useRouter()
 
 const topbar = ref(null)
 
-gsap.registerPlugin(ScrollTrigger)
+// Browser only: on the server GSAP would start a setTimeout at module load, which Cloudflare Workers forbids
+if (import.meta.client) gsap.registerPlugin(ScrollTrigger)
 
 // This is the status of the form
 // It can be one of the following:

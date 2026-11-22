@@ -35,7 +35,8 @@ import RenderRichText from '../components/RenderRichText.vue';
 //gsap
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-gsap.registerPlugin(ScrollTrigger)
+// Browser only: on the server GSAP would start a setTimeout at module load, which Cloudflare Workers forbids
+if (import.meta.client) gsap.registerPlugin(ScrollTrigger)
 
 const router = useRouter()
 const route = useRoute()

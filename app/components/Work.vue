@@ -30,7 +30,8 @@ const client = useContentful()
 const response = ref(null)
 const router =useRouter()
 
-gsap.registerPlugin(ScrollTrigger)
+// Browser only: on the server GSAP would start a setTimeout at module load, which Cloudflare Workers forbids
+if (import.meta.client) gsap.registerPlugin(ScrollTrigger)
 const container = ref(null)
 const grid = ref(null)
 
