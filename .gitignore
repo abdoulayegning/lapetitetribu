@@ -28,3 +28,10 @@ dist-ssr
 .output
 .data
 .netlify
+
+# Secrets
+.env
+.env.*
+
+# Too large for Cloudflare Pages (25 MB limit), hosted on Vimeo instead
+public/wave-summer-xeweul/wave-summer-xeweul-case-study.mp4
