@@ -5,6 +5,9 @@ import ProjectGrid from '../components/ProjectGrid.vue';
 import ClosingCTA from '../components/ClosingCTA.vue';
 import Footer from '../components/Footer.vue';
 
+// Email form off until Bird is configured (NUXT_PUBLIC_CONTACT_FORM)
+const formEnabled = !!useRuntimeConfig().public.contactForm
+
 const grid = ref(null)
 
 // Client links in the intro sentence: show all projects, then scroll to the card
@@ -31,7 +34,7 @@ const SERVICES = [
                 <div class="lg:col-span-4 lg:row-start-2 mt-8 lg:mt-16 flex flex-col gap-6 lg:gap-[22px]">
                     <p class="m-0 max-w-[300px] lg:max-w-none text-[17px] lg:text-[19px] leading-[1.45] text-[#3d3d3d]">Sites, jeux de marque et motion design. On transforme l'attention en engagement.</p>
                     <div class="flex flex-wrap gap-3">
-                        <a href="#contact" class="inline-flex items-center min-h-[52px] px-[26px] bg-[#0d0d0d] text-white hover:text-white hover:bg-[#2a2a2a] text-base font-semibold no-underline">Lancer une partie</a>
+                        <a v-if="formEnabled" href="#contact" class="inline-flex items-center min-h-[52px] px-[26px] bg-[#0d0d0d] text-white hover:text-white hover:bg-[#2a2a2a] text-base font-semibold no-underline">Lancer une partie</a>
                         <a href="#projets" class="hidden lg:inline-flex items-center min-h-[52px] px-[22px] text-base font-semibold text-[#0d0d0d] underline underline-offset-[6px] hover:text-[#5c5c5c]">Voir les projets</a>
                     </div>
                 </div>
