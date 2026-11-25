@@ -57,32 +57,18 @@ onMounted(()=>{
 })
 
 
-const WEB3FORMS_ACCESS_KEY = useRuntimeConfig().public.web3formsAccessKey
-
-async function submitForm() { 
-  
-  formStatus.value = 'is-submitting';
-
-  const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        access_key: WEB3FORMS_ACCESS_KEY,
-        name: name.value,
-        email: email.value,
-        message: message.value,
-        phone: phone.value,
-      }),
-   });
-
-   if(response.ok){
-      console.log("Form submitted successfully");
-      formStatus.value = 'submitted';
-   }
-
+async function submitForm() {
+  formStatus.value = 'is-submitting'
+  try {
+    await $fetch('/api/contact', {
+      method: 'POST',
+      body: { name: name.value, email: email.value, message: message.value, phone: String(phone.value || '') },
+    })
+    formStatus.value = 'submitted'
+  } catch (e) {
+    formStatus.value = 'opened'
+    alert("L'envoi a échoué, réessayez ou écrivez-nous sur WhatsApp.")
+  }
 }
 
 function initializeForm() {

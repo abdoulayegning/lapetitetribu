@@ -17,10 +17,17 @@ export default defineNuxtConfig({
 
   // CommonJS packages whose imports break during SSR
   build: {
-    transpile: ['gsap', '@contentful/rich-text-types', '@contentful/rich-text-html-renderer', 'contentful-rich-text-vue-renderer'],
+    // (the @contentful/rich-text-* packages are pre-bundled through vite.optimizeDeps instead:
+    // transpiling them kept raw CommonJS in the dev browser bundle)
+    transpile: ['gsap', 'contentful-rich-text-vue-renderer'],
   },
 
   vite: {
+    // CommonJS packages: transpiled ones are left out of pre-bundling by default,
+    // so in dev the browser would get raw CJS ("does not provide an export named 'BLOCKS'")
+    optimizeDeps: {
+      include: ['@contentful/rich-text-types', '@contentful/rich-text-html-renderer'],
+    },
     $server: {
       resolve: {
         alias: [
@@ -40,10 +47,16 @@ export default defineNuxtConfig({
   // Values are read from the existing VITE_* variables at build time,
   // and can be overridden at runtime with NUXT_PUBLIC_* variables.
   runtimeConfig: {
+    // Server only (contact form → Bird). Set with NUXT_BIRD_EMAIL_API_KEY, NUXT_CONTACT_EMAIL_FROM, etc.
+    birdRegion: 'eu1',
+    birdEmailApiKey: '',
+    contactEmailFrom: '', // an address on a domain verified in Bird
+    contactEmailTo: '', // comma-separated
     public: {
+      // Email contact form, hidden until Bird is configured. Turn on with NUXT_PUBLIC_CONTACT_FORM=true
+      contactForm: false,
       contentfulSpaceId: process.env.VITE_CONTENTFUL_SPACE_ID,
       contentfulApiKey: process.env.VITE_CONTENTFUL_API_KEY, // Only published !!!
-      web3formsAccessKey: process.env.VITE_WEB3FORMS_ACCESS_KEY,
     },
   },
 
@@ -69,6 +82,8 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap' },
+        // Homepage v2 design: Archivo Expanded (wordmark) + Inter Tight (text)
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800&family=Inter+Tight:wght@400;500;600&display=swap' },
       ],
       script: [
         // Google Tag Manager

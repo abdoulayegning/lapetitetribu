@@ -1,141 +1,104 @@
 <script setup>
-import { onBeforeMount, onMounted, ref } from 'vue';
-import gsap from 'gsap';
-import Hero from '../components/Hero.vue';
-import Grid from '../components/Work/Grid.vue' 
+import { ref } from 'vue';
+import HeroTagline from '../components/HeroTagline.vue';
+import ProjectGrid from '../components/ProjectGrid.vue';
+import ClosingCTA from '../components/ClosingCTA.vue';
 import Footer from '../components/Footer.vue';
-import Services from '../components/Services.vue';
-import BriefCTA from '../components/BriefCTA.vue'
-import Testimonials from '../components/Testimonials.vue';
-import Clients from '../components/Clients.vue';
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 
-let idx = 0
-const router = useRouter()
-const marquee1 = ref(null)
-const marquee2 = ref(null)
-const marqueeCount = ref([0,1,2,3,4,5,0,1,2,3,4,5])
-const wordingList = ['ambitieuses', 'audacieuses', 'innovantes']
-const services = ref(null)
+const grid = ref(null)
 
+// Client links in the intro sentence: show all projects, then scroll to the card
+const jump = (slug) => grid.value?.jumpTo(slug)
 
-const client = useContentful()
-
-onBeforeMount(()=>{
-  client.getEntries({
-        content_type: 'service', 
-    })
-    .then((entries)=>{
-        services.value = entries.items
-    })
-})
-
-onMounted(()=>{
-    const stars = document.querySelectorAll('.shining-star')
-    stars.forEach((s,i) => {
-      gsap.fromTo(s, {scale: 0.8}, {scale: 1.4, rotate: 360, duration: 4 + (Math.random()*10), repeat: -1, ease: 'expo.inOut', yoyo: true})
-    }) 
-})
-
-function openExternalLink(url) {
-  window.open(url, '_blank', 'noopener,noreferrer');
-}
-
- 
-const options = {
-  renderMark: {
-    [MARKS.BOLD]: (text) => `<span class="font-['PP_Bold']">${text}</span>`,
-    [MARKS.ITALIC]: (text) => `<em class="italic">${text}</em>`,
-    [MARKS.UNDERLINE]: (text) => `<span class="underline">${text}</span>`,
-    [MARKS.CODE]: (text) => `<code class="px-1 bg-gray-100 rounded">${text}</code>`,
-  },
-}
-
+const SERVICES = [
+    { n: '01', title: 'Gamification', text: 'Jeux en ligne, concours et expériences jouables. Votre audience ne regarde plus votre marque : elle joue avec.' },
+    { n: '02', title: 'Sites & UX/UI', text: 'Landing pages, sites vitrines, portfolios. Pensés pour convertir, construits pour durer.' },
+    { n: '03', title: 'Motion design', text: 'Animation 2D, packshots, habillages. Ce qui bouge se remarque.' },
+    { n: '04', title: 'Identité visuelle', text: 'Une identité cohérente et mémorable. On vous reconnaît avant de lire votre nom.' },
+]
 </script>
 
-
 <template>
+    <div id="main-content" class="home bg-[#f3f3f1] text-[#0d0d0d]">
+        <main id="top">
 
-  <div id="main-content" class="">  
+            <!-- Hero: headline broken across an asymmetric 12-col grid -->
+            <section class="max-w-[1312px] mx-auto px-5 lg:px-8 pt-12 lg:pt-24 lg:grid lg:grid-cols-12 lg:gap-x-6">
+                <p class="lg:col-span-2 m-0 mb-5 lg:mb-0 lg:pt-[22px] text-xs lg:text-[13px] font-semibold tracking-[0.08em] uppercase text-[#5c5c5c]">Digital <br class="hidden lg:block">&amp; gamification</p>
+                <div class="lg:col-start-3 lg:col-span-10">
+                    <HeroTagline />
+                </div>
+                <div class="lg:col-span-4 lg:row-start-2 mt-8 lg:mt-16 flex flex-col gap-6 lg:gap-[22px]">
+                    <p class="m-0 max-w-[300px] lg:max-w-none text-[17px] lg:text-[19px] leading-[1.45] text-[#3d3d3d]">Sites, jeux de marque et motion design. On transforme l'attention en engagement.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#contact" class="inline-flex items-center min-h-[52px] px-[26px] bg-[#0d0d0d] text-white hover:text-white hover:bg-[#2a2a2a] text-base font-semibold no-underline">Lancer une partie</a>
+                        <a href="#projets" class="hidden lg:inline-flex items-center min-h-[52px] px-[22px] text-base font-semibold text-[#0d0d0d] underline underline-offset-[6px] hover:text-[#5c5c5c]">Voir les projets</a>
+                    </div>
+                </div>
+                <ol aria-label="Services" class="lg:col-start-8 lg:col-span-5 lg:row-start-2 mt-12 ml-[22%] lg:mt-16 lg:ml-0 p-0 list-none border-t border-[#0d0d0d]">
+                    <li v-for="s in SERVICES" :key="s.n" class="flex justify-between py-3 lg:py-3.5 border-b border-[#c9c9c4] text-[17px] lg:text-xl font-medium">
+                        <span>{{ s.title }}</span><span class="text-[13px] lg:text-sm text-[#5c5c5c]">{{ s.n }}</span>
+                    </li>
+                </ol>
+            </section>
 
-      <Hero></Hero> 
+            <!-- Clients -->
+            <section aria-label="Ils nous font confiance" class="max-w-[1312px] mx-auto px-5 lg:px-8 pt-[88px] lg:pt-24 lg:grid lg:grid-cols-12 lg:gap-x-6">
+                <p class="lg:col-span-2 m-0 mb-4 lg:mb-0 text-xs lg:text-[13px] font-semibold tracking-[0.08em] uppercase text-[#5c5c5c]">Ils ont joué <br class="hidden lg:block">avec nous</p>
+                <p class="lg:col-start-3 lg:col-span-8 m-0 text-2xl lg:text-[clamp(24px,2.6vw,36px)] leading-[1.2] tracking-[-0.025em] text-[#3d3d3d]">
+                    On a fait jouer les supporters avec <strong class="font-semibold text-[#0d0d0d]">Kirène</strong>,
+                    décoché des flèches de Cupidon pour <strong class="font-semibold text-[#0d0d0d]">Orange</strong>
+                    et mis l'été de <a href="#projet-wave-summer-xeweul" class="client-link" @click.prevent="jump('wave-summer-xeweul')">Wave</a> en mouvement.
+                </p>
+            </section>
 
-      <div class="hidden">
-        <div class="container mx-auto relative lg:pt-20 pt-6 lg:pb-14 pb-3"> 
-   
-            <svg class="w-8 h-8 absolute right-1 shining-star hidden lg:block" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
-               <path d="M82.3333 0L56.6042 56.6042L0 82.3333L56.6042 108.062L82.3333 164.667L108.062 108.062L164.667 82.3333L108.062 56.6042" fill="black"/>
-            </svg> 
-            <svg class="w-4 h-4 absolute right-20 shining-star hidden lg:block" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
-               <path d="M82.3333 0L56.6042 56.6042L0 82.3333L56.6042 108.062L82.3333 164.667L108.062 108.062L164.667 82.3333L108.062 56.6042" fill="black"/>
-            </svg> 
-            <svg class="w-4 h-4 absolute -left-6 shining-star hidden lg:block" width="20" height="20" viewBox="0 0 165 165" fill="none" xmlns="http://www.w3.org/2000/svg">
-               <path d="M82.3333 0L56.6042 56.6042L0 82.3333L56.6042 108.062L82.3333 164.667L108.062 108.062L164.667 82.3333L108.062 56.6042" fill="black"/>
-            </svg> 
-            
-            <h1 class="text-gray-500 lg:text-8xl text-5xl">Nos dernières <span class="text-black">pépites</span></h1>
-  
-        </div>
-      </div>
+            <!-- Work: filter + staggered rows (real projects from Contentful) -->
+            <ProjectGrid ref="grid" />
 
-      <div id="projects" class="container mx-auto " v-if="false">
-        <div class="lg:h-[350px] aspect-video lg:aspect-auto mb-6 cursor-pointer border" @click="router.push('/wave-summer-xeweul')">
-          <img class="w-full h-full object-cover" src="/wave-summer-xeweul/bg.jpg" alt="">
-        </div>
-        <div class="text-base font-bold">Wave Sénégal</div>
-        <div class="text-gray-400" text-xs v-if="true">Summer Xeweul - Édition 2024</div>
-        <div class="text-gray-500" v-if="false">Jeu Vidéo, UX/UI, Développement</div>
-      </div>
-       
-      <Grid :length="'all'"></Grid>
+            <!-- Services: detailed rows -->
+            <section id="services" class="scroll-mt-24 max-w-[1312px] mx-auto px-5 lg:px-8 pt-[88px] lg:pt-24">
+                <h2 class="m-0 mb-6 lg:mb-12 pl-[22%] lg:pl-[16.6%] text-[44px] lg:text-[clamp(40px,5vw,72px)] leading-[0.95] tracking-[-0.04em] font-medium">Ce qu'on fait</h2>
+                <div class="border-t border-[#0d0d0d]">
+                    <div v-for="s in SERVICES" :key="s.n" class="flex flex-col gap-2 py-5 pb-6 lg:grid lg:grid-cols-12 lg:gap-x-6 lg:gap-y-3 lg:pt-8 lg:pb-10 border-b border-[#c9c9c4]">
+                        <span class="lg:col-span-2 lg:pt-2 text-[13px] lg:text-sm text-[#5c5c5c]">{{ s.n }}</span>
+                        <h3 class="lg:col-start-3 lg:col-span-5 m-0 text-[28px] lg:text-[clamp(28px,3vw,40px)] font-medium tracking-[-0.03em]">{{ s.title }}</h3>
+                        <p class="lg:col-start-8 lg:col-span-5 m-0 text-[15px] lg:text-[17px] leading-normal text-[#3d3d3d]">{{ s.text }}</p>
+                    </div>
+                </div>
+            </section>
 
-      <div class="mx-auto container lg:pt-10">
-        
-        <div>
-  
-          <div class="container mx-auto text-left text-6xl mb-10">
-              <h1 class="">Services à la carte</h1>  
-          </div>
-     
-          <div class="grid lg:grid-cols-2 lg:gap-20 gap-10 mt-10 mb-20">
-  
-            <div v-for="service in services" class="mt-4 mb-10"> 
-              <div class="text-2xl mb-4 font-bold"><span class="mr-3 opacity-50">→</span>{{service.fields.title}}</div>
-              <div class="leading-tight" v-html="documentToHtmlString(service.fields.description, options)"></div>
-            </div>
-  
-          </div>
-  
-        </div>
+            <!-- Tarifs + product, offset pair -->
+            <section id="tarifs" class="scroll-mt-24 max-w-[1312px] mx-auto px-5 lg:px-8 pt-[72px] lg:pt-[120px] flex flex-col gap-8 lg:grid lg:grid-cols-12 lg:gap-x-6 lg:items-start">
+                <div class="lg:col-span-7 flex flex-col gap-2.5 lg:gap-4">
+                    <h2 class="m-0 text-[28px] lg:text-[32px] font-medium tracking-[-0.03em]">Tarifs</h2>
+                    <p class="m-0 text-[15px] lg:text-[17px] leading-[1.6] text-[#3d3d3d]">Mini-jeu publicitaire — à partir de 3200€<br>Site internet — à partir de 2500€<br>Motion design — à partir de 2800€<br>Identité visuelle — à partir de 2200€</p>
+                    <NuxtLink to="/pricing" class="self-start min-h-[44px] inline-flex items-center text-[15px] lg:text-base font-semibold text-[#0d0d0d] underline underline-offset-[6px] hover:text-[#5c5c5c]">Voir le détail</NuxtLink>
+                </div>
+                <a href="https://popmyproduct.com" target="_blank" rel="noopener" class="ml-[22%] lg:ml-0 lg:col-start-9 lg:col-span-4 lg:mt-16 no-underline flex flex-col gap-2.5 lg:gap-3.5 p-5 lg:p-6 bg-[#e2fb5a] text-[#0d0d0d] hover:text-[#0d0d0d]">
+                    <span class="text-xs lg:text-[13px] font-semibold tracking-[0.08em] uppercase">Notre produit</span>
+                    <span class="text-lg lg:text-2xl font-semibold tracking-[-0.02em] leading-[1.15]">Pop My Product — des visuels produits générés par IA ↗</span>
+                </a>
+            </section>
 
-        <div>
-  
-          <div id="products" class="container mx-auto text-left text-6xl mb-10">
-              <h1 class="">Nos produits</h1> 
-          </div>
-          
-          <img class="w-full mt-12 mb-6 cursor-pointer hover:scale-105 duration-200" src="/popmyproduct.jpg" alt="">
+            <ClosingCTA />
+        </main>
 
-        </div>
-
-      </div>
-
-
-      <Footer></Footer> 
-
-  </div>
-
+        <Footer />
+    </div>
 </template>
 
 <style scoped>
-.marquee-container {
-  @apply absolute w-[1920px] whitespace-nowrap border-red-600 h-[60px] 
+.home {
+    font-family: 'Inter Tight', system-ui, sans-serif;
 }
-.marquee-items-primary, .marquee-items-secondary {
-  @apply flex gap-0 justify-between items-center uppercase absolute top-1/2 -translate-y-1/2 w-full
-}  
-.marquee-item {
-  @apply text-center w-full text-[1.45em] gap-5 pr-0 pl-0
+.client-link {
+    font-weight: 600;
+    color: #0d0d0d;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+}
+.client-link:hover {
+    color: #5c5c5c;
 }
 </style>

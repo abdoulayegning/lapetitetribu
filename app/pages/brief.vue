@@ -5,33 +5,5 @@
 </template>
 
 <script setup>
-import { ref, onBeforeMount, onMounted } from 'vue'; 
-
-const WEB3FORMS_ACCESS_KEY = useRuntimeConfig().public.web3formsAccessKey
-
-async function submitForm(){
-
-    const response = await fetch("https://api.web3forms.com/submit", {
-    
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-    },
-    body: JSON.stringify({
-        access_key: WEB3FORMS_ACCESS_KEY, 
-        //values
-    }),
-
-    })
-
- const result = await response.json();
-
- if (result.success) {
-    alert("Form submitted successfully");
- } else {
-    alert("Form submission failed");
- }
-
-}
+// Stub: when this page gets its form, post it to /api/contact (see pricing.vue)
 </script>
