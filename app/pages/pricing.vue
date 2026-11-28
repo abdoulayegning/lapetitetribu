@@ -24,67 +24,62 @@
             </form>
         </div>
     </div>
-    <div class="mx-auto container pb-40 pt-20">
-        <div class="lg:text-6xl text-3xl pt-10 pb-10">Des solutions créatives et digitales conçues pour donner à votre marque une présence forte, moderne et mémorable.</div>
-        <div class="grid lg:grid-cols-3 gap-8">
-            <div class="p-7 border bg-[#fffc] relative" v-for="pricing, i in pricings.slice(0, 3)">
-                <h1 class="text-xl mb-6">{{ pricing.title }}</h1>
-                <div class="mb-3 mt-3 text-3xl">{{ pricing.price }}</div>
-                <div class="mb-3 mt-3 h-20 font-light">{{ pricing.description }}</div>
-                <div class="text-xs opacity-60">Délai</div>
-                <div class="mb-3 opacity-40">{{ pricing.timeline }}</div>
-                <div class="mb-3 mt-3">
-                    <div class="text-xs opacity-60">Inclus</div>
-                    <div v-for="i in pricing.included">
-                        {{ i }}
-                    </div>
-                </div>
-                <div class="absolute bottom-4 right-4 w-10 aspect-square bg-black text-white flex justify-center items-center cursor-pointer" @click="startProject">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><!-- Icon from Material Design Icons by Pictogrammers - https://github.com/Templarian/MaterialDesign/blob/master/LICENSE --><path fill="white" d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2"/></svg>
-                </div>
-             </div>
-        </div>
-        <div class="grid lg:grid-cols-1 gap-8 mt-8">
+    <div class="pricing-page bg-[#f3f3f1] text-[#0d0d0d]">
+        <main id="top">
+            <!-- Intro -->
+            <section class="max-w-[1312px] mx-auto px-5 lg:px-8 pt-12 lg:pt-24 lg:grid lg:grid-cols-12 lg:gap-x-6">
+                <p class="lg:col-span-2 m-0 mb-5 lg:mb-0 lg:pt-[22px] text-xs lg:text-[13px] font-semibold tracking-[0.08em] uppercase text-[#5c5c5c]">Tarifs</p>
+                <h1 class="lg:col-start-3 lg:col-span-10 m-0 text-[48px] lg:text-[clamp(48px,7.8vw,112px)] leading-[0.95] tracking-[-0.045em] font-medium">
+                    <span class="block">Un prix clair.</span>
+                    <span class="block pl-[22%] lg:pl-[18%] mt-1.5 lg:mt-0">Un projet <em class="font-['Georgia',serif] font-normal">sur mesure.</em></span>
+                </h1>
+                <p class="ml-[22%] lg:ml-0 lg:col-start-8 lg:col-span-5 mt-7 lg:mt-14 mb-0 text-base lg:text-[19px] leading-[1.45] text-[#3d3d3d]">Chaque offre est un point de départ. On ajuste le périmètre ensemble, avant de commencer.</p>
+            </section>
 
-            <div v-if="false" class="p-7 border bg-[#fffc] relative">
-                <h1 class="text-xl mb-6">{{ pricings[pricings.length-2].title }}</h1>
-                <div class="mb-3 mt-3 text-3xl">{{ pricings[pricings.length-2].price }}</div>
-                <div class="mb-3 mt-3 text-2xl font-light">{{ pricings[pricings.length-2].description }}</div>
-                <div class="text-xs opacity-60">Délai</div>
-                <div class="mb-3 opacity-40">{{ pricings[pricings.length-2].timeline }}</div>
-                <div class="mb-3 mt-3">
-                    <div class="text-xs opacity-60">Inclus</div>
-                    <div>
-                        <div v-for="i in pricings[pricings.length -1].included">
-                            {{ i }}
-                        </div>
+            <!-- Offers: one row each on the asymmetric grid -->
+            <section aria-label="Offres" class="max-w-[1312px] mx-auto px-5 lg:px-8 pt-[72px] lg:pt-[120px]">
+                <article v-for="(p, i) in pricings" :key="p.title" class="border-t border-[#0d0d0d] pt-6 pb-9 lg:pt-10 lg:pb-14 flex flex-col gap-3.5 lg:grid lg:grid-cols-12 lg:gap-6">
+                    <div class="flex justify-between gap-3 text-[13px] lg:text-sm lg:col-span-2 lg:flex-col lg:justify-start lg:gap-2">
+                        <span class="font-semibold leading-[1.3] lg:order-2">{{ p.tagline }}</span>
+                        <span class="text-[#5c5c5c] lg:order-1">{{ num(i) }}</span>
                     </div>
-                </div>
-                <div class="absolute bottom-4 right-4 w-10 aspect-square bg-black text-white flex justify-center items-center cursor-pointer" @click="startProject">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><!-- Icon from Material Design Icons by Pictogrammers - https://github.com/Templarian/MaterialDesign/blob/master/LICENSE --><path fill="white" d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2"/></svg>
-                </div>
-            </div>
-
-            <div class="p-7 border bg-[#fffc] relative">
-                <h1 class="text-xl mb-6">{{ pricings[pricings.length-1].title }}</h1>
-                <div class="mb-3 mt-3 text-3xl">{{ pricings[pricings.length-1].price }}</div>
-                <div class="mb-3 mt-3 text-2xl font-light">{{ pricings[pricings.length-1].description }}</div>
-                <div class="text-xs opacity-60">Délai</div>
-                <div class="mb-3 mt-0 opacity-40">{{ pricings[pricings.length-1].timeline }}</div>
-                <div class="mb-3 mt-3">
-                    <div class="text-xs opacity-60">Inclus</div>
-                    <div>
-                        <div v-for="i in pricings[pricings.length-1].included">
-                            {{ i }}
-                        </div>
+                    <div class="lg:col-start-3 lg:col-span-4 flex flex-col gap-3.5 lg:gap-4">
+                        <h2 class="m-0 text-[34px] lg:text-[clamp(30px,3.2vw,44px)] leading-none tracking-[-0.035em] font-medium">{{ p.title }}</h2>
+                        <p class="m-0 text-[15px] lg:text-[17px] leading-normal text-[#3d3d3d]">{{ p.description }}</p>
                     </div>
-                </div>
-                <div class="absolute bottom-4 right-4 w-10 aspect-square bg-black text-white flex justify-center items-center cursor-pointer" @click="startProject">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><!-- Icon from Material Design Icons by Pictogrammers - https://github.com/Templarian/MaterialDesign/blob/master/LICENSE --><path fill="white" d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2"/></svg>
-                </div>
-            </div>
+                    <!-- Mobile: price first, then the list behind a toggle -->
+                    <div class="lg:hidden ml-[22%] flex flex-col gap-1">
+                        <span class="text-[22px] font-semibold tracking-[-0.02em]">{{ p.price }}</span>
+                        <span class="text-sm text-[#5c5c5c]">{{ p.timeline }}</span>
+                    </div>
+                    <button type="button" class="lg:hidden self-start min-h-[44px] p-0 border-0 bg-transparent text-[#0d0d0d] text-[15px] font-semibold underline underline-offset-[6px] cursor-pointer"
+                        :aria-expanded="open === i" :aria-controls="'inclus-' + i" @click="open = open === i ? null : i">
+                        {{ open === i ? 'Masquer le détail' : 'Ce qui est inclus (' + p.included.length + ')' }}
+                    </button>
+                    <ul :id="'inclus-' + i" aria-label="Inclus" class="m-0 p-0 list-none flex-col lg:flex lg:col-start-7 lg:col-span-3" :class="open === i ? 'flex' : 'hidden'">
+                        <li v-for="item in p.included" :key="item" class="py-2 border-b border-[#d6d6d1] text-[15px]">{{ item }}</li>
+                    </ul>
+                    <div class="lg:col-start-10 lg:col-span-3 flex flex-col gap-1.5" :style="{ '--offset': OFFSETS[i % OFFSETS.length] }">
+                        <span class="hidden lg:block text-[26px] font-semibold tracking-[-0.02em] leading-[1.1] lg:pt-[var(--offset)]">{{ p.price }}</span>
+                        <span class="hidden lg:block text-[15px] text-[#5c5c5c]">{{ p.timeline }}</span>
+                        <button type="button" class="lg:self-start lg:mt-[18px] flex items-center justify-center min-h-[52px] lg:min-h-[48px] px-[22px] border-0 bg-[#0d0d0d] text-white hover:bg-[#2a2a2a] text-base lg:text-[15px] font-semibold cursor-pointer" @click="startProject">Demander un devis</button>
+                    </div>
+                </article>
+                <div class="border-t border-[#0d0d0d]"></div>
+            </section>
 
-        </div>
+            <!-- Closing CTA -->
+            <section id="contact" class="max-w-[1312px] mx-auto px-5 lg:px-8 pt-[104px] pb-14 lg:pt-40 lg:pb-[120px] lg:grid lg:grid-cols-12 lg:gap-x-6">
+                <h2 class="lg:col-span-12 m-0 text-[40px] lg:text-[clamp(44px,6.6vw,96px)] leading-[0.95] tracking-[-0.045em] font-medium">
+                    <span class="block">Votre projet ne rentre pas dans une case ?</span>
+                    <span class="block pl-[22%] lg:pl-[25%] mt-1.5 lg:mt-0">Tant mieux, <em class="font-['Georgia',serif] font-normal">parlons-en.</em></span>
+                </h2>
+                <div class="lg:col-start-4 lg:col-span-9 mt-10 lg:mt-14 flex flex-col items-start gap-3 lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-8">
+                    <button type="button" class="inline-flex items-center min-h-[56px] px-7 border-0 bg-[#0d0d0d] text-white hover:bg-[#2a2a2a] text-[17px] font-semibold cursor-pointer" @click="startProject">Démarrer un projet</button>
+                    <a v-if="formEnabled" href="https://wa.me/+221778109390" target="_blank" rel="noopener" class="min-h-[44px] inline-flex items-center text-base lg:text-[17px] font-semibold text-[#0d0d0d] underline underline-offset-[6px] hover:text-[#5c5c5c]">WhatsApp</a>
+                </div>
+            </section>
+        </main>
     </div>
     <Footer></Footer>
 </template>
@@ -100,6 +95,10 @@ const startProject = () => {
     else window.open('https://wa.me/+221778109390', '_blank', 'noopener,noreferrer')
 }
 const contactForm = ref(false)
+const open = ref(null) // mobile: which offer shows its list
+const num = (i) => String(i + 1).padStart(2, '0')
+// Staggered price column on desktop keeps the grid's rhythm
+const OFFSETS = ['0px', '48px', '16px', '64px']
 const contactName = ref('')
 const contactCompany = ref('')
 const contactEmail = ref('')
@@ -133,6 +132,23 @@ const closeForm = () => {
     if (route.query.form) navigateTo({ path: route.path, query: {} }, { replace: true })
 }
 const pricings = ref([
+    {
+        tagline: 'Expérience interactive',
+        title: 'Mini-jeu publicitaire',
+        description: `Création de mini-jeux web interactifs conçus pour engager votre audience et dynamiser vos campagnes marketing.`,
+        price: 'À partir de 3200€',
+        timeline: '3 à 5 semaines',
+        included: [
+            `Concept & game design`,
+            `Développement PixiJS`,
+            `Animations & effets visuels`,
+            `Responsive mobile & desktop`,
+            `Intégration branding`,
+            `Optimisation des performances`,
+            `Déploiement web`,
+        ]
+    },
+
     {
         tagline: 'Présence digitale premium',
         title: 'Site internet',
@@ -224,21 +240,11 @@ const pricings = ref([
     },
     */
 
-    {
-        tagline: 'Expérience interactive',
-        title: 'Mini-jeu publicitaire',
-        description: `Création de mini-jeux web interactifs conçus pour engager votre audience et dynamiser vos campagnes marketing.`,
-        price: 'À partir de 3200€',
-        timeline: '3 à 5 semaines',
-        included: [
-            `Concept & game design`,
-            `Développement PixiJS`,
-            `Animations & effets visuels`,
-            `Responsive mobile & desktop`,
-            `Intégration branding`,
-            `Optimisation des performances`,
-            `Déploiement web`,
-        ]
-    }
 ])
 </script>
+
+<style scoped>
+.pricing-page {
+    font-family: 'Inter Tight', system-ui, sans-serif;
+}
+</style>

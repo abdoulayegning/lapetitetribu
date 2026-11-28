@@ -11,31 +11,25 @@
             </div>
         </div>
 
-        <!-- Desktop: rows of 2 (3:2 then 2:3), all 16:9; the smaller card drifts with the scroll -->
+        <!-- Desktop: rows alternate two equal cards, then one full-width card. All 16:9, no parallax. -->
         <div class="hidden lg:flex flex-col gap-14 pb-16">
-            <div v-for="(row, r) in rows" :key="filter + r" class="flex flex-wrap items-start gap-x-3 gap-y-10">
-                <NuxtLink v-for="p in row" :key="p.slug" :to="'/' + p.slug" :id="'projet-' + p.slug" :data-plx="p.slug"
-                    class="card group no-underline block min-w-0" :style="{ flex: p.flex + ' 1 260px' }">
-                    <div class="flex flex-col gap-3.5 will-change-transform" :style="{ transform: `translate3d(0, ${drift(p)}px, 0)` }">
-                        <!-- Frame clips; the oversized inner layer is the image that slides -->
-                        <div class="relative overflow-hidden bg-[#1c1c1c] aspect-video">
-                            <div class="absolute inset-x-0 top-[-15%] h-[130%] will-change-transform" :style="{ transform: `translate3d(0, ${inner(p)}%, 0)` }">
-                                <img v-if="p.image" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" :src="p.image + '?w=1400&fm=webp&q=80'" :alt="p.title" loading="lazy">
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-0.5">
-                            <span class="text-[15px] font-medium leading-tight text-[#4a4a4a]">{{ p.client }}</span>
-                            <span class="text-xl font-semibold leading-tight tracking-[-0.02em] text-[#0d0d0d]">{{ p.title }}</span>
-                        </div>
+            <div v-for="(row, r) in rows" :key="filter + r" class="flex flex-wrap items-start gap-x-8 gap-y-10">
+                <NuxtLink v-for="p in row" :key="p.slug" :to="'/' + p.slug" :id="'projet-' + p.slug"
+                    class="card group no-underline flex flex-col gap-3.5 min-w-0 flex-[1_1_320px]">
+                    <div class="relative overflow-hidden bg-[#1c1c1c] aspect-video">
+                        <img v-if="p.image" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" :src="p.image + '?w=' + (row.length === 1 ? 2400 : 1400) + '&fm=webp&q=80'" :alt="p.title" loading="lazy">
+                    </div>
+                    <div class="flex flex-col gap-0.5">
+                        <span class="text-[15px] font-medium leading-tight text-[#4a4a4a]">{{ p.client }}</span>
+                        <span class="text-xl font-semibold leading-tight tracking-[-0.02em] text-[#0d0d0d]">{{ p.title }}</span>
                     </div>
                 </NuxtLink>
             </div>
         </div>
 
-        <!-- Mobile: one column, staggered widths, 16:9 -->
+        <!-- Mobile: one column, every card full width and aligned, 16:9 -->
         <div class="lg:hidden flex flex-col gap-10">
-            <NuxtLink v-for="(p, i) in mobileList" :key="p.slug" :to="'/' + p.slug" :id="'projet-m-' + p.slug" class="no-underline flex flex-col gap-3"
-                :style="{ width: mobileSizes[i % 3].w, marginLeft: mobileSizes[i % 3].ml }">
+            <NuxtLink v-for="p in mobileList" :key="p.slug" :to="'/' + p.slug" :id="'projet-m-' + p.slug" class="no-underline flex flex-col gap-3">
                 <div class="bg-[#1c1c1c] overflow-hidden aspect-video">
                     <img v-if="p.image" class="w-full h-full object-cover" :src="p.image + '?w=900&fm=webp&q=80'" :alt="p.title" loading="lazy">
                 </div>
@@ -51,14 +45,13 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue';
+import { ref, computed, onMounted, nextTick } from 'vue';
 
 const client = useContentful()
 
 const projects = ref([])
 const filter = ref('all')
 const showAll = ref(false)
-const shifts = ref({})
 
 // Categories are free text in Contentful ("Motion / Animation 2D", "UX/UI, Développement"…):
 // a project can sit in several filters.
@@ -83,36 +76,22 @@ const filters = computed(() => DEFS.map((d) => ({
 
 const list = computed(() => projects.value.filter((p) => inCat(p, filter.value)))
 
-// Two cards per row, alternating 3:2 and 2:3. speed = drift in px at the viewport edge (the large card stays still).
-const PATTERNS = [
-    [{ flex: 3, speed: 0 }, { flex: 2, speed: -32 }],
-    [{ flex: 2, speed: 32 }, { flex: 3, speed: 0 }],
-]
+// Row rhythm: two equal cards, then one full-width card, repeat
 const rows = computed(() => {
     const out = []
     for (let i = 0, r = 0; i < list.value.length; r++) {
-        const pattern = PATTERNS[r % PATTERNS.length]
-        out.push(list.value.slice(i, i + pattern.length).map((p, j) => ({ ...p, ...pattern[j] })))
-        i += pattern.length
+        const n = r % 2 === 0 ? 2 : 1
+        out.push(list.value.slice(i, i + n))
+        i += n
     }
     return out
 })
 
-const mobileSizes = [
-    { w: '100%', ml: '0%' },
-    { w: '78%', ml: '22%' },
-    { w: '86%', ml: '0%' },
-]
 const mobileList = computed(() => (showAll.value ? list.value : list.value.slice(0, 4)))
 
-const drift = (p) => ((shifts.value[p.slug] || 0) * p.speed).toFixed(1)
-const inner = (p) => ((shifts.value[p.slug] || 0) * -9).toFixed(2) // image slides within its frame (max ±9% of the 130% layer)
-
-const pick = async (id) => {
+const pick = (id) => {
     filter.value = id
     showAll.value = false
-    await nextTick()
-    measure()
 }
 
 // Used by the clients sentence: show all projects, then scroll to the card
@@ -126,26 +105,7 @@ const jumpTo = async (slug) => {
 }
 defineExpose({ jumpTo })
 
-/* ---------- Parallax ---------- */
-
 let reduced = false
-let raf = null
-// d = card centre relative to viewport centre, in viewport heights, clamped to [-1, 1].
-const measure = () => {
-    if (reduced) return
-    const vh = window.innerHeight || 1
-    const next = {}
-    document.querySelectorAll('[data-plx]').forEach((el) => {
-        const r = el.getBoundingClientRect()
-        if (!r.height) return
-        next[el.getAttribute('data-plx')] = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh / 2) / vh))
-    })
-    shifts.value = next
-}
-const onScroll = () => {
-    if (raf) return
-    raf = requestAnimationFrame(() => { raf = null; measure() })
-}
 
 const asset = (a) => (a?.fields?.file?.url ? 'https:' + a.fields.file.url : null)
 
@@ -164,17 +124,6 @@ onMounted(async () => {
         category: e.fields.category || '',
         image: asset(e.fields.imageThumbnail),
     }))
-    await nextTick()
-
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
-    measure()
-})
-
-onBeforeUnmount(() => {
-    window.removeEventListener('scroll', onScroll)
-    window.removeEventListener('resize', onScroll)
-    if (raf) cancelAnimationFrame(raf)
 })
 </script>
 

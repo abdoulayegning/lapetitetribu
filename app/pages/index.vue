@@ -19,6 +19,12 @@ const SERVICES = [
     { n: '03', title: 'Motion design', text: 'Animation 2D, packshots, habillages. Ce qui bouge se remarque.' },
     { n: '04', title: 'Identité visuelle', text: 'Une identité cohérente et mémorable. On vous reconnaît avant de lire votre nom.' },
 ]
+const TARIFS = [
+    { title: 'Mini-jeu publicitaire', price: '3200€' },
+    { title: 'Site internet', price: '2500€' },
+    { title: 'Motion design', price: '2800€' },
+    { title: 'Identité visuelle', price: '2200€' },
+]
 </script>
 
 <template>
@@ -74,7 +80,7 @@ const SERVICES = [
             <section id="tarifs" class="scroll-mt-24 max-w-[1312px] mx-auto px-5 lg:px-8 pt-[72px] lg:pt-[120px] flex flex-col gap-8 lg:grid lg:grid-cols-12 lg:gap-x-6 lg:items-start">
                 <div class="lg:col-span-7 flex flex-col gap-2.5 lg:gap-4">
                     <h2 class="m-0 text-[28px] lg:text-[32px] font-medium tracking-[-0.03em]">Tarifs</h2>
-                    <p class="m-0 text-[15px] lg:text-[17px] leading-[1.6] text-[#3d3d3d]">Mini-jeu publicitaire — à partir de 3200€<br>Site internet — à partir de 2500€<br>Motion design — à partir de 2800€<br>Identité visuelle — à partir de 2200€</p>
+                    <p class="m-0 text-[15px] lg:text-[17px] leading-[1.6] text-[#3d3d3d]"><template v-for="t in TARIFS" :key="t.title">{{ t.title }} — <span class="lg:hidden">dès</span><span class="hidden lg:inline">à partir de</span> {{ t.price }}<br></template></p>
                     <NuxtLink to="/pricing" class="self-start min-h-[44px] inline-flex items-center text-[15px] lg:text-base font-semibold text-[#0d0d0d] underline underline-offset-[6px] hover:text-[#5c5c5c]">Voir le détail</NuxtLink>
                 </div>
                 <a href="https://popmyproduct.com" target="_blank" rel="noopener" class="ml-[22%] lg:ml-0 lg:col-start-9 lg:col-span-4 lg:mt-16 no-underline flex flex-col gap-2.5 lg:gap-3.5 p-5 lg:p-6 bg-[#e2fb5a] text-[#0d0d0d] hover:text-[#0d0d0d]">
